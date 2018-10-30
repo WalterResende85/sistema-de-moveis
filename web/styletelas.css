@@ -41,6 +41,12 @@ select{
     border-collapse: collapse;
    
 }
+.tablegrid tr{
+    
+}
+.tablegrid tr:nth-child(even){
+    background: #bfd8e6;
+}
 .tableform input[type="button"]{
     width: 100px;
     

@@ -21,10 +21,8 @@
             <form action="ManterClienteController?acao=prepararOperacao&operacao=${operacao}">
                 <table class="tableform">
                     <tr><td><label for="idCliente">idCliente</label></td>
-                        <td colspan="3">
-                            <input type="text" name="idCliente" id="idCliente" value="${cliente.idCliente}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
-                            </td></tr>
-                        <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="nome" id="nome" placeholder="nome" value="${cliente.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                        <td colspan="3"><input type="text" name="idCliente" id="idCliente" value="${cliente.idCliente}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td></tr>
+                    <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="nome" id="nome" placeholder="nome" value="${cliente.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="cpf">CPF</label></td><td colspan="3"><input type="text" name="cpf" id="cpf" placeholder="CPF" value="${cliente.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="e-mail">email</label></td><td colspan="3"><input type="text" name="email" id="email" placeholder="e-mail" value="${cliente.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="cep">CEP</label></td><td colspan="1"><input type="text" name="cep" id="cep" placeholder="cep" value="${cliente.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>

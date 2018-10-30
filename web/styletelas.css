@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color:#e4f2f7;
+    background-size: cover;
+}
+.tableform{
+    
+    background: #add8e6;
+    padding: 10px;
+}
+
+.tdsalvar{
+    text-align: right;
+}
+.cadastroCentralizado{
+    position: absolute;
+    
+    top: 30%;
+    left: 30%;
+}
+input[type="text"]{
+    border: none;
+    height: 20px;
+    width: 100%;
+}
+select{
+    border: none;
+}
+
+
+.tablegrid{
+    border: 1px black solid;
+    border-collapse: collapse;
+    background: #add8e6;
+    padding: 10px;
+
+}
+.tablegrid tr td{
+    border: 1px black solid;
+    border-collapse: collapse;
+   
+}
+.tableform input[type="button"]{
+    width: 100px;
+    
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    box-shadow: 5px 5px 5px black;
+
+
+}
+.tableform input[type="button"]:hover{
+    background: gray;
+}
+td a:link{
+    text-decoration: none;
+    outline: none;
+}

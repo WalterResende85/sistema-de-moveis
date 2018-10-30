@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="gridMaterial.jsp">
+                        <a href="PesquisaMaterialController">
                             <input type="button" value="voltar">
                         </a>
                     </td>

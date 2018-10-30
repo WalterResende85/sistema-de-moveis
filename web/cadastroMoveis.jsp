@@ -27,7 +27,7 @@
                 <tr><td><label for="peso">Peso</label></td><td><input type="text" name="" id="peso" value="${movel.peso}" placeholder="peso"></td><td><label for="nome">Nome</label></td><td colspan="2"><input type="text" name="" id="nome" value="${movel.nome}" placeholder="nome"></td></tr>
                 <tr><td><label for="preco">Preço</label></td><td><input type="text" name="" id="preco" value="${movel.preco}" placeholder="R$"></td></tr>
                 <tr><td>Imagem</td> <td colspan="2"><input type="file" value="imagem"></td></tr>
-                <tr><td><a href="gridMoveis.html"><input type="button" value="voltar"></a></td><td class="tdsalvar" colspan="3"><input type="submit"name="" value="Salvar"> </td></tr>
+                <tr><td><a href="PesquisaMovelController"><input type="button" value="voltar"></a></td><td class="tdsalvar" colspan="3"><input type="submit"name="" value="Salvar"> </td></tr>
             </table>
         </form>
     </div>

@@ -59,7 +59,7 @@
                                 <option value="SE" <c:if test="${cliente.uf.equals('SE')}"> selected</c:if>>SE</option>
                                 <option value="TO" <c:if test="${cliente.uf.equals('TO')}"> selected</c:if>>TO</option>   </select></td>
                         <td><label for="cidade">Cidade</label></td><td><input type="text" name="cidade" id="cidade" placeholder="cidade" value="${cliente.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><a href="gridCliente.jsp"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
+                    <tr><td><a href="PesquisaClienteController"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
 
                 </table>
             </form>

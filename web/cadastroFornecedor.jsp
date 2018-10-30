@@ -95,7 +95,7 @@
                         </td>
                     </tr>
                     <tr><td>Produtos fornecido</td><td></td></tr>
-                    <tr><td><a href="gridFornecedor.jsp"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
+                    <tr><td><a href="PesquisaFornecedorController"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
                 </table>
 
             </form>

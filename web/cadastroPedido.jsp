@@ -43,7 +43,7 @@
                      <option value="Gerente">Gerente</option><option value="Marceneiro">Marceneiro</option> 
                      <option value="secretaria">SecretÃ¡ria</option></select></td></tr>
                      <tr><td><label for="salario">Salario</label></td><td><input type="text" name="" id="salario" placeholder="R$"></td><td>ComissÃ£o</td><td><input type="radio" name="comissao" value="s">S<input type="radio" name="comissao" value="n">N</td></tr> 
-                     <tr><td><a href="gridFuncionario.html"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
+                     <tr><td><a href="PesquisaPedidoController"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
             </table>     
         </form> 
     </div>

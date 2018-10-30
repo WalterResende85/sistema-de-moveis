@@ -22,13 +22,11 @@ out/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-*.xml
 .idea/workspace.xml
 .idea/workspace.xml
 .idea/libraries/mysql_connector_java_5_1_47.xml
 .idea/copyright/profiles_settings.xml
 .idea/workspace.xml
-*.xml
 /nbproject/private/
 nbproject/
 build/

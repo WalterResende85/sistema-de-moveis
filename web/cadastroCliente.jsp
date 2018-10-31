@@ -18,16 +18,21 @@
     <body>
 
         <div class="cadastroCentralizado">
-            <form action="ManterClienteController?acao=prepararOperacao&operacao=${operacao}">
+            <form action="ManterClienteController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table class="tableform">
+                    <tr><td colspan="4" style="text-align: center">${operacao}</td></tr>
+                    
                     <tr><td><label for="idCliente">idCliente</label></td>
-                        <td colspan="3"><input type="text" name="idCliente" id="idCliente" value="${cliente.idCliente}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="nome" id="nome" placeholder="nome" value="${cliente.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                        <td colspan="3">
+                            <input type="text" name="idCliente" id="idCliente" value="${cliente.idCliente}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                            </td></tr>
+                        <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="nome" id="nome" placeholder="nome" value="${cliente.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="cpf">CPF</label></td><td colspan="3"><input type="text" name="cpf" id="cpf" placeholder="CPF" value="${cliente.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    <tr><td><label for="dataNascimento">Nascimento</label></td><td colspan="3"><input type="text" name="dataNascimento" id="dataNascimento" placeholder="dataNascimento" value="${cliente.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="e-mail">email</label></td><td colspan="3"><input type="text" name="email" id="email" placeholder="e-mail" value="${cliente.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="cep">CEP</label></td><td colspan="1"><input type="text" name="cep" id="cep" placeholder="cep" value="${cliente.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="logradouro">Logradouro</label></td><td colspan="3"><input type="text" name="logradouro" id="logradouro" placeholder="Av, rua, travessa..." value="${cliente.logradouro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="numero">Numero</label></td><td><input type="text" name="" id="numero" placeholder="numero" value="${cliente.numero}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td><td><label for="bairro">Bairro</label></td><td><input type="text" name="bairro" id="bairro" placeholder="Bairro" value="${cliente.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    <tr><td><label for="numero">Numero</label></td><td><input type="text" name="numero" id="numero" placeholder="numero" value="${cliente.numero}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td><td><label for="bairro">Bairro</label></td><td><input type="text" name="bairro" id="bairro" placeholder="Bairro" value="${cliente.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="uf">UF</label></td><td><select name="uf" id="" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                                 <option value="AC" <c:if test="${cliente.uf.equals('AC')}"> selected</c:if>>AC</option>
                                 <option value="AL" <c:if test="${cliente.uf.equals('AL')}"> selected</c:if>>AL</option>
@@ -57,7 +62,8 @@
                                 <option value="SE" <c:if test="${cliente.uf.equals('SE')}"> selected</c:if>>SE</option>
                                 <option value="TO" <c:if test="${cliente.uf.equals('TO')}"> selected</c:if>>TO</option>   </select></td>
                         <td><label for="cidade">Cidade</label></td><td><input type="text" name="cidade" id="cidade" placeholder="cidade" value="${cliente.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><a href="gridCliente.jsp"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td></tr>
+                    <tr><td><label for="complemento">Complemento</label></td><td><input type="text" name="complemento" id="complemento" placeholder="complemento" value="${cliente.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    <tr><td><a href="PesquisaClienteController"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="salvar" value="Confirmar"></td></tr>
 
                 </table>
             </form>

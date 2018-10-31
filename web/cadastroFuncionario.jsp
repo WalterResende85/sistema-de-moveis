@@ -136,7 +136,7 @@
                             <td>
                                 <input type="text" name="" id="salario" placeholder="R$" value="" value="${funcionario.salario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         </td>
-                        <td>ComissÃ£o</td>
+                        <td>Comissão</td>
                         <td>
                             <input type="radio" name="comissao" value="s">S<input type="radio" name="comissao" value="n">N
                         </td>

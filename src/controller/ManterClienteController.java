@@ -42,24 +42,24 @@ public class ManterClienteController extends HttpServlet {
             Long idCliente = Long.parseLong(parameter);
             Cliente cliente = Cliente.obterCliente(idCliente);
             request.setAttribute("cliente", cliente);
-            request.setAttribute("telefones", ClienteDAO.telefonesByClient(idCliente));
+           // request.setAttribute("telefones", ClienteDAO.telefonesByClient(idCliente));
         }
         request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
     }
     protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
         String operacao = request.getParameter("operacao");
-        Long idCliente = Long.parseLong(request.getParameter("IdCLiente"));
-        String nome = request.getParameter("txtNome");
-        String cpf = request.getParameter("txtCpf");
-        String dataNascimento = request.getParameter("txtDataNascimento");
-        String email = request.getParameter("txtEmail");
-        String cep = request.getParameter("txtCep");
-        String logradouro = request.getParameter("txtLogradouro");
-        String numero= request.getParameter("txtNumero");
-        String complemento = request.getParameter("txtComplemento");
-        String bairro = request.getParameter("txtBairro");
-        String uf = request.getParameter("txtUf");
-        String cidade = request.getParameter("txtCidade");
+        String nome = request.getParameter("nome");
+        String cpf = request.getParameter("cpf");
+        String dataNascimento = request.getParameter("dataNascimento");
+        String email = request.getParameter("email");
+        String cep = request.getParameter("cep");
+        String logradouro = request.getParameter("logradouro");
+        String numero = request.getParameter("numero");
+        String complemento = request.getParameter("complemento");
+        String bairro = request.getParameter("bairro");
+        String uf = request.getParameter("uf");
+        String cidade = request.getParameter("cidade");
+        Long idCliente = Long.parseLong(request.getParameter("idCliente"));
         try{
             Cliente cliente = new Cliente(idCliente, nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
             if(operacao.equals("Incluir")){

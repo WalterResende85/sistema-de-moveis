@@ -21,6 +21,7 @@ import model.Funcionario;
  *
  * @author Walter
  */
+@WebServlet(name = "ManterFuncionarioController", urlPatterns = "/ManterFuncionarioController")
 public class ManterFuncionarioController extends HttpServlet {
 
     

@@ -7,11 +7,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Movel;
-
+@WebServlet(name = "ManterMoveisController", urlPatterns = "/ManterMoveisController")
 public class ManterMoveisController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -26,29 +27,18 @@ public class ManterMoveisController extends HttpServlet {
         }
     }
 
-    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-        try {
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
             String operacao = request.getParameter("operacao");
             request.setAttribute("operacao", operacao);
-            request.setAttribute("movel", Movel.obterTodosMovel());
+           
             if (!operacao.equals("Incluir")) {
-                Long idMovel = Long.parseLong(request.getParameter("idMovel"));
+                String parameter = request.getParameter("idMovel").trim();
+                Long idMovel = Long.parseLong(parameter);
                 Movel movel = Movel.obterMovel(idMovel);
                 request.setAttribute("movel", movel);
             }
-            RequestDispatcher view = request.getRequestDispatcher("/cadastroMoveis.jsp");
-            view.forward(request, response);
-        } catch (ServletException e) {
-            throw e;
-        } catch (IOException e) {
-            throw new ServletException(e);
-        } catch (SQLException e) {
-            throw new ServletException(e);
-        } catch (ClassNotFoundException e) {
-            throw new ServletException(e);
-        }
-
+            request.getRequestDispatcher("cadastroMoveis.jsp").forward(request, response);
+                   
     }
 
     @Override

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +27,8 @@ public class ManterClienteController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
-        if (acao.equals("confirmarOperacao")) {
-//             confirmarOperacao(request, response);
+        if (acao.equals("confirmarOperacao")){
+            confirmarOperacao(request, response);
         } else if (acao.equals("prepararOperacao")) {
             prepararOperacao(request, response);
         }
@@ -45,7 +46,42 @@ public class ManterClienteController extends HttpServlet {
         }
         request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
     }
-
+    protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+        String operacao = request.getParameter("operacao");
+        Long idCliente = Long.parseLong(request.getParameter("IdCLiente"));
+        String nome = request.getParameter("txtNome");
+        String cpf = request.getParameter("txtCpf");
+        String dataNascimento = request.getParameter("txtDataNascimento");
+        String email = request.getParameter("txtEmail");
+        String cep = request.getParameter("txtCep");
+        String logradouro = request.getParameter("txtLogradouro");
+        String numero= request.getParameter("txtNumero");
+        String complemento = request.getParameter("txtComplemento");
+        String bairro = request.getParameter("txtBairro");
+        String uf = request.getParameter("txtUf");
+        String cidade = request.getParameter("txtCidade");
+        try{
+            Cliente cliente = new Cliente(idCliente, nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
+            if(operacao.equals("Incluir")){
+                cliente.gravar();
+            }else if(operacao.equals("Editar")){
+                cliente.alterar();
+            }else if(operacao.equals("Excluir")){
+                cliente.excluir();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaClienteController");
+            view.forward(request, response);
+        }catch(IOException e){
+            throw new ServletException(e);
+        }catch(SQLException e){
+            throw new ServletException(e);
+        }catch(ClassNotFoundException e){
+            throw new ServletException(e);
+        }catch(ServletException e){
+            throw e;
+        }
+        
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -123,7 +123,7 @@ public class FornecedorDAO {
         return fornecedores;//retorna a lista
     }
 
-    private static Fornecedor getFornecedor(ResultSet rs) throws SQLException {
+    private final static Fornecedor getFornecedor(ResultSet rs) throws SQLException {
         return new Fornecedor(
                 rs.getLong("idFornecedor"),
                 rs.getString("nome"),

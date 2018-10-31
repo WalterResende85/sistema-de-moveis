@@ -1,5 +1,11 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +13,30 @@
     <link rel="stylesheet" type="text/css" href="styletelas.css">
     <title>Cadastro de móveis</title>
 </head>
+
 <body>
-    <h1>Manter Curso - ${operacao}</h1>
     <div class="cadastroCentralizado">
-        <form action="ManterMovelController?acao=confirmarOperacao&operacao=${operacao}">
+        <form action="ManterMoveisController?acao=prepararOperacao&operacao=${operacao}">
             <table class="tableform">
-                <tr><td>Tipo</td><td>Material</td><td>Acabamento</td><td>Tamanhos</td></tr>
                 <tr>
-                    <c:forEach items="moveis" var="movel">
-                        <td>
-                            <select name="movel" id="${movel.idMovel}" multiple> 
-                                <option value="${movel.idMovel}">${movel.acabamento}</option>
-                            </select>
-                        </td>
-                    </c:forEach>
-                    <td>altura<input type="text"><br>largura<input type="text">comprimento<input type="text"></td>
+                    <td><label for="idMovel">idMovel</label></td>
+                    <td colspan="3"><input type="text" name="idMovel" id="idMovel" value="${movel.idMovel}"
+                            <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                 </tr>
-                
-                <tr><td><label for="peso">Peso</label></td><td><input type="text" name="" id="peso" value="${movel.peso}" placeholder="peso"></td><td><label for="nome">Nome</label></td><td colspan="2"><input type="text" name="" id="nome" value="${movel.nome}" placeholder="nome"></td></tr>
-                <tr><td><label for="preco">Preço</label></td><td><input type="text" name="" id="preco" value="${movel.preco}" placeholder="R$"></td></tr>
-                <tr><td>Imagem</td> <td colspan="2"><input type="file" value="imagem"></td></tr>
-                <tr><td><a href="PesquisaMovelController"><input type="button" value="voltar"></a></td><td class="tdsalvar" colspan="3"><input type="submit"name="" value="Salvar"> </td></tr>
+                <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="nome" id="nome" placeholder="nome" value="${movel.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="preco">Preco</label></td><td colspan="3"><input type="text" name="preco" id="preco" placeholder="preco" value="${movel.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="tipo">tipo</label></td><td colspan="3"><input type="text" name="tipo" id="tipo" placeholder="tipo" value="${movel.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="material">material</label></td><td colspan="3"><input type="text" name="material" id="material" placeholder="material" value="${movel.material}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="altura">altura</label></td><td colspan="3"><input type="text" name="altura" id="altura" placeholder="altura" value="${movel.altura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="largura">largura</label></td><td colspan="3"><input type="text" name="largura" id="largura" placeholder="largura" value="${movel.largura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="comprimento">comprimento</label></td><td colspan="3"><input type="text" name="comprimento" id="comprimento" placeholder="comprimento" value="${movel.comprimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="acabamento">acabamento</label></td><td colspan="3"><input type="text" name="acabamento" id="acabamento" placeholder="acabamento" value="${movel.acabamento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>           
+                <tr><td><label for="peso">peso</label></td><td colspan="3"><input type="text" name="peso" id="peso" placeholder="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                <tr><td><label for="idPedido">idPedido</label></td><td colspan="3"><input type="text" name="idPedido" id="idPedido" placeholder="idPedido" value="${movel.idPedido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>            
+                <tr>
+                    <td><a href="gridMoveis.jsp"><input type="button" value="voltar"></a></td>
+                    <td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td>
+                </tr>
             </table>
         </form>
     </div>

@@ -28,7 +28,7 @@ public class ManterFornecedorController extends HttpServlet {
         try {
             String acao = request.getParameter("acao");
             if (acao.equals("confirmarOperacao")) {
-                // confirmarOperacao(request, response);
+                confirmarOperacao(request, response);
             } else {
                 if (acao.equals("prepararOperacao")) {
                     prepararOperacao(request, response);
@@ -61,6 +61,42 @@ public class ManterFornecedorController extends HttpServlet {
         } catch (ClassNotFoundException e) {
             throw e;
         }
+    }
+    protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+        String operacao = request.getParameter("operacao");
+        String nome = request.getParameter("nome");
+        String cnpj = request.getParameter("cnpj");
+        String email = request.getParameter("email");
+        String cep = request.getParameter("cep");
+        String logradouro = request.getParameter("logradouro");
+        String numero = request.getParameter("numero");
+        String complemento = request.getParameter("complemento");
+        String bairro = request.getParameter("bairro");
+        String uf = request.getParameter("uf");
+        String cidade = request.getParameter("cidade");
+         String telefone = request.getParameter("telefone");
+        Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
+        try{
+            Fornecedor fornecedor = new Fornecedor(idFornecedor, nome, cnpj, email, cep, logradouro, numero, complemento, bairro, uf, cidade, telefone);
+            if(operacao.equals("Incluir")){
+                fornecedor.gravar();
+            }else if(operacao.equals("Editar")){
+                fornecedor.alterar();
+            }else if(operacao.equals("Excluir")){
+                fornecedor.excluir();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaFornecedorController");
+            view.forward(request, response);
+        }catch(IOException e){
+            throw new ServletException(e);
+        }catch(SQLException e){
+            throw new ServletException(e);
+        }catch(ClassNotFoundException e){
+            throw new ServletException(e);
+        }catch(ServletException e){
+            throw e;
+        }
+        
     }
 
     @Override

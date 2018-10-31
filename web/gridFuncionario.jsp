@@ -38,14 +38,14 @@
                     <td>
                         <c:out value="${funcionario.nome}" />
                     </td>
-                    <td><a href="ManterFuncionarioControler?acao=prepararOperacao&Operacao=Editar&idFuncionario=<c:out
+                    <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Editar&idFuncionario=<c:out
                             value="${funcionario.idFuncionario}" />">Editar</a></td>
-                    <td><a href="ManterFuncionarioControler?acao=prepararOperacao&Operacao=Excluir&idFuncionario=<c:out
+                    <td><a href="ManterFuncionarioController?acao=prepararOperacao&Operacao=Excluir&idFuncionario=<c:out
                             value="${funcionario.idFuncionario}" />">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>
-        <form action="ManterFuncionarioControler?acao=prepararOperacao&Operacao=Incluir" method="POST">
+        <form action="ManterFuncionarioController?acao=prepararOperacao&operacao=Incluir" method="POST">
             
             <a href="index.jsp"><button type="button">Voltar</button></a>
                 <input type="submit" name="btnIncluir" value="incluir">            

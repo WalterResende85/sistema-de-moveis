@@ -14,8 +14,8 @@ public class FornecedorDAO {
         try {
             conexao = BD.getConexao();
             String sql = "insert into fornecedor (nome, cnpj, email,"
-                    + "CEP, logradouro, numero, complemento, bairro,  uf, cidade, idfornecedor)"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "cep, logradouro, numero, complemento, bairro,  uf, cidade, telefone, idfornecedor)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, fornecedor.getNome());
             comando.setString(2, fornecedor.getCnpj());
@@ -27,7 +27,8 @@ public class FornecedorDAO {
             comando.setString(8, fornecedor.getBairro());
             comando.setString(9, fornecedor.getUf());
             comando.setString(10, fornecedor.getCidade());
-            comando.setLong(11, fornecedor.getIdFornecedor());
+            comando.setString(11, fornecedor.getTelefone());
+            comando.setLong(12, fornecedor.getIdFornecedor());
             comando.execute();
             BD.fecharConexao(conexao, comando);
 
@@ -42,7 +43,7 @@ public class FornecedorDAO {
         try {
             conexao = BD.getConexao();
             String sql = "UPDATE Fornecedor SET nome = ?, cnpj = ?,"
-                    + "email = ?, CEP = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?"
+                    + "email = ?, CEP = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?, telefone = ?"
                     + "WHERE idFornecedor = ? ";
 
             comando = conexao.prepareStatement(sql);
@@ -57,7 +58,8 @@ public class FornecedorDAO {
             comando.setString(8, fornecedor.getBairro());
             comando.setString(9, fornecedor.getUf());
             comando.setString(10, fornecedor.getCidade());
-            comando.setLong(11, fornecedor.getIdFornecedor());
+            comando.setString(11, fornecedor.getTelefone());
+            comando.setLong(12, fornecedor.getIdFornecedor());
             comando.execute();
             BD.fecharConexao(conexao, comando);
 

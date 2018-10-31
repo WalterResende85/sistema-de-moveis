@@ -140,7 +140,7 @@
                         </td>
                     </tr> 
                     <tr>
-                        <td><a href="gridFuncionario.jsp"><input type="button" value="voltar"></a></td>
+                        <td><a href="PesquisaFuncionarioController"><input type="button" value="voltar"></a></td>
                         <td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td>
                     </tr>
                 </table>

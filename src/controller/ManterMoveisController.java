@@ -19,7 +19,7 @@ public class ManterMoveisController extends HttpServlet {
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
         if (acao.equals("confirmarOperacao")) {
-            //confirmarOperacao(request, response);
+            confirmarOperacao(request, response);
         } else {
             if (acao.equals("prepararOperacao")) {
                 prepararOperacao(request, response);
@@ -39,6 +39,47 @@ public class ManterMoveisController extends HttpServlet {
             }
             request.getRequestDispatcher("cadastroMoveis.jsp").forward(request, response);
                    
+    }
+    
+    protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+        String operacao = request.getParameter("operacao");
+        Long idMovel = Long.parseLong(request.getParameter("idMovel"));
+        String nome = request.getParameter("nome");
+        double preco = Double.parseDouble(request.getParameter("preco"));
+        String tipo = request.getParameter("tipo");
+        String material = request.getParameter("material");
+        double altura = Double.parseDouble(request.getParameter("altura"));
+        double largura = Double.parseDouble(request.getParameter("largura"));
+        double comprimento = Double.parseDouble(request.getParameter("comprimento"));
+        String acabamento = request.getParameter("acabamento");
+        double peso = Double.parseDouble("peso");
+        Long idPedido = Long.parseLong(request.getParameter("idpedido")); // dando problema de converção tipo pedido/Long
+        try{
+           
+            // não entendi oque entraria aqui nesta linha com igual no slide do Marco
+            if(idPedido != 0){
+            // não entendi oque entraria aqui nesta linha com igual no slide do Marco    
+            }
+            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, idPedido);
+            if(operacao.equals("Incluir")){
+                movel.gravar();
+            }else if(operacao.equals("Editar")){
+                movel.alterar();
+            }else if(operacao.equals("Excluir")){
+                movel.excluir();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaMovelController");
+            view.forward(request, response);
+        }catch(IOException e){
+            throw new ServletException(e);
+        }catch(SQLException e){
+            throw new ServletException(e);
+        }catch(ClassNotFoundException e){
+            throw new ServletException(e);
+        }catch(ServletException e){
+            throw e;
+        }
+        
     }
 
     @Override

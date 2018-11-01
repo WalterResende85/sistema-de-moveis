@@ -14,23 +14,23 @@
     <body>
 
         <div class="cadastroCentralizado">
-           <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
+            <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table class="tableform">
                     <tr><td colspan="4" style="text-align: center">${operacao}</td></tr>
-                   <tr>
+                    <tr>
                         <td><label for="idFuncionario">idFuncionario</label></td>
-                        <td colspan="3"><input type="text" name="idFuncionario" id="idFuncionario" placeholder="idFuncionario" value="${fornecedor.idFuncionario}"  <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        <td colspan="3"><input type="text" name="idFuncionario" id="idFuncionario" placeholder="idFuncionario" value="${funcionario.idFuncionario}"  <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
                         <tr>
-                    
-                    <tr>
-                                    
-                    <tr>
-                        <td>
-                            <label for="nome">Nome</label>
-                        </td>
-                        <td colspan="3">
-                            <input type="text" name="nome" id="nome" placeholder="nome" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+
+                        <tr>
+
+                        <tr>
+                            <td>
+                                <label for="nome">Nome</label>
+                            </td>
+                            <td colspan="3">
+                                <input type="text" name="nome" id="nome" placeholder="nome" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             </td>
                         </tr>
                         <tr>
@@ -134,11 +134,11 @@
                                 <label for="salario">Salario</label>
                             </td>
                             <td>
-                                <input type="text" name="" id="salario" placeholder="R$" value="" value="${funcionario.salario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <input type="text" name="salario" id="salario" placeholder="R$" value="${funcionario.salario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         </td>
                         <td>Comissão</td>
                         <td>
-                            <input type="radio" name="comissao" value="s">S<input type="radio" name="comissao" value="n">N
+                            <input type="radio" name="comissao" value="s">S<input type="radio" name="comissao" value="n" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>N
                         </td>
                     </tr> 
                     <tr>

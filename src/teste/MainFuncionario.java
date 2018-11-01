@@ -15,6 +15,7 @@ public class MainFuncionario {
         //x.setNome("e e eimael");
         //FuncionarioDAO.alterar(x);
 
-        FuncionarioDAO.obterTodosFuncionarios();
+        Funcionario f  = Funcionario.obterFuncionario(3L);
+        FuncionarioDAO.excluir(f);
     }
 }

@@ -60,7 +60,7 @@ public class ManterFuncionarioController extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String cargo = request.getParameter("cargo");
         double salario = Double.parseDouble(request.getParameter("salario").trim()); //quando tenta persistir no banco da erro nesta linha double provavel incompatibilidade
-        double comissao = Double.parseDouble(request.getParameter("comissao").trim()); //quando tenta persistir no banco da erro nesta linha double provavel incompatibilidade
+        String comissao = request.getParameter("comissao"); //quando tenta persistir no banco da erro nesta linha double provavel incompatibilidade
         String senha = request.getParameter("senha");
         Long idFuncionario = Long.parseLong(request.getParameter("idFuncionario"));
         try{

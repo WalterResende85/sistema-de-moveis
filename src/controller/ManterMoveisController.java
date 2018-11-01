@@ -55,12 +55,11 @@ public class ManterMoveisController extends HttpServlet {
         double peso = Double.parseDouble("peso");
         Long idPedido = Long.parseLong(request.getParameter("idpedido")); // dando problema de converção tipo pedido/Long
         try{
-           
             // não entendi oque entraria aqui nesta linha com igual no slide do Marco
-            if(idPedido != 0){
+            //if(idPedido != 0){            esse campo é peculiaridade do prog do marco acho que não precisa não
             // não entendi oque entraria aqui nesta linha com igual no slide do Marco    
-            }
-            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, idPedido);
+            //}
+            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso);
             if(operacao.equals("Incluir")){
                 movel.gravar();
             }else if(operacao.equals("Editar")){

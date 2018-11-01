@@ -30,7 +30,7 @@ public class FuncionarioDAO {
             comando.setString(11,funcionario.getCidade());
             comando.setString(12,funcionario.getCargo());
             comando.setDouble(13,funcionario.getSalario());
-            comando.setDouble(14,funcionario.getComissao());
+            comando.setString(14,funcionario.getComissao());
             comando.setString(15,funcionario.getSenha());
             comando.setLong(16, funcionario.getIdFuncionario());
             comando.execute();
@@ -61,7 +61,7 @@ public class FuncionarioDAO {
             comando.setString(11,funcionario.getCidade());
             comando.setString(12,funcionario.getCargo());
             comando.setDouble(13,funcionario.getSalario());
-            comando.setDouble(14,funcionario.getComissao());
+            comando.setString(14,funcionario.getComissao());
             comando.setString(15,funcionario.getSenha());
             comando.setLong(16,funcionario.getIdFuncionario());
             comando.execute();
@@ -112,7 +112,7 @@ public class FuncionarioDAO {
                     rs.getString("cidade"),
                     rs.getString("cargo"),
                     rs.getDouble("salario"),
-                    rs.getDouble("comissao"),
+                    rs.getString("comissao"),
                     rs.getString("senha"),
                     rs.getLong("idFuncionario"));
         }catch(SQLException e){
@@ -148,7 +148,7 @@ public class FuncionarioDAO {
                         rs.getString("cidade"),
                         rs.getString("cargo"),
                         rs.getDouble("salario"),
-                        rs.getDouble("comissao"),
+                        rs.getString("comissao"),
                         rs.getString("senha"),
                         rs.getLong("idFuncionario"));
                 funcionarios.add(funcionario);

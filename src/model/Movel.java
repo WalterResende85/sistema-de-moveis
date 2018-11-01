@@ -34,6 +34,19 @@ public class Movel {
         this.pedido = pedido;
     }
 
+    public Movel(Long idMovel, String nome, double preco, String tipo, String material, double altura, double largura, double comprimento, String acabamento, double peso) {
+        this.idMovel = idMovel;
+        this.nome = nome;
+        this.preco = preco;
+        this.tipo = tipo;
+        this.material = material;
+        this.altura = altura;
+        this.largura = largura;
+        this.comprimento = comprimento;
+        this.acabamento = acabamento;
+        this.peso = peso;
+    }
+    
     public Movel(Long idMovel, String nome) {
         this.idMovel = idMovel;
         this.nome = nome;

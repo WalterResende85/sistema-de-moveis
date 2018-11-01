@@ -9,7 +9,7 @@ public class Funcionario extends Pessoa {
     private Long idFuncionario;
     private String cargo;
     private double salario;
-    private double comissao;
+    private String comissao;
     private String senha;
 
     public Funcionario() {}
@@ -19,7 +19,7 @@ public class Funcionario extends Pessoa {
     }
     public Funcionario(String nome, String cpf, String dataNascimento, String email, String cep, String logradouro,
                        String numero, String complemento, String bairro, String uf, String cidade,
-                       String cargo, double salario, double comissao, String senha, Long idFuncionario) {
+                       String cargo, double salario, String comissao, String senha, Long idFuncionario) {
         super(nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
         this.idFuncionario = idFuncionario;
         this.cargo = cargo;
@@ -71,11 +71,11 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 
-    public double getComissao() {
+    public String getComissao() {
         return comissao;
     }
 
-    public void setComissao(double comissao) {
+    public void setComissao(String comissao) {
         this.comissao = comissao;
     }
 

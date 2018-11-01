@@ -34,7 +34,7 @@
                 <tr><td><label for="peso">peso</label></td><td colspan="3"><input type="text" name="peso" id="peso" placeholder="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                 <tr><td><label for="idPedido">idPedido</label></td><td colspan="3"><input type="text" name="idPedido" id="idPedido" placeholder="idPedido" value="${movel.idPedido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>            
                 <tr>
-                    <td><a href="gridMoveis.jsp"><input type="button" value="voltar"></a></td>
+                    <td><a href="PesquisaMovelController"><input type="button" value="voltar"></a></td>
                     <td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td>
                 </tr>
             </table>

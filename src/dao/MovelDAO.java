@@ -38,7 +38,6 @@ public class MovelDAO {
         }finally {
             BD.fecharConexao(conexao,comando);
         }
-
     }
 
     public static void alterar(Movel movel) throws SQLException, ClassNotFoundException {
@@ -49,7 +48,6 @@ public class MovelDAO {
             String sql = ("UPDATE Movel SET nome=?, preco=?, tipo=?," +
                     " material=?, altura=?, largura=?, comprimento=?, acabamento=?, peso=?,idPedido=? WHERE idMovel = ?");
             comando = conexao.prepareStatement(sql);
-
             comando.setString(1, movel.getNome());
             comando.setDouble(2, movel.getPreco());
             comando.setString(3, movel.getTipo());

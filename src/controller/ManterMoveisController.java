@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Movel;
+import model.Pedido;
+
 @WebServlet(name = "ManterMoveisController", urlPatterns = "/ManterMoveisController")
 public class ManterMoveisController extends HttpServlet {
 
@@ -28,20 +30,20 @@ public class ManterMoveisController extends HttpServlet {
     }
 
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
-            String operacao = request.getParameter("operacao");
-            request.setAttribute("operacao", operacao);
-           
-            if (!operacao.equals("Incluir")) {
-                String parameter = request.getParameter("idMovel").trim();
-                Long idMovel = Long.parseLong(parameter);
-                Movel movel = Movel.obterMovel(idMovel);
-                request.setAttribute("movel", movel);
-            }
-            request.getRequestDispatcher("cadastroMoveis.jsp").forward(request, response);
-                   
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+
+        if (!operacao.equals("Incluir")) {
+            String parameter = request.getParameter("idMovel").trim();
+            Long idMovel = Long.parseLong(parameter);
+            Movel movel = Movel.obterMovel(idMovel);
+            request.setAttribute("movel", movel);
+        }
+        request.getRequestDispatcher("cadastroMoveis.jsp").forward(request, response);
+
     }
-    
-    protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+
+    protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String operacao = request.getParameter("operacao");
         Long idMovel = Long.parseLong(request.getParameter("idMovel"));
         String nome = request.getParameter("nome");
@@ -52,33 +54,33 @@ public class ManterMoveisController extends HttpServlet {
         double largura = Double.parseDouble(request.getParameter("largura"));
         double comprimento = Double.parseDouble(request.getParameter("comprimento"));
         String acabamento = request.getParameter("acabamento");
-        double peso = Double.parseDouble("peso");
-        Long idPedido = Long.parseLong(request.getParameter("idpedido")); // dando problema de converção tipo pedido/Long
-        try{
-            // não entendi oque entraria aqui nesta linha com igual no slide do Marco
-            //if(idPedido != 0){            esse campo é peculiaridade do prog do marco acho que não precisa não
-            // não entendi oque entraria aqui nesta linha com igual no slide do Marco    
-            //}
-            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso);
-            if(operacao.equals("Incluir")){
+        double peso = Double.parseDouble(request.getParameter("peso"));
+        Long idPedido = null;
+        if (request.getParameter("idPedido") != "") {
+            idPedido = Long.parseLong(request.getParameter("idPedido")); // dando problema de converção tipo pedido/Long
+        }
+        try {
+            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, idPedido);
+            if (operacao.equals("Incluir")) {
                 movel.gravar();
-            }else if(operacao.equals("Editar")){
+            } else if (operacao.equals("Editar")) {
                 movel.alterar();
-            }else if(operacao.equals("Excluir")){
+                System.out.println("Bring edit");
+            } else if (operacao.equals("Excluir")) {
                 movel.excluir();
             }
             RequestDispatcher view = request.getRequestDispatcher("PesquisaMovelController");
             view.forward(request, response);
-        }catch(IOException e){
+        } catch (IOException e) {
             throw new ServletException(e);
-        }catch(SQLException e){
+        } catch (SQLException e) {
             throw new ServletException(e);
-        }catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new ServletException(e);
-        }catch(ServletException e){
+        } catch (ServletException e) {
             throw e;
         }
-        
+
     }
 
     @Override

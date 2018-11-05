@@ -22,6 +22,7 @@
     <div class="cadastroCentralizado">
         <form action="">
             <table class="tableform">
+                 <tr><td colspan="4" style="text-align: center">${operacao} Pedido</td></tr>
                 <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="" id="nome" placeholder="nome"></td></tr>
                 <tr><td><label for="cpf">CPF</label></td><td colspan="3"><input type="text" name="" id="cpf" placeholder="CPF"></td></tr>
                 <tr><td><label for="telefone">Telefone</label></td><td colspan="1"><input type="text" name="" id="telefone" placeholder="Telefone"></td></tr>

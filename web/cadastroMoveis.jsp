@@ -16,8 +16,9 @@
 
 <body>
     <div class="cadastroCentralizado">
-        <form action="ManterMoveisController?acao=prepararOperacao&operacao=${operacao}">
+        <form action="ManterMoveisController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
             <table class="tableform">
+                 <tr><td colspan="4" style="text-align: center">${operacao} Movel</td></tr>
                 <tr>
                     <td><label for="idMovel">idMovel</label></td>
                     <td colspan="3"><input type="text" name="idMovel" id="idMovel" value="${movel.idMovel}"
@@ -32,7 +33,7 @@
                 <tr><td><label for="comprimento">comprimento</label></td><td colspan="3"><input type="text" name="comprimento" id="comprimento" placeholder="comprimento" value="${movel.comprimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                 <tr><td><label for="acabamento">acabamento</label></td><td colspan="3"><input type="text" name="acabamento" id="acabamento" placeholder="acabamento" value="${movel.acabamento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>           
                 <tr><td><label for="peso">peso</label></td><td colspan="3"><input type="text" name="peso" id="peso" placeholder="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                <tr><td><label for="idPedido">idPedido</label></td><td colspan="3"><input type="text" name="idPedido" id="idPedido" placeholder="idPedido" value="${movel.idPedido}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>            
+                <tr><td><label for="idPedido">idPedido</label></td><td colspan="3"><input type="text" name="idPedido" id="idPedido" placeholder="idPedido" <c:choose><c:when test="value=${movel.idPedido != null}">value=""</c:when><c:otherwise>value="${movel.idPedido}"</c:otherwise></c:choose><c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>            
                 <tr>
                     <td><a href="PesquisaMovelController"><input type="button" value="voltar"></a></td>
                     <td colspan="3" class="tdsalvar" ><input type="submit" name="" value="salvar"></td>

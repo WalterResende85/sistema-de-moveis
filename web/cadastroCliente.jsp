@@ -20,7 +20,7 @@
         <div class="cadastroCentralizado">
             <form action="ManterClienteController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table class="tableform">
-                    <tr><td colspan="4" style="text-align: center">${operacao}</td></tr>
+                    <tr><td colspan="4" style="text-align: center">${operacao} Cliente</td></tr>
 
                     <tr><td><label for="idCliente">idCliente</label></td>
                         <td colspan="3">

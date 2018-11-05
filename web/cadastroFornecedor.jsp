@@ -16,7 +16,7 @@
         <div class="cadastroFuncionario">
             <form action="ManterFornecedorController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table class="tableform">
-                    <tr><td colspan="4" style="text-align: center">${operacao}</td></tr>
+                    <tr><td colspan="4" style="text-align: center">${operacao} Fornecedor</td></tr>
                     <tr>
                         <td><label for="idFornecedor">Nome</label></td>
                         <td colspan="3"><input type="text" name="idFornecedor" id="idFornecedor" placeholder="idFornecedor" value="${fornecedor.idFornecedor}"  <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>

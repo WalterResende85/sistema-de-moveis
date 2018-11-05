@@ -15,6 +15,7 @@
     <div class="cadastroCentralizado">
         <form action="">
             <table class="tableform">
+                 <tr><td colspan="4" style="text-align: center">${operacao} Material</td></tr>
                 <tr>
                     <td>
                         <label for="nome">Nome</label>

@@ -32,12 +32,12 @@ public class ManterMoveisController extends HttpServlet {
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
-
         if (!operacao.equals("Incluir")) {
             String parameter = request.getParameter("idMovel").trim();
             Long idMovel = Long.parseLong(parameter);
             Movel movel = Movel.obterMovel(idMovel);
             request.setAttribute("movel", movel);
+            request.setAttribute("pedidos", Pedido.obterTodosPedidos());
         }
         request.getRequestDispatcher("cadastroMoveis.jsp").forward(request, response);
 
@@ -56,7 +56,7 @@ public class ManterMoveisController extends HttpServlet {
         String acabamento = request.getParameter("acabamento");
         double peso = Double.parseDouble(request.getParameter("peso"));
         Long idPedido = null;
-        if (request.getParameter("idPedido") != "") {
+        if (getPedido(request)) {
             idPedido = Long.parseLong(request.getParameter("idPedido")); // dando problema de converção tipo pedido/Long
         }
         try {
@@ -80,7 +80,11 @@ public class ManterMoveisController extends HttpServlet {
         } catch (ServletException e) {
             throw e;
         }
+    }
 
+    private boolean getPedido(HttpServletRequest request) {
+        String pedido = "idPedido";
+        return request.getParameter(pedido) != "" || !request.getParameter(pedido).equals("0");
     }
 
     @Override

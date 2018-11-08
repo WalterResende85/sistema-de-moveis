@@ -36,10 +36,8 @@
                     <td>
                         <c:out value="${fornecedor.nome}" />
                     </td>
-                    <td><a href="ManterFornecedorController?acao=prepararOperacao&operacao=Editar&idFornecedor=<c:out
-                            value="${fornecedor.idFornecedor}" /> ">Editar</a></td>
-                    <td><a href="ManterFornecedorController?acao=prepararOperacao&operacao=Excluir&idFornecedor=<c:out
-                            value="${fornecedor.idFornecedor}" /> ">Excluir</a></td>
+                    <td><a href="ManterFornecedorController?acao=prepararOperacao&operacao=Editar&idFornecedor=<c:out value="${fornecedor.idFornecedor}" /> ">Editar</a></td>
+                    <td><a href="ManterFornecedorController?acao=prepararOperacao&operacao=Excluir&idFornecedor=<c:out value="${fornecedor.idFornecedor}" /> ">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

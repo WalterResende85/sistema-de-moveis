@@ -111,7 +111,7 @@ public class MovelDAO {
                     rs.getDouble("comprimento"),
                     rs.getString("acabamento"),
                     rs.getDouble("peso"),
-                    rs.getLong("idPedido")
+                    null
             );
             movel.setIdPedido(rs.getLong("idPedido"));
         } catch (SQLException e) {
@@ -141,7 +141,7 @@ public class MovelDAO {
                         rs.getDouble("comprimento"),
                         rs.getString("acabamento"),
                         rs.getDouble("peso"),
-                        rs.getLong("idPedido"));
+                        null);
                 movel.setIdPedido(rs.getLong("idPedido"));
                 moveis.add(movel);
             }

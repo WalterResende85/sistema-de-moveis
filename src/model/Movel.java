@@ -4,6 +4,8 @@ import dao.MovelDAO;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Movel {
 
@@ -20,7 +22,7 @@ public class Movel {
     private Pedido pedido;
     private Long idPedido;
 
-    public Movel(Long idMovel, String nome, double preco, String tipo, String material, double altura, double largura, double comprimento, String acabamento, double peso, Long idPedido) {
+    public Movel(Long idMovel, String nome, double preco, String tipo, String material, double altura, double largura, double comprimento, String acabamento, double peso,Pedido pedido) {
         this.idMovel = idMovel;
         this.nome = nome;
         this.preco = preco;
@@ -31,7 +33,7 @@ public class Movel {
         this.comprimento = comprimento;
         this.acabamento = acabamento;
         this.peso = peso;
-        this.idPedido = idPedido;
+        this.pedido = pedido;
     }
 
     public Movel(Long idMovel, String nome) {
@@ -150,6 +152,16 @@ public class Movel {
     }
 
     public Pedido getPedido() {
+        if (idPedido != 0 && pedido == null) {
+            try {
+                pedido = Pedido.obterPedido(idPedido);
+            } catch (SQLException ex) {
+                Logger.getLogger(Movel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Movel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+    }
         return pedido;
     }
 

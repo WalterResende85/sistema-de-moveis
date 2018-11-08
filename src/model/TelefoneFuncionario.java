@@ -4,6 +4,8 @@ import dao.TelefoneFuncionarioDAO;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelefoneFuncionario extends Telefone {
     private Long idFuncionario;
@@ -37,6 +39,16 @@ public class TelefoneFuncionario extends Telefone {
     }
 
     public Funcionario getFuncionario() {
+        if (idFuncionario != 0 && funcionario ==null) {
+            try {
+                funcionario = Funcionario.obterFuncionario(idFuncionario);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelefoneFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelefoneFuncionario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         return funcionario;
     }
 

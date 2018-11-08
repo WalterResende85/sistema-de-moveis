@@ -5,6 +5,8 @@ import dao.TelefoneFornecedorDAO;
 import java.nio.channels.ClosedSelectorException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelefoneFornecedor extends Telefone {
     private Long idFornecedor;
@@ -36,6 +38,15 @@ public class TelefoneFornecedor extends Telefone {
     }
 
     public Fornecedor getFornecedor() {
+        if(idFornecedor != 0 && fornecedor == null){
+            try {
+                fornecedor = Fornecedor.obterFornecedor(idFornecedor);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelefoneFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(TelefoneFornecedor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return fornecedor;
     }
 

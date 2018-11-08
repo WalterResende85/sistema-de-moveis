@@ -37,10 +37,8 @@
                     <td>
                         <c:out value="${ferramenta.nome}" /><!--talvez tenha que tirar-->
                     </td>
-                    <td><a href="ManterFerramentaController?acao=prepararOperacao&operacao=Editar&idFerramenta=<c:out
-                            value="${ferramenta.idFerramenta}" />">Editar</a></td>
-                    <td><a href="ManterFerramentaController?acao=prepararOperacao&operacao=Excluir&idFerramenta=<c:out
-                            value="${ferramenta.idFerramenta}" />">Excluir</a></td>
+                    <td><a href="ManterFerramentaController?acao=prepararOperacao&operacao=Editar&idFerramenta=<c:out value="${ferramenta.idFerramenta}" />">Editar</a></td>
+                    <td><a href="ManterFerramentaController?acao=prepararOperacao&operacao=Excluir&idFerramenta=<c:out value="${ferramenta.idFerramenta}" />">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -32,12 +32,11 @@ public class ManterMoveisController extends HttpServlet {
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
+        request.setAttribute("pedidos", Pedido.obterTodosPedidos());
         if (!operacao.equals("Incluir")) {
-            String parameter = request.getParameter("idMovel").trim();
-            Long idMovel = Long.parseLong(parameter);
-            Movel movel = Movel.obterMovel(idMovel);
+            Movel movel = Movel.obterMovel(Long.parseLong(request.getParameter("idMovel")));
             request.setAttribute("movel", movel);
-            request.setAttribute("pedidos", Pedido.obterTodosPedidos());
+
         }
         request.getRequestDispatcher("cadastroMoveis.jsp").forward(request, response);
 
@@ -55,12 +54,16 @@ public class ManterMoveisController extends HttpServlet {
         double comprimento = Double.parseDouble(request.getParameter("comprimento"));
         String acabamento = request.getParameter("acabamento");
         double peso = Double.parseDouble(request.getParameter("peso"));
-        Long idPedido = null;
-        if (getPedido(request)) {
-            idPedido = Long.parseLong(request.getParameter("idPedido"));
-        }
+
+        Long idPedido = Long.parseLong(request.getParameter("idPedido"));
+
         try {
-            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, idPedido);
+            Pedido pedido = null;
+            if (idPedido != 0) {
+                pedido = Pedido.obterPedido(idPedido);
+            }
+
+            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, pedido);
             if (operacao.equals("Incluir")) {
                 movel.gravar();
             } else if (operacao.equals("Editar")) {
@@ -80,11 +83,6 @@ public class ManterMoveisController extends HttpServlet {
         } catch (ServletException e) {
             throw e;
         }
-    }
-
-    private boolean getPedido(HttpServletRequest request) {
-        String pedido = "idPedido";
-        return request.getParameter(pedido) != "" || !request.getParameter(pedido).equals("0");
     }
 
     @Override

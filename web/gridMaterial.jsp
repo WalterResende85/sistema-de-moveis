@@ -37,10 +37,8 @@
                     <td>
                         <c:out value="${material.nome}" /><!--talvez tenha que tirar-->
                     </td>
-                    <td><a href="ManterMaterialController?acao=prepararOperacao&operacao=Editar&idMaterial=<c:out
-                            value="${material.idMaterial}" />">Editar</a></td>
-                    <td><a href="ManterMaterialController?acao=prepararOperacao&operacao=Excluir&idMaterial=<c:out
-                            value="${material.idMaterial}" />">Excluir</a></td>
+                    <td><a href="ManterMaterialController?acao=prepararOperacao&operacao=Editar&idMaterial=<c:out value="${material.idMaterial}" />">Editar</a></td>
+                    <td><a href="ManterMaterialController?acao=prepararOperacao&operacao=Excluir&idMaterial=<c:out value="${material.idMaterial}" />">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

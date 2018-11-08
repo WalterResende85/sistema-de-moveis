@@ -33,10 +33,8 @@
                     <td>
                         <c:out value="${movel.nome}" />
                     </td>
-                    <td><a href="ManterMoveisController?acao=prepararOperacao&operacao=Editar&idMovel=<c:out
-                            value="${movel.idMovel}" />">Editar</a></td>
-                    <td><a href="ManterMoveisController?acao=prepararOperacao&operacao=Excluir&idMovel=<c:out
-                            value="${movel.idMovel}" />">Excluir</a></td>
+                    <td><a href="ManterMoveisController?acao=prepararOperacao&operacao=Editar&idMovel=<c:out value="${movel.idMovel}" />">Editar</a></td>
+                    <td><a href="ManterMoveisController?acao=prepararOperacao&operacao=Excluir&idMovel=<c:out value="${movel.idMovel}" />">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -37,7 +37,7 @@
 
                         <tr>
 
-                            <td><label for="idPedido">idPedido</label></td>
+                            <td><label for="idPedido">Pedido</label></td>
                             <td> 
                                 <select name="idPedido" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                                 <option value="0" <c:if test="${movel.pedido.idPedido == null}"> selected</c:if>> </option>  

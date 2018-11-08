@@ -38,10 +38,8 @@
                     <td>
                         <c:out value="${funcionario.nome}" />
                     </td>
-                    <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Editar&idFuncionario=<c:out
-                            value="${funcionario.idFuncionario}" />">Editar</a></td>
-                    <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Excluir&idFuncionario=<c:out
-                            value="${funcionario.idFuncionario}" />">Excluir</a></td>
+                    <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Editar&idFuncionario=<c:out value="${funcionario.idFuncionario}" />">Editar</a></td>
+                    <td><a href="ManterFuncionarioController?acao=prepararOperacao&operacao=Excluir&idFuncionario=<c:out value="${funcionario.idFuncionario}" />">Excluir</a></td>
                 </tr>
             </c:forEach>
         </table>

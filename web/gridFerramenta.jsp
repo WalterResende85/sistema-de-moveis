@@ -44,11 +44,10 @@
                 </tr>
             </c:forEach>
         </table>
-        <form action="ManterFerramentaController?acao=prepararOperacao&operacao=Incluir" method="POST">
-            
-            <a href="index.jsp"><button type="button">Voltar</button></a>
-                <input type="submit" name="btnIncluir" value="incluir">            
-        </form>
+        <a href="index.jsp"><button type="button">Voltar</button></a>
+            <a href="ManterFerramentaController?acao=prepararOperacao&operacao=Incluir">
+                <button type="button">Incluir</button>
+            </a>
     </div>
 
 </body>

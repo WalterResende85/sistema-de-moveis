@@ -24,6 +24,10 @@
         <servlet-name>PesquisaMaterialController</servlet-name>
         <servlet-class>controller.PesquisaMaterialController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PesquisaFerramentaController</servlet-name>
+        <servlet-class>controller.PesquisaFerramentaController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaClienteController</servlet-name>
         <url-pattern>/PesquisaClienteController</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaMaterialController</servlet-name>
         <url-pattern>/PesquisaMaterialController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PesquisaFerramentaController</servlet-name>
+        <url-pattern>/PesquisaFerramentaController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

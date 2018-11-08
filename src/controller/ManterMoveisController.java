@@ -57,7 +57,7 @@ public class ManterMoveisController extends HttpServlet {
         double peso = Double.parseDouble(request.getParameter("peso"));
         Long idPedido = null;
         if (getPedido(request)) {
-            idPedido = Long.parseLong(request.getParameter("idPedido")); // dando problema de converção tipo pedido/Long
+            idPedido = Long.parseLong(request.getParameter("idPedido"));
         }
         try {
             Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, idPedido);

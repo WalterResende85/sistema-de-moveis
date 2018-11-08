@@ -21,9 +21,9 @@ public class Ferramenta extends MaterialFerramenta {
     }
 
     public Ferramenta(Long idFerramenta, String nome, String tipo, double valorUnitario,
-                      double qtdEstoque, String unidade, Funcionario funcionario) {
+                      double qtdEstoque, String unidade, Long idFuncionario) {
         super(nome, tipo, valorUnitario, qtdEstoque, unidade);
-        this.funcionario = funcionario;
+       this.idFuncionario = idFuncionario;
 
     }
     public  void  gravar() throws SQLException, ClassNotFoundException{
@@ -62,6 +62,7 @@ public class Ferramenta extends MaterialFerramenta {
         this.idFuncionario = idFuncionario;
     }
 
+   
     public Long getIdFerramenta() {
         return idFerramenta;
     }

@@ -26,7 +26,11 @@ public class MovelDAO {
             comando.setDouble(8, movel.getComprimento());
             comando.setString(9, movel.getAcabamento());
             comando.setDouble(10, movel.getPeso());
-            comando.setLong(11, movel.getIdPedido());
+            if(movel.getPedido()== null){
+                comando.setNull(11, Types.NULL);
+            }else{
+                comando.setLong(11, movel.getPedido().getIdPedido());
+            }
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e) {
@@ -53,7 +57,12 @@ public class MovelDAO {
             comando.setDouble(7, movel.getComprimento());
             comando.setString(8, movel.getAcabamento());
             comando.setDouble(9, movel.getPeso());
-            comando.setLong(10, movel.getIdPedido());
+            if(movel.getPedido()== null){
+                comando.setNull(10, Types.NULL);
+            }else{
+                comando.setLong(10, movel.getPedido().getIdPedido());
+            }
+            
             comando.setLong(11, movel.getIdMovel());
             comando.execute();
         } catch (SQLException e) {

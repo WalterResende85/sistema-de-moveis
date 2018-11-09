@@ -37,9 +37,7 @@ public class ManterFuncionarioController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
         if (!operacao.equals("Incluir")) {
-            String parameter = request.getParameter("idFuncionario").trim();
-            Long idFuncionario = Long.parseLong(parameter);
-            Funcionario funcionario = Funcionario.obterFuncionario(idFuncionario);
+            Funcionario funcionario = Funcionario.obterFuncionario(Long.parseLong(request.getParameter("idFuncionario")));
             request.setAttribute("funcionario", funcionario);
           
         }

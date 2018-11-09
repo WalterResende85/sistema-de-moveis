@@ -23,7 +23,7 @@
                         <td><label for="idMovel">idMovel</label></td>
                         <td colspan="3"><input type="text" name="idMovel" id="idMovel" value="${movel.idMovel}"
                                                <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
-                        </tr>
+                    </tr>
                         <tr><td><label for="nome">Nome</label></td><td colspan="3"><input type="text" name="nome" id="nome" placeholder="nome" value="${movel.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="preco">Preco</label></td><td colspan="3"><input type="text" name="preco" id="preco" placeholder="preco" value="${movel.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="tipo">tipo</label></td><td colspan="3"><input type="text" name="tipo" id="tipo" placeholder="tipo" value="${movel.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>

@@ -35,12 +35,30 @@
                         </tr>
                         <tr>
                             <td>
+                                <label for="senha">Senha</label>
+                            </td>
+                            <td colspan="3">
+                                <input type="text" name="senha" id="senha" placeholder="senha" value="${funcionario.senha}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <label for="cpf">CPF</label>
                             </td>
                             <td colspan="3">
                                 <input type="text" name="cpf" id="cpf" placeholder="CPF" value="${funcionario.cpf}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <label for="dataNascimento">Data de Nascimento</label>
+                            </td>
+                            <td colspan="3">
+                                <input type="text" name="dataNascimento" id="dataNascimento" placeholder="dataNascimento" value="${funcionario.dataNascimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            </td>
+                        </tr>
+                        
+                        
                         <tr>
                             <td>
                                 <label for="email">e-mail</label>
@@ -84,8 +102,8 @@
                                 <label for="uf">UF</label>
                             </td>
                             <td>
-                                <select name="" id="">
-                                    <option value="AC" <c:if test="${funcionario.uf.equals('AC')}"> selected</c:if>>AC</option>
+                                <select name="uf" id="">
+                                <option value="AC" <c:if test="${funcionario.uf.equals('AC')}"> selected</c:if>>AC</option>
                                 <option value="AL" <c:if test="${funcionario.uf.equals('AL')}"> selected</c:if>>AL</option>
                                 <option value="AM" <c:if test="${funcionario.uf.equals('AM')}"> selected</c:if>>AM</option>
                                 <option value="AP" <c:if test="${funcionario.uf.equals('AP')}"> selected</c:if>>AP</option>
@@ -117,15 +135,27 @@
                             <td>
                                 <label for="cidade">Cidade</label>
                             </td>
-                            <td><input type="text" name="" id="cidade" placeholder="cidade" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            <td>
+                                <input type="text" name="cidade" id="cidade" placeholder="cidade" value="${funcionario.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <label for="complemento">Logradouro</label>
+                            </td>
+                            <td colspan="3">
+                                <input type="text" name="complemento" id="complemento" placeholder="complemento" value="${funcionario.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                            </td>
+                        </tr>
+                        
                         <tr>
                             <td>Cargo </td>
                             <td colspan="3">
-                                <select name="" id=""><option value="Estagiario">Estagiario</option>
-                                    <option value="Gerente">Gerente</option>
-                                    <option value="Marceneiro">Marceneiro</option> 
-                                    <option value="secretaria">Secretaria</option>
+                                <select name="cargo" id="">
+                                    <option value="Estagiario" <c:if test="${funcionario.cargo.equals('Estagiario')}"> selected</c:if>>Estagiario</option>
+                                    <option value="Gerente" <c:if test="${funcionario.cargo.equals('Gerente')}"> selected</c:if>>Gerente</option>
+                                    <option value="Marceneiro" <c:if test="${funcionario.cargo.equals('Marceneiro')}"> selected</c:if>>Marceneiro</option> 
+                                    <option value="secretaria" <c:if test="${funcionario.cargo.equals('Secretaria')}"> selected</c:if>>Secretaria</option>
                                 </select>
                             </td>
                         </tr>
@@ -137,8 +167,8 @@
                                 <input type="text" name="salario" id="salario" placeholder="R$" value="${funcionario.salario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         </td>
                         <td>Comissão</td>
-                        <td>
-                            <input type="radio" name="comissao" value="s">S<input type="radio" name="comissao" value="n" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>N
+                        <td style="background: red">
+                            <input type="radio" name="comissao" value="S" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>S<input type="radio" name="comissao" value="N" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>N
                         </td>
                     </tr> 
                     <tr>

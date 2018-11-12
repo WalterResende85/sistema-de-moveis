@@ -15,7 +15,7 @@ public class MaterialDAO {
             conexao = BD.getConexao();
             String sql = "insert into Material (idMaterial, nome, tipo, valorUnitario, qtdEstoque, unidade)"
                     + "values (?,?,?,?,?,?)";
-            comando = conexao.prepareCall(sql);
+            comando = conexao.prepareStatement(sql);
             comando.setLong(1, material.getIdMaterial());  //nome do id da classe pai
             comando.setString(2, material.getNome());
             comando.setString(3, material.getTipo());
@@ -38,7 +38,7 @@ public class MaterialDAO {
             String sql = "UPDATE material SET nome = ?,tipo = ?, valorUnitario = ?,"
                     + " qtdEstoque = ?, unidade = ? WHERE idMaterial = ?";
             comando = conexao.prepareStatement(sql);
-
+            
             comando.setString(1, material.getNome());
             comando.setString(2, material.getTipo());
             comando.setDouble(3, material.getValorUnitario());

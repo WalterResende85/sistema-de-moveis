@@ -13,7 +13,8 @@ public class Material extends MaterialFerramenta {
         this.idMaterial=idMaterial;
     }
 
-    public Material(String nome, String tipo, double valorUnitario, double qtdEstoque, String unidade){super(nome, tipo, valorUnitario, qtdEstoque, unidade);
+    public Material(String nome, String tipo, double valorUnitario, double qtdEstoque, String unidade){
+        super(nome, tipo, valorUnitario, qtdEstoque, unidade);
         }
 
     public Material(Long idMaterial, String nome, String tipo, double valorUnitario, double qtdEstoque, String unidade) {

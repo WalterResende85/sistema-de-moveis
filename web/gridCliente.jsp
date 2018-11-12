@@ -33,12 +33,10 @@
                             <c:out value="${cliente.idCliente}" />
                         </td>
                         <td>
-                            <c:out value="${cliente.nome}" /><!--talvez tenha que tirar-->
+                            <c:out value="${cliente.nome}" />
                         </td>
-                        <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Editar&idCliente=<c:out
-                                   value="${cliente.idCliente}" />" >Editar</a></td>
-                        <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Excluir&idCliente=<c:out
-                                   value="${cliente.idCliente}" />" >Excluir</a></td>
+                        <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Editar&idCliente=<c:out value="${cliente.idCliente}" />" >Editar</a></td>
+                        <td><a href="ManterClienteController?acao=prepararOperacao&operacao=Excluir&idCliente=<c:out value="${cliente.idCliente}" />" >Excluir</a></td>
                     </tr>
                 </c:forEach>
             </table>

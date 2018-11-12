@@ -44,6 +44,7 @@ public class ManterClienteController extends HttpServlet {
         }
         request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
     }
+   
     protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException{
         String operacao = request.getParameter("operacao");
         String nome = request.getParameter("nome");

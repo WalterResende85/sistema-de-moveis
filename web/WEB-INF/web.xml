@@ -28,6 +28,10 @@
         <servlet-name>PesquisaFerramentaController</servlet-name>
         <servlet-class>controller.PesquisaFerramentaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManterMaterialController</servlet-name>
+        <servlet-class>controller.ManterMaterialController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PesquisaClienteController</servlet-name>
         <url-pattern>/PesquisaClienteController</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>PesquisaFerramentaController</servlet-name>
         <url-pattern>/PesquisaFerramentaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManterMaterialController</servlet-name>
+        <url-pattern>/ManterMaterialController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

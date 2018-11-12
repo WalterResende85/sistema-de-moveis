@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Ferramenta;
-import model.Funcionario;
+
 
 /**
  *
@@ -30,7 +30,7 @@ public class ManterFerramentaController extends HttpServlet {
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         String acao = request.getParameter("acao");
         if (acao.equals("confirmarOperacao")) {
-            //confirmarOperacao(request, response);
+            confirmarOperacao(request, response);
         } else {
             if (acao.equals("prepararOperacao")){
             prepararOperacao(request,response);
@@ -45,10 +45,9 @@ public class ManterFerramentaController extends HttpServlet {
             request.setAttribute("operacao", operacao);
             
             if (!operacao.equals("Incluir")) {
-                Long idFerramenta = Long.parseLong(request.getParameter("idFerramenta"));
-                Ferramenta ferramenta = Ferramenta.obterFerramenta(idFerramenta);
+               Ferramenta ferramenta = Ferramenta.obterFerramenta(Long.parseLong(request.getParameter("idFerramenta")));
                 request.setAttribute("Ferramenta", ferramenta);
-                request.setAttribute("funcionarios", Funcionario.obterTodosFuncionarios());
+                
             }
             request.getRequestDispatcher("cadastroFerramenta.jsp").forward(request, response);
             
@@ -63,22 +62,18 @@ public class ManterFerramentaController extends HttpServlet {
         }
 
     }
-    /*
+  
      protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String operacao = request.getParameter("operacao");
         Long idFerramenta = Long.parseLong(request.getParameter("idFerramenta"));
         String nome = request.getParameter("nome");
         String tipo = request.getParameter("tipo");
-        double valorTotal = Double.parseDouble(request.getParameter("valorTotal"));
-        double qtdEstoque = Double.parseDouble(request.getParameter("qtdEstoque"));
+        Double valorUnitario = Double.parseDouble(request.getParameter("valorUnitario"));
+        Double qtdEstoque = Double.parseDouble(request.getParameter("qtdEstoque"));
         String unidade = request.getParameter("unidade");
-        
-        Long idFuncionario = null;
-        if(getFuncionario(request)){
-            idFuncionario = Long.parseLong(request.getParameter("idPedido"));
-        }
+                
         try {
-           Ferramenta ferramenta = new Ferramenta(idFerramenta, nome, tipo, valorTotal, qtdEstoque, unidade, idFuncionario);
+           Ferramenta ferramenta = new Ferramenta(idFerramenta, nome, tipo, valorUnitario, qtdEstoque, unidade);
             if (operacao.equals("Incluir")) {
                 ferramenta.gravar();
             } else if (operacao.equals("Editar")) {
@@ -100,7 +95,7 @@ public class ManterFerramentaController extends HttpServlet {
         }
     }   
         
-*/
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

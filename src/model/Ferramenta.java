@@ -7,23 +7,21 @@ import java.util.List;
 
 public class Ferramenta extends MaterialFerramenta {
 
-    private Funcionario funcionario;
-    private Long idFuncionario;     //COLOCAR EM TODOS QUE TEM CHAVE ESTRANGEIRA
     private Long idFerramenta;
 
     public Ferramenta() {
     }
 
-    public Ferramenta(Long idFerramenta, String nome, Funcionario funcionario) {
+    public Ferramenta(Long idFerramenta, String nome) {
         this.setIdFerramenta(idFerramenta);
         this.setNome(nome);
-        this.setFuncionario(funcionario);
+       
     }
 
     public Ferramenta(Long idFerramenta, String nome, String tipo, double valorUnitario,
-                      double qtdEstoque, String unidade, Long idFuncionario) {
+                      double qtdEstoque, String unidade) {
         super(nome, tipo, valorUnitario, qtdEstoque, unidade);
-       this.idFuncionario = idFuncionario;
+       this.idFerramenta = idFerramenta;
 
     }
     public  void  gravar() throws SQLException, ClassNotFoundException{
@@ -46,23 +44,6 @@ public class Ferramenta extends MaterialFerramenta {
         return FerramentaDAO.obterTodasFerramentas();
     }
 
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public Long getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public void setIdFuncionario(Long idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }
-
-   
     public Long getIdFerramenta() {
         return idFerramenta;
     }

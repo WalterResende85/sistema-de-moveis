@@ -16,7 +16,7 @@ public class MaterialDAO {
             String sql = "insert into Material (idMaterial, nome, tipo, valorUnitario, qtdEstoque, unidade)"
                     + "values (?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
-            comando.setLong(1, material.getIdMaterial());  //nome do id da classe pai
+            comando.setLong(1, material.getIdMaterial());
             comando.setString(2, material.getNome());
             comando.setString(3, material.getTipo());
             comando.setDouble(4, material.getValorUnitario());

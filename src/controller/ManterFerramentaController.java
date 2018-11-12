@@ -68,8 +68,8 @@ public class ManterFerramentaController extends HttpServlet {
             } else if (operacao.equals("Excluir")) {
                 ferramenta.excluir();
             }
-            request.getRequestDispatcher("PesquisaFerramentaController").forward(request, response);
-
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaFerramentaController");
+            view.forward(request, response);
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {

@@ -14,8 +14,8 @@ public class FornecedorDAO {
         try {
             conexao = BD.getConexao();
             String sql = "insert into fornecedor (nome, cnpj, email,"
-                    + "cep, logradouro, numero, complemento, bairro,  uf, cidade, telefone, idfornecedor)"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "cep, logradouro, numero, complemento, bairro,  uf, cidade, idfornecedor)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, fornecedor.getNome());
             comando.setString(2, fornecedor.getCnpj());
@@ -27,8 +27,8 @@ public class FornecedorDAO {
             comando.setString(8, fornecedor.getBairro());
             comando.setString(9, fornecedor.getUf());
             comando.setString(10, fornecedor.getCidade());
-            comando.setString(11, fornecedor.getTelefone());
-            comando.setLong(12, fornecedor.getIdFornecedor());
+           
+            comando.setLong(11, fornecedor.getIdFornecedor());
             comando.execute();
             BD.fecharConexao(conexao, comando);
 
@@ -43,7 +43,7 @@ public class FornecedorDAO {
         try {
             conexao = BD.getConexao();
             String sql = "UPDATE Fornecedor SET nome = ?, cnpj = ?,"
-                    + "email = ?, CEP = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?, telefone = ?"
+                    + "email = ?, CEP = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?"
                     + "WHERE idFornecedor = ? ";
 
             comando = conexao.prepareStatement(sql);
@@ -58,8 +58,8 @@ public class FornecedorDAO {
             comando.setString(8, fornecedor.getBairro());
             comando.setString(9, fornecedor.getUf());
             comando.setString(10, fornecedor.getCidade());
-            comando.setString(11, fornecedor.getTelefone());
-            comando.setLong(12, fornecedor.getIdFornecedor());
+            
+            comando.setLong(11, fornecedor.getIdFornecedor());
             comando.execute();
             BD.fecharConexao(conexao, comando);
 
@@ -137,8 +137,6 @@ public class FornecedorDAO {
                 rs.getString("complemento"),
                 rs.getString("bairro"),
                 rs.getString("uf"),
-                rs.getString("cidade"),
-                rs.getString("telefone")
-        );
+                rs.getString("cidade"));
     }
 }

@@ -76,11 +76,10 @@ public class ManterFornecedorController extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String uf = request.getParameter("uf");
         String cidade = request.getParameter("cidade");
-        String telefone = request.getParameter("telefone");
-        // faltando colocar o campo Tipo de material fornecido, não sei como faz pra implementar isso no banco
+               // faltando colocar o campo Tipo de material fornecido, não sei como faz pra implementar isso no banco
         Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
         try{
-            Fornecedor fornecedor = new Fornecedor(idFornecedor, nome, cnpj, email, cep, logradouro, numero, complemento, bairro, uf, cidade, telefone);
+            Fornecedor fornecedor = new Fornecedor(idFornecedor, nome, cnpj, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
             if(operacao.equals("Incluir")){
                 fornecedor.gravar();
             }else if(operacao.equals("Editar")){

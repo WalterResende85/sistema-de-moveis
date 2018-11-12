@@ -18,7 +18,7 @@
                 <table class="tableform">
                     <tr><td colspan="4" style="text-align: center">${operacao} Fornecedor</td></tr>
                     <tr>
-                        <td><label for="idFornecedor">Nome</label></td>
+                        <td><label for="idFornecedor">ID Fornecedor</label></td>
                         <td colspan="3"><input type="text" name="idFornecedor" id="idFornecedor" placeholder="idFornecedor" value="${fornecedor.idFornecedor}"  <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
                         <tr>
@@ -31,10 +31,8 @@
                             <td><label for="cnpj">CNPJ</label></td>
                             <td colspan="3"><input type="text" name="cnpj" id="cnpj" placeholder="CNPJ" value="${fornecedor.cnpj}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
-                        <tr>
-                            <td><label for="telefone">Telefone</label></td>
-                            <td colspan="1"><input type="text" name="telefone" id="telefone" placeholder="Telefone" value="${fornecedor.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                        </tr>
+                        
+                                               
                         <tr>
                             <td><label for="email">e-mail</label></td>
                             <td colspan="3"><input type="text" name="email" id="email" placeholder="e-mail" value="${fornecedor.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>

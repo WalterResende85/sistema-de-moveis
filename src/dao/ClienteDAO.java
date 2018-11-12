@@ -87,13 +87,13 @@ public class ClienteDAO {
         Cliente cliente = null;
         try {
             conexao = BD.getConexao();
-            String sql = "SELECT * FROM Cliente WHERE cliente.idCliente = ?";
+            String sql = "SELECT * FROM Cliente WHERE idCliente = ?";
             comando = conexao.prepareStatement(sql);
-            comando.setInt(1, Math.toIntExact(idCliente));
+            comando.setLong(1, idCliente);
             ResultSet rs = comando.executeQuery();
             rs.first();
             cliente = createUser(rs);
-            cliente.setIdCliente(rs.getLong("idCliente"));
+           
 
         } catch (SQLException e) {
             e.printStackTrace();

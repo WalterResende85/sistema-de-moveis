@@ -63,7 +63,7 @@
                     <td>
                         <label for="unidade">Unidade</label>
                     </td>
-                    <td colspan="1">
+                    <td colspan="3">
                         <input type="text" name="unidade" id="unidade" placeholder="unidade" value="${material.unidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>

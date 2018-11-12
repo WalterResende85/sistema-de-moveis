@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Ferramenta;
 
-
 /**
  *
  * @author ISAAC
@@ -32,38 +31,25 @@ public class ManterFerramentaController extends HttpServlet {
         if (acao.equals("confirmarOperacao")) {
             confirmarOperacao(request, response);
         } else {
-            if (acao.equals("prepararOperacao")){
-            prepararOperacao(request,response);
+            if (acao.equals("prepararOperacao")) {
+                prepararOperacao(request, response);
             }
         }
     }
-    
-        public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-        try {
-            String operacao = request.getParameter("operacao");
-            request.setAttribute("operacao", operacao);
-            
-            if (!operacao.equals("Incluir")) {
-               Ferramenta ferramenta = Ferramenta.obterFerramenta(Long.parseLong(request.getParameter("idFerramenta")));
-                request.setAttribute("Ferramenta", ferramenta);
-                
-            }
-            request.getRequestDispatcher("cadastroFerramenta.jsp").forward(request, response);
-            
-        } catch (ServletException e) {
-            throw e;
-        } catch (IOException e) {
-            throw e;
-        } catch (SQLException e) {
-            throw e;
-        } catch (ClassNotFoundException e) {
-            throw e;
+
+    public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
+        String operacao = request.getParameter("operacao");
+        request.setAttribute("operacao", operacao);
+        if (!operacao.equals("Incluir")) {
+            Ferramenta ferramenta = Ferramenta.obterFerramenta(Long.parseLong(request.getParameter("idFerramenta")));
+            request.setAttribute("Ferramenta", ferramenta);
+
         }
+        request.getRequestDispatcher("cadastroFerramenta.jsp").forward(request, response);
 
     }
-  
-     protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+
+    protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String operacao = request.getParameter("operacao");
         Long idFerramenta = Long.parseLong(request.getParameter("idFerramenta"));
         String nome = request.getParameter("nome");
@@ -71,9 +57,9 @@ public class ManterFerramentaController extends HttpServlet {
         Double valorUnitario = Double.parseDouble(request.getParameter("valorUnitario"));
         Double qtdEstoque = Double.parseDouble(request.getParameter("qtdEstoque"));
         String unidade = request.getParameter("unidade");
-                
+
         try {
-           Ferramenta ferramenta = new Ferramenta(idFerramenta, nome, tipo, valorUnitario, qtdEstoque, unidade);
+            Ferramenta ferramenta = new Ferramenta(idFerramenta, nome, tipo, valorUnitario, qtdEstoque, unidade);
             if (operacao.equals("Incluir")) {
                 ferramenta.gravar();
             } else if (operacao.equals("Editar")) {
@@ -83,7 +69,7 @@ public class ManterFerramentaController extends HttpServlet {
                 ferramenta.excluir();
             }
             request.getRequestDispatcher("PesquisaFerramentaController").forward(request, response);
-            
+
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
@@ -93,8 +79,7 @@ public class ManterFerramentaController extends HttpServlet {
         } catch (ServletException e) {
             throw e;
         }
-    }   
-        
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -108,7 +93,6 @@ public class ManterFerramentaController extends HttpServlet {
         }
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -120,7 +104,6 @@ public class ManterFerramentaController extends HttpServlet {
             Logger.getLogger(ManterFerramentaController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     @Override
     public String getServletInfo() {

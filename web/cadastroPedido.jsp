@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="styletelas.css">
 
-        <title>Cadastro de Funcionario</title>
+        <title>Cadastro de Pedidos</title>
     </head>
 
     <body>
@@ -21,10 +21,12 @@
                     <tr><td colspan="4" style="text-align: center">${operacao} Pedido</td></tr>
                     <tr>
                         <td><label for="idPedido">idPedido</label></td>
-                        <td colspan="3"><input type="text" name="idPedido" id="idPedido" value="${pedido.idPedido}"
-                    <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        <td colspan="3"><input type="text" name="idPedido" id="idPedido" placeholder="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                     </tr>
-                    <tr><td><label for="valorTotal">Valor Total</label></td><td colspan="3"><input type="text" name="valorTotal" id="valorTotal" placeholder="valorTotal" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    <tr>
+                        <td><label for="valorTotal">Valor Total</label></td>
+                        <td colspan="3"><input type="text" name="valorTotal" id="valorTotal" placeholder="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                    </tr>
                     
                    <tr>
 

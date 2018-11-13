@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Cliente;
 import model.Pedido;
 import utils.Strings;
 @WebServlet(name = "ManterPedidoController", urlPatterns = "/ManterPedidoController")
@@ -27,12 +29,46 @@ public class ManterPedidoController extends HttpServlet {
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String operacao = Strings.getOperacao(request);
         request.setAttribute("operacao", operacao);
+        request.setAttribute("clientes", Cliente.obterTodosClientes());
         if (!operacao.equals("Incluir")) {
-            Long idPedido = Long.parseLong(request.getParameter("idPedido"));
-            Pedido pedido = Pedido.obterPedido(idPedido);
+            Pedido pedido = Pedido.obterPedido(Long.parseLong(request.getParameter("idPedido")));
             request.setAttribute("Pedido", pedido);
         }
         request.getRequestDispatcher("cadastroPedido.jsp").forward(request, response);
+    }
+
+     protected void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        String operacao = request.getParameter("operacao");
+        Long idPedido = Long.parseLong(request.getParameter("idPedido"));
+        Double valorTotal = Double.parseDouble(request.getParameter("valorTotal"));
+        Long idCliente = Long.parseLong(request.getParameter("idCliente"));
+
+        try {
+            Cliente cliente = null;
+            if (idCliente != 0) {
+                cliente = Cliente.obterCliente(idCliente);
+            }
+
+            Pedido pedido = new Pedido(idPedido,valorTotal, cliente);
+            if (operacao.equals("Incluir")) {
+                pedido.gravar();
+            } else if (operacao.equals("Editar")) {
+                pedido.alterar();
+                System.out.println("Bring edit");
+            } else if (operacao.equals("Excluir")) {
+                pedido.excluir();
+            }
+            RequestDispatcher view = request.getRequestDispatcher("PesquisaPedidoController");
+            view.forward(request, response);
+        } catch (IOException e) {
+            throw new ServletException(e);
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        } catch (ClassNotFoundException e) {
+            throw new ServletException(e);
+        } catch (ServletException e) {
+            throw e;
+        }
     }
 
     @Override
@@ -60,15 +96,5 @@ public class ManterPedidoController extends HttpServlet {
         return "Short description";
     }
 
-    private void confirmarOperacao(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
-        Pedido pedido = new Pedido();
-        pedido.setIdCliente(Long.parseLong(get(request, "idCliente")));
-        pedido.setValorTotal(Double.parseDouble(get(request, "valorTotal")));
-        pedido.setIdCliente(Long.parseLong(get(request, "idPedido")));
-        pedido.gravar();
-    }
-
-    private String get(HttpServletRequest request, String name) {
-        return request.getParameter(name).trim();
-    }
+   
 }

@@ -167,8 +167,9 @@
                                 <input type="text" name="salario" id="salario" placeholder="R$" value="${funcionario.salario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                         </td>
                         <td>Comissão</td>
-                        <td style="background: red">
-                            <input type="radio" name="comissao" value="S" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>S<input type="radio" name="comissao" value="N" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>N
+                        <td>
+                            <input type="radio" name="comissao" value="S" <c:if test="${funcionario.comissao.equals('S')}"> checked</c:if>>S
+                            <input type="radio" name="comissao" value="N" <c:if test="${funcionario.comissao.equals('N')}"> checked</c:if>>N
                         </td>
                     </tr> 
                     <tr>

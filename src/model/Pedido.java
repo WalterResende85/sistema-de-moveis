@@ -5,12 +5,14 @@ import dao.PedidoDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Pedido {
-    private Long idPedido=null;
-    private Long idCliente=null;
-    private Double valorTotal=0.0;
+    private Long idPedido;
+    private Long idCliente;
+    private Double valorTotal;
     private Cliente cliente;
 
     public Pedido(Long idPedido, Double valorTotal, Cliente cliente) {
@@ -18,10 +20,9 @@ public class Pedido {
         this.valorTotal = valorTotal;
         this.cliente = cliente;
     }
-
-    public Pedido() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+ 
+   
 
     public  void  gravar() throws SQLException, ClassNotFoundException{
         PedidoDAO.gravar(this);
@@ -64,6 +65,18 @@ public class Pedido {
     }
 
     public Cliente getCliente() {
+         if (idCliente != 0 && cliente == null) {
+          
+             try {
+                 cliente = Cliente.obterCliente(idCliente);
+             } catch (SQLException ex) {
+                 Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (ClassNotFoundException ex) {
+                 Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+             }
+                    
+    }
+        
         return cliente;
     }
 

@@ -20,7 +20,7 @@
                         <td><a href="PesquisaMovelController"><input type="button" value="Moveis" style="background: green"></a><br></td>
                     </tr>
                     <tr>
-                        <td><a href="PesquisaFerramentaController"><input type="button" value="Ferramentas" style="background: yellowgreen"></a><br></td>
+                        <td><a href="PesquisaFerramentaController"><input type="button" value="Ferramentas" style="background: green"></a><br></td>
                     </tr>
 
                     <tr>

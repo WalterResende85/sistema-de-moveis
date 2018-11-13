@@ -34,6 +34,8 @@ public class Movel {
         this.acabamento = acabamento;
         this.peso = peso;
         this.pedido = pedido;
+        this.idPedido = 0l;
+        
     }
 
     public Movel(Long idMovel, String nome) {

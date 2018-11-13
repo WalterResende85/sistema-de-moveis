@@ -19,6 +19,7 @@ public class Pedido {
         this.idPedido = idPedido;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
+        this.idCliente = 0l;
     }
     
  

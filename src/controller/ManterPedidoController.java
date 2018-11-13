@@ -32,7 +32,7 @@ public class ManterPedidoController extends HttpServlet {
         request.setAttribute("clientes", Cliente.obterTodosClientes());
         if (!operacao.equals("Incluir")) {
             Pedido pedido = Pedido.obterPedido(Long.parseLong(request.getParameter("idPedido")));
-            request.setAttribute("Pedido", pedido);
+            request.setAttribute("pedido", pedido);
         }
         request.getRequestDispatcher("cadastroPedido.jsp").forward(request, response);
     }

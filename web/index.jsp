@@ -33,7 +33,7 @@
                         <td><a href="PesquisaClienteController"><input type="button" value="Cliente" style="background: yellowgreen"></a><br></td>
                     </tr>
                     <tr>
-                        <td><a href="PesquisaPedidoController"><input type="button" value="Pedido" style="background: orangered"></a><br></td>
+                        <td><a href="PesquisaPedidoController"><input type="button" value="Pedido" style="background: yellowgreen"></a><br></td>
                     </tr>
                     <tr>
                         <td><a href="PesquisaMaterialController"><input type="button" value="Material" style="background: green"></a><br></td>

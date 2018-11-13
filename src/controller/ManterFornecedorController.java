@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.FornecedorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -51,6 +52,7 @@ public class ManterFornecedorController extends HttpServlet {
                 Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
                 Fornecedor fornecedor = Fornecedor.obterFornecedor(idFornecedor);
                 request.setAttribute("fornecedor", fornecedor);
+                request.setAttribute("telefones", FornecedorDAO.telefones(fornecedor.getIdFornecedor()));
             }
             RequestDispatcher view = request.getRequestDispatcher("cadastroFornecedor.jsp");
             view.forward(request, response);

@@ -5,6 +5,7 @@ import model.Funcionario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import model.TelefoneFuncionario;
 
 public class FuncionarioDAO {
 
@@ -159,5 +160,28 @@ public class FuncionarioDAO {
             BD.fecharConexao(conexao, comando);
         }
         return funcionarios;
+    }
+    
+    public static List<TelefoneFuncionario> telefones(Long id) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        List<TelefoneFuncionario> telefones = new ArrayList<TelefoneFuncionario>();
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            String sql = "SELECT * FROM TelefoneFuncionario where cliente = "+id;
+            ResultSet rs = comando.executeQuery(sql);
+            while (rs.next()) {
+                TelefoneFuncionario c = new TelefoneFuncionario(
+                        rs.getLong("idTelefone"),
+                        rs.getString("telefone"), null);
+                telefones.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BD.fecharConexao(conexao, comando);
+        }
+        return telefones;
     }
 }

@@ -5,6 +5,7 @@ import model.Fornecedor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import model.TelefoneFornecedor;
 
 public class FornecedorDAO {
 
@@ -138,5 +139,28 @@ public class FornecedorDAO {
                 rs.getString("bairro"),
                 rs.getString("uf"),
                 rs.getString("cidade"));
+    }
+    
+    public static List<TelefoneFornecedor> telefones(Long id) throws ClassNotFoundException {
+        Connection conexao = null;
+        Statement comando = null;
+        List<TelefoneFornecedor> telefones = new ArrayList<TelefoneFornecedor>();
+        try {
+            conexao = BD.getConexao();
+            comando = conexao.createStatement();
+            String sql = "SELECT * FROM TelefoneFornecedor where cliente = "+id;
+            ResultSet rs = comando.executeQuery(sql);
+            while (rs.next()) {
+                TelefoneFornecedor c = new TelefoneFornecedor(
+                        rs.getLong("idTelefone"),
+                        rs.getString("telefone"), null);
+                telefones.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            BD.fecharConexao(conexao, comando);
+        }
+        return telefones;
     }
 }

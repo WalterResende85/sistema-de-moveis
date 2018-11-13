@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.FuncionarioDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -39,6 +40,7 @@ public class ManterFuncionarioController extends HttpServlet {
         if (!operacao.equals("Incluir")) {
             Funcionario funcionario = Funcionario.obterFuncionario(Long.parseLong(request.getParameter("idFuncionario")));
             request.setAttribute("funcionario", funcionario);
+            request.setAttribute("telefones", FuncionarioDAO.telefones(funcionario.getIdFuncionario()));
           
         }
         request.getRequestDispatcher("cadastroFuncionario.jsp").forward(request, response);

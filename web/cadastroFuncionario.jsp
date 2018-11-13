@@ -171,7 +171,10 @@
                             <input type="radio" name="comissao" value="S" <c:if test="${funcionario.comissao.equals('S')}"> checked</c:if>>S
                             <input type="radio" name="comissao" value="N" <c:if test="${funcionario.comissao.equals('N')}"> checked</c:if>>N
                         </td>
-                    </tr> 
+                    </tr>
+                     <c:forEach  items="${telefones}" var="telefone">
+                    <tr><td><label for="telefone">Telefone</label></td><td><input type="text" name="telefone" id="telefone" placeholder="telefone" value="${telefone.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    </c:forEach>
                     <tr>
                         <td><a href="PesquisaFuncionarioController"><input type="button" value="voltar"></a></td>
                         <td colspan="3" class="tdsalvar" ><input type="submit" name="confirmar" value="Confirmar"></td>

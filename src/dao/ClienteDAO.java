@@ -93,7 +93,6 @@ public class ClienteDAO {
             ResultSet rs = comando.executeQuery();
             rs.first();
             cliente = createUser(rs);
-           
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,28 +122,27 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public static List<TelefoneCliente> telefonesByClient(Long id) throws ClassNotFoundException {
+    public static List<TelefoneCliente> telefones(Long id) throws ClassNotFoundException {
         Connection conexao = null;
         Statement comando = null;
-        List<TelefoneCliente> telephones = new ArrayList<>();
+        List<TelefoneCliente> telefones = new ArrayList<TelefoneCliente>();
         try {
             conexao = BD.getConexao();
             comando = conexao.createStatement();
-            String sql = "SELECT * FROM telefonecliente WHERE cliente = ?";
+            String sql = "SELECT * FROM telefoneCliente where cliente = "+id;
             ResultSet rs = comando.executeQuery(sql);
             while (rs.next()) {
-                telephones.add(new TelefoneCliente(
+                TelefoneCliente c = new TelefoneCliente(
                         rs.getLong("idTelefone"),
-                        rs.getString("telefone"),
-                        new Cliente()
-                ));
+                        rs.getString("telefone"), null);
+                telefones.add(c);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             BD.fecharConexao(conexao, comando);
         }
-        return telephones;
+        return telefones;
     }
 
     private static Cliente createUser(ResultSet rs) throws SQLException {

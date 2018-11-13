@@ -97,6 +97,9 @@
                             <td><label for="complemento">Complemento</label></td>
                             <td colspan="3"><input type="text" name="complemento" id="complemento" placeholder="complemento" value="${fornecedor.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
+                     <c:forEach  items="${telefones}" var="telefone">
+                    <tr><td><label for="telefone">Telefone</label></td><td><input type="text" name="telefone" id="telefone" placeholder="telefone" value="${telefone.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    </c:forEach>
                     <tr><td>Produtos fornecido</td><td></td></tr>
                     <tr><td><a href="PesquisaFornecedorController"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="confirmar" value="Confirmar"></td></tr>
                 </table>

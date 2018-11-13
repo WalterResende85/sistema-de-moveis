@@ -70,6 +70,9 @@
                         </td>
                         <td><label for="cidade">Cidade</label></td><td><input type="text" name="cidade" id="cidade" placeholder="cidade" value="${cliente.cidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="complemento">Complemento</label></td><td><input type="text" name="complemento" id="complemento" placeholder="complemento" value="${cliente.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    <c:forEach  items="${telefones}" var="telefone">
+                    <tr><td><label for="telefone">Telefone</label></td><td><input type="text" name="telefone" id="telefone" placeholder="telefone" value="${telefone.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    </c:forEach>
                     <tr><td><a href="PesquisaClienteController"><input type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input type="submit" name="salvar" value="Confirmar"></td></tr>
 
                 </table>

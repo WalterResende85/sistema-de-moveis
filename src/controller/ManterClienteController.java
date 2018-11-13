@@ -40,7 +40,7 @@ public class ManterClienteController extends HttpServlet {
         if (!operacao.equals("Incluir")) {
             Cliente cliente = Cliente.obterCliente(Long.parseLong(request.getParameter("idCliente")));
             request.setAttribute("cliente", cliente);
-           // request.setAttribute("telefones", ClienteDAO.telefonesByClient(idCliente));
+            request.setAttribute("telefones", ClienteDAO.telefones(cliente.getIdCliente()));
         }
         request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
     }

@@ -12,10 +12,12 @@ public abstract class Pessoa {
     private String bairro;
     private String uf;
     private String cidade;
+    private String telefone;
+    private String celular;
 
     public Pessoa(){}
 
-    public Pessoa(String nome, String cpf, String dataNascimento, String email, String cep, String logradouro, String numero, String complemento, String bairro, String uf, String cidade) {
+    public Pessoa(String nome, String cpf, String dataNascimento, String email, String cep, String logradouro, String numero, String complemento, String bairro, String uf, String cidade, String telefone, String celular) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
@@ -27,6 +29,8 @@ public abstract class Pessoa {
         this.bairro = bairro;
         this.uf = uf;
         this.cidade = cidade;
+        this.telefone = telefone;
+        this.celular = celular;
     }
 
     public String getNome() {
@@ -116,4 +120,21 @@ public abstract class Pessoa {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+    
 }

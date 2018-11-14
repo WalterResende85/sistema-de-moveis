@@ -18,12 +18,11 @@ public class Fornecedor {
     private String bairro;
     private String uf;
     private String cidade;
+    private String telefone;
+    private String celular;
     
 
-    public Fornecedor() {
-    }
-
-    public Fornecedor(Long idFornecedor, String nome, String cnpj, String email, String cep, String logradouro, String numero, String complemento, String bairro, String uf, String cidade) {
+    public Fornecedor(Long idFornecedor, String nome, String cnpj, String email, String cep, String logradouro, String numero, String complemento, String bairro, String uf, String cidade, String telefone, String celular) {
         this.idFornecedor = idFornecedor;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -35,7 +34,8 @@ public class Fornecedor {
         this.bairro = bairro;
         this.uf = uf;
         this.cidade = cidade;
-        
+        this.telefone = telefone;
+        this.celular = celular;
     }
 
     public void gravar() throws SQLException, ClassNotFoundException {
@@ -144,6 +144,22 @@ public class Fornecedor {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
     
 }

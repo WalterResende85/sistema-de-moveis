@@ -5,7 +5,7 @@ import model.Funcionario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.TelefoneFuncionario;
+
 
 public class FuncionarioDAO {
 
@@ -15,7 +15,7 @@ public class FuncionarioDAO {
         try{
             conexao = BD.getConexao();
             String sql = "insert into funcionario (nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade," +
-                    " cargo, salario, comissao, senha, idFuncionario)" + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    " cargo, salario, comissao, senha, telefone, celular, idFuncionario)" + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
 
             comando.setString(1,funcionario.getNome());
@@ -33,7 +33,9 @@ public class FuncionarioDAO {
             comando.setDouble(13,funcionario.getSalario());
             comando.setString(14,funcionario.getComissao());
             comando.setString(15,funcionario.getSenha());
-            comando.setLong(16, funcionario.getIdFuncionario());
+            comando.setString(16,funcionario.getTelefone());
+            comando.setString(17,funcionario.getCelular());
+            comando.setLong(18,funcionario.getIdFuncionario());
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e){
@@ -47,7 +49,7 @@ public class FuncionarioDAO {
             conexao = BD.getConexao();
             String sql = "update funcionario SET nome = ?, cpf = ?, dataNascimento = ?, email = ?, cep = ?, logradouro = ?,"+
                     " numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?, cargo = ?, salario = ?, comissao = ?,"+
-                    " senha = ? where idFuncionario = ?";
+                    " senha = ?, telefone = ?, celular = ? where idFuncionario = ?";
             comando = conexao.prepareStatement(sql);
             comando.setString(1,funcionario.getNome());
             comando.setString(2,funcionario.getCpf());
@@ -64,7 +66,9 @@ public class FuncionarioDAO {
             comando.setDouble(13,funcionario.getSalario());
             comando.setString(14,funcionario.getComissao());
             comando.setString(15,funcionario.getSenha());
-            comando.setLong(16,funcionario.getIdFuncionario());
+             comando.setString(16,funcionario.getTelefone());
+            comando.setString(17,funcionario.getCelular());
+            comando.setLong(18,funcionario.getIdFuncionario());
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e){
@@ -115,6 +119,8 @@ public class FuncionarioDAO {
                     rs.getDouble("salario"),
                     rs.getString("comissao"),
                     rs.getString("senha"),
+                    rs.getString("telefone"),
+                    rs.getString("celular"),
                     rs.getLong("idFuncionario"));
         }catch(SQLException e){
             e.printStackTrace();
@@ -151,6 +157,8 @@ public class FuncionarioDAO {
                         rs.getDouble("salario"),
                         rs.getString("comissao"),
                         rs.getString("senha"),
+                        rs.getString("telefone"),
+                        rs.getString("celular"),
                         rs.getLong("idFuncionario"));
                 funcionarios.add(funcionario);
             }
@@ -162,26 +170,5 @@ public class FuncionarioDAO {
         return funcionarios;
     }
     
-    public static List<TelefoneFuncionario> telefones(Long id) throws ClassNotFoundException {
-        Connection conexao = null;
-        Statement comando = null;
-        List<TelefoneFuncionario> telefones = new ArrayList<TelefoneFuncionario>();
-        try {
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            String sql = "SELECT * FROM TelefoneFuncionario where cliente = "+id;
-            ResultSet rs = comando.executeQuery(sql);
-            while (rs.next()) {
-                TelefoneFuncionario c = new TelefoneFuncionario(
-                        rs.getLong("idTelefone"),
-                        rs.getString("telefone"), null);
-                telefones.add(c);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            BD.fecharConexao(conexao, comando);
-        }
-        return telefones;
-    }
+    
 }

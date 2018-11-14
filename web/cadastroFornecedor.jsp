@@ -37,6 +37,7 @@
                             <td><label for="email">e-mail</label></td>
                             <td colspan="3"><input type="text" name="email" id="email" placeholder="e-mail" value="${fornecedor.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
+                        <tr><td><label for="celular">Celular</label></td><td><input type="text" name="celular" id="celular" placeholder="celular" value="${fornecedor.celular}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td><td><label for="telefone">Telefone</label></td><td><input type="text" name="telefone" id="telefone" placeholder="telefone" value="${fornecedor.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                         <tr>
                             <td><label for="cep">CEP</label>
                             </td><td colspan="1"><input type="text" name="cep" id="cep" placeholder="cep" value="${fornecedor.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>

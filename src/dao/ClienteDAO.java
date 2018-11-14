@@ -5,7 +5,6 @@ import model.Cliente;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.TelefoneCliente;
 
 public class ClienteDAO {
 
@@ -16,7 +15,7 @@ public class ClienteDAO {
         try {
             conexao = BD.getConexao();
             String sql = "insert into cliente (nome ,cpf,dataNascimento,email,cep,logradouro,numero,complemento,"
-                    + "bairro,uf,cidade,idCliente) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "bairro,uf,cidade,telefone, celular, idCliente) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, cliente.getNome());
             comando.setString(2, cliente.getCpf());
@@ -29,7 +28,10 @@ public class ClienteDAO {
             comando.setString(9, cliente.getBairro());
             comando.setString(10, cliente.getUf());
             comando.setString(11, cliente.getCidade());
-            comando.setLong(12, cliente.getIdCliente());
+            comando.setString(12, cliente.getTelefone());
+            comando.setString(13, cliente.getCelular());
+            comando.setLong(14, cliente.getIdCliente());
+            
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e) {
@@ -44,7 +46,7 @@ public class ClienteDAO {
         try {
             conexao = BD.getConexao();
             String sql = ("UPDATE Cliente SET nome = ?, cpf=?, dataNascimento=?,email=?, cep=?, logradouro=?,"
-                    + " numero=?, bairro=?, uf=?, cidade = ? WHERE idCliente = ?");
+                    + " numero=?, complemento = ?, bairro=?, uf=?, cidade = ?, telefone = ?, celular = ? WHERE idCliente = ?");
             comando = conexao.prepareStatement(sql);
 
             comando.setString(1, cliente.getNome());
@@ -54,10 +56,13 @@ public class ClienteDAO {
             comando.setString(5, cliente.getCep());
             comando.setString(6, cliente.getLogradouro());
             comando.setString(7, cliente.getNumero());
-            comando.setString(8, cliente.getBairro());
-            comando.setString(9, cliente.getUf());
-            comando.setString(10, cliente.getCidade());
-            comando.setLong(11, cliente.getIdCliente());
+            comando.setString(8, cliente.getComplemento());
+            comando.setString(9, cliente.getBairro());
+            comando.setString(10, cliente.getUf());
+            comando.setString(11, cliente.getCidade());
+            comando.setString(12, cliente.getTelefone());
+            comando.setString(13, cliente.getCelular());
+            comando.setLong(14, cliente.getIdCliente());
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e) {
@@ -122,29 +127,6 @@ public class ClienteDAO {
         return clientes;
     }
 
-    public static List<TelefoneCliente> telefones(Long id) throws ClassNotFoundException {
-        Connection conexao = null;
-        Statement comando = null;
-        List<TelefoneCliente> telefones = new ArrayList<TelefoneCliente>();
-        try {
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            String sql = "SELECT * FROM telefoneCliente where cliente = "+id;
-            ResultSet rs = comando.executeQuery(sql);
-            while (rs.next()) {
-                TelefoneCliente c = new TelefoneCliente(
-                        rs.getLong("idTelefone"),
-                        rs.getString("telefone"), null);
-                telefones.add(c);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            BD.fecharConexao(conexao, comando);
-        }
-        return telefones;
-    }
-
     private static Cliente createUser(ResultSet rs) throws SQLException {
         return new Cliente(
                 rs.getLong("idCliente"),
@@ -158,7 +140,9 @@ public class ClienteDAO {
                 rs.getString("complemento"),
                 rs.getString("bairro"),
                 rs.getString("uf"),
-                rs.getString("cidade"));    //A ordem daqui tem que ser igual ao do construtor (antes o id tava em primeiro mas na classe é o ultimo)
+                rs.getString("cidade"),
+                rs.getString("telefone"),
+                rs.getString("celular"));    //A ordem daqui tem que ser igual ao do construtor (antes o id tava em primeiro mas na classe é o ultimo)
     }
 
 }

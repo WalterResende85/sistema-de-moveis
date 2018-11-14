@@ -40,7 +40,7 @@ public class ManterClienteController extends HttpServlet {
         if (!operacao.equals("Incluir")) {
             Cliente cliente = Cliente.obterCliente(Long.parseLong(request.getParameter("idCliente")));
             request.setAttribute("cliente", cliente);
-            request.setAttribute("telefones", ClienteDAO.telefones(cliente.getIdCliente()));
+           
         }
         request.getRequestDispatcher("cadastroCliente.jsp").forward(request, response);
     }
@@ -58,9 +58,11 @@ public class ManterClienteController extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String uf = request.getParameter("uf");
         String cidade = request.getParameter("cidade");
+        String telefone = request.getParameter("telefone");
+        String celular = request.getParameter("celular");
         Long idCliente = Long.parseLong(request.getParameter("idCliente"));
         try{
-            Cliente cliente = new Cliente(idCliente, nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
+            Cliente cliente = new Cliente(idCliente, nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade, telefone, celular);
             if(operacao.equals("Incluir")){
                 cliente.gravar();
             }else if(operacao.equals("Editar")){

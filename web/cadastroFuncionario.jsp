@@ -67,6 +67,7 @@
                                 <input type="text" name="email" id="email" placeholder="e-mail" value="${funcionario.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             </td>
                         </tr>
+                        <tr><td><label for="celular">Celular</label></td><td><input type="text" name="celular" id="celular" placeholder="celular" value="${funcionario.celular}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td><td><label for="telefone">Telefone</label></td><td><input type="text" name="telefone" id="telefone" placeholder="telefone" value="${funcionario.telefone}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                         <tr>
                             <td>
                                 <label for="cep">CEP</label>

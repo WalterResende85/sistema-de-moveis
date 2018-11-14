@@ -5,7 +5,7 @@ import model.Fornecedor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import model.TelefoneFornecedor;
+
 
 public class FornecedorDAO {
 
@@ -15,8 +15,8 @@ public class FornecedorDAO {
         try {
             conexao = BD.getConexao();
             String sql = "insert into fornecedor (nome, cnpj, email,"
-                    + "cep, logradouro, numero, complemento, bairro,  uf, cidade, idfornecedor)"
-                    + "values(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "cep, logradouro, numero, complemento, bairro,  uf, cidade, telefone, celular, idfornecedor)"
+                    + "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setString(1, fornecedor.getNome());
             comando.setString(2, fornecedor.getCnpj());
@@ -28,8 +28,9 @@ public class FornecedorDAO {
             comando.setString(8, fornecedor.getBairro());
             comando.setString(9, fornecedor.getUf());
             comando.setString(10, fornecedor.getCidade());
-           
-            comando.setLong(11, fornecedor.getIdFornecedor());
+            comando.setString(11, fornecedor.getTelefone());
+            comando.setString(12, fornecedor.getCelular());
+            comando.setLong(13, fornecedor.getIdFornecedor());
             comando.execute();
             BD.fecharConexao(conexao, comando);
 
@@ -43,9 +44,9 @@ public class FornecedorDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "UPDATE Fornecedor SET nome = ?, cnpj = ?,"
-                    + "email = ?, CEP = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?"
-                    + "WHERE idFornecedor = ? ";
+            String sql = ("UPDATE Fornecedor SET nome = ?, cnpj = ?,"
+                    + "email = ?, CEP = ?, logradouro = ?, numero = ?, complemento = ?, bairro = ?, uf = ?, cidade = ?, telefone = ?, celular = ?"
+                    + "WHERE idFornecedor = ?");
 
             comando = conexao.prepareStatement(sql);
 
@@ -59,8 +60,9 @@ public class FornecedorDAO {
             comando.setString(8, fornecedor.getBairro());
             comando.setString(9, fornecedor.getUf());
             comando.setString(10, fornecedor.getCidade());
-            
-            comando.setLong(11, fornecedor.getIdFornecedor());
+             comando.setString(11, fornecedor.getTelefone());
+            comando.setString(12, fornecedor.getCelular());
+            comando.setLong(13, fornecedor.getIdFornecedor());
             comando.execute();
             BD.fecharConexao(conexao, comando);
 
@@ -138,29 +140,10 @@ public class FornecedorDAO {
                 rs.getString("complemento"),
                 rs.getString("bairro"),
                 rs.getString("uf"),
-                rs.getString("cidade"));
+                rs.getString("cidade"),
+                rs.getString("telefone"),
+                rs.getString("celular"));
     }
     
-    public static List<TelefoneFornecedor> telefones(Long id) throws ClassNotFoundException {
-        Connection conexao = null;
-        Statement comando = null;
-        List<TelefoneFornecedor> telefones = new ArrayList<TelefoneFornecedor>();
-        try {
-            conexao = BD.getConexao();
-            comando = conexao.createStatement();
-            String sql = "SELECT * FROM TelefoneFornecedor where cliente = "+id;
-            ResultSet rs = comando.executeQuery(sql);
-            while (rs.next()) {
-                TelefoneFornecedor c = new TelefoneFornecedor(
-                        rs.getLong("idTelefone"),
-                        rs.getString("telefone"), null);
-                telefones.add(c);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            BD.fecharConexao(conexao, comando);
-        }
-        return telefones;
-    }
+    
 }

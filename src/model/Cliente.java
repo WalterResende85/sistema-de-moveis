@@ -16,20 +16,12 @@ public class Cliente extends Pessoa {
 
 
     public Cliente(Long id,String nome, String cpf, String dataNascimento, String email, String cep, String logradouro,
-                   String numero, String complemento, String bairro, String uf, String cidade) {
-        super(nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
+                   String numero, String complemento, String bairro, String uf, String cidade, String telefone, String celular) {
+        super(nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade, telefone, celular);
         this.setIdCliente(id);
     }
 
-    public Cliente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /*
-    public Cliente(String nome, String cpf, String dataNascimento, String email, String cep, String logradouro, String numero, String complemento, String bairro, String uf, String cidade, Long idCliente) {
-        super(nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
-    }
-    */
+   
     public  void  gravar() throws SQLException, ClassNotFoundException{
         ClienteDAO.gravar(this);
     }

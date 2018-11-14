@@ -40,7 +40,7 @@ public class ManterFuncionarioController extends HttpServlet {
         if (!operacao.equals("Incluir")) {
             Funcionario funcionario = Funcionario.obterFuncionario(Long.parseLong(request.getParameter("idFuncionario")));
             request.setAttribute("funcionario", funcionario);
-            request.setAttribute("telefones", FuncionarioDAO.telefones(funcionario.getIdFuncionario()));
+           
           
         }
         request.getRequestDispatcher("cadastroFuncionario.jsp").forward(request, response);
@@ -62,9 +62,11 @@ public class ManterFuncionarioController extends HttpServlet {
         double salario = Double.parseDouble(request.getParameter("salario").trim()); //quando tenta persistir no banco da erro nesta linha double provavel incompatibilidade
         String comissao = request.getParameter("comissao"); //quando tenta persistir no banco da erro nesta linha double provavel incompatibilidade
         String senha = request.getParameter("senha");
+        String telefone = request.getParameter("telefone");
+        String celular = request.getParameter("celular");
         Long idFuncionario = Long.parseLong(request.getParameter("idFuncionario"));
         try{
-            Funcionario funcionario = new Funcionario(nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade, cargo, salario, comissao, senha, idFuncionario);
+            Funcionario funcionario = new Funcionario(nome, cpf, dataNascimento, email, cep, logradouro, numero, complemento, bairro, uf, cidade, cargo, salario, comissao, senha, telefone, celular, idFuncionario);
             if(operacao.equals("Incluir")){
                 funcionario.gravar();
             }else if(operacao.equals("Editar")){

@@ -52,7 +52,7 @@ public class ManterFornecedorController extends HttpServlet {
                 Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
                 Fornecedor fornecedor = Fornecedor.obterFornecedor(idFornecedor);
                 request.setAttribute("fornecedor", fornecedor);
-                request.setAttribute("telefones", FornecedorDAO.telefones(fornecedor.getIdFornecedor()));
+                
             }
             RequestDispatcher view = request.getRequestDispatcher("cadastroFornecedor.jsp");
             view.forward(request, response);
@@ -78,10 +78,12 @@ public class ManterFornecedorController extends HttpServlet {
         String bairro = request.getParameter("bairro");
         String uf = request.getParameter("uf");
         String cidade = request.getParameter("cidade");
+        String telefone = request.getParameter("telefone");
+        String celular = request.getParameter("celular");
                // faltando colocar o campo Tipo de material fornecido, não sei como faz pra implementar isso no banco
         Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
         try{
-            Fornecedor fornecedor = new Fornecedor(idFornecedor, nome, cnpj, email, cep, logradouro, numero, complemento, bairro, uf, cidade);
+            Fornecedor fornecedor = new Fornecedor(idFornecedor, nome, cnpj, email, cep, logradouro, numero, complemento, bairro, uf, cidade, telefone, celular);
             if(operacao.equals("Incluir")){
                 fornecedor.gravar();
             }else if(operacao.equals("Editar")){

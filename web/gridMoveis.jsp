@@ -3,46 +3,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Grid Móveis</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styletelas.css" />
-    <script src="main.js"></script>
-</head>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Grid Móveis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+        <script src="main.js"></script>
+    </head>
 
-<body>
-    <div class="cadastroCentralizado">
+    <body>
+        <div>
 
-        <table class="tablegrid">
-            <tr>
-                <th colspan="4">Grid Moveis</th>
-            </tr>
-            <tr>
-                <td>Cod</td>
-                <td>nome</td>
-                <td colspan="2">Ações</td>
-            </tr>
-            <c:forEach items="${moveis}" var="movel">
+            <table class="table table-striped table-bordered table-condensed table-hover">
                 <tr>
-                    <td>
-                        <c:out value="${movel.idMovel}" />
-                    </td>
-                    <td>
-                        <c:out value="${movel.nome}" />
-                    </td>
-                    <td><a href="ManterMoveisController?acao=prepararOperacao&operacao=Editar&idMovel=<c:out value="${movel.idMovel}" />">Editar</a></td>
-                    <td><a href="ManterMoveisController?acao=prepararOperacao&operacao=Excluir&idMovel=<c:out value="${movel.idMovel}" />">Excluir</a></td>
+                    <th colspan="4">Grid Moveis</th>
                 </tr>
-            </c:forEach>
-        </table>
-        <a href="index.jsp"><button type="button">Voltar</button></a>
-            <a href="ManterMoveisController?acao=prepararOperacao&operacao=Incluir">
-                <button type="button">Incluir</button>
-            </a>
-    </div>
-</body>
+                <tr>
+                    <th>Cod</th>
+                    <th>nome</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+                <c:forEach items="${moveis}" var="movel">
+                    <tr>
+                        <td>
+                            <c:out value="${movel.idMovel}" />
+                        </td>
+                        <td>
+                            <c:out value="${movel.nome}" />
+                        </td>
+                        <td><a class="btn btn-primary" href="ManterMoveisController?acao=prepararOperacao&operacao=Editar&idMovel=<c:out value="${movel.idMovel}" />">Editar</a></td>
+                        <td><a class="btn btn-primary" href="ManterMoveisController?acao=prepararOperacao&operacao=Excluir&idMovel=<c:out value="${movel.idMovel}" />">Excluir</a></td>
+                    </tr>
+                </c:forEach>
+                <td><a class="btn btn-danger" href="index.jsp">Voltar</a></td>
+                <td colspan="3"><a class="btn btn-primary" href="ManterMoveisController?acao=prepararOperacao&operacao=Incluir">Incluir</a></td>
+            </table>
+
+        </div>
+    </body>
 
 </html>

@@ -74,3 +74,9 @@ body{
 .loginbox a:hover{
     color:#ffc107;
 }
+.table table-striped table-bordered table-condensed table-hover{
+    position: relative;
+    overflow: auto;
+    height: 440px;
+    background-color: white;
+}

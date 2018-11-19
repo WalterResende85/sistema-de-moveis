@@ -5,27 +5,29 @@
 <html>
 
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Grid Ferramenta</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="styletelas.css" />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+
         <script src="main.js"></script>
 
 
     </head>
 
     <body>
-        <div class="cadastroCentralizado">
+        <div>
 
-            <table class="tablegrid">
+            <table class="table table-striped table-bordered table-condensed table-hover">
                 <tr>
                     <th colspan="4">Grid Ferramenta</th>
                 </tr>
                 <tr>
-                    <td>Cod</td>
-                    <td>nome</td>
-                    <td colspan="2">Ações</td>
+                    <th>Cod</th>
+                    <th>nome</th>
+                    <th colspan="2">Ações</th>
                 </tr>
                 <c:forEach items="${ferramentas}" var="ferramenta">
                     <tr>
@@ -35,17 +37,23 @@
                         <td>
                             <c:out value="${ferramenta.nome}" />
                         </td>
-                        <td><a href="ManterFerramentaController?acao=prepararOperacao&operacao=Editar&idFerramenta=<c:out value="${ferramenta.idFerramenta}" />">Editar</a></td>
-                        <td><a href="ManterFerramentaController?acao=prepararOperacao&operacao=Excluir&idFerramenta=<c:out value="${ferramenta.idFerramenta}" />">Excluir</a></td>
+                        <td><a class="btn btn-primary" href="ManterFerramentaController?acao=prepararOperacao&operacao=Editar&idFerramenta=<c:out value="${ferramenta.idFerramenta}" />">Editar</a></td>
+                        <td><a class="btn btn-primary" href="ManterFerramentaController?acao=prepararOperacao&operacao=Excluir&idFerramenta=<c:out value="${ferramenta.idFerramenta}" />">Excluir</a></td>
                     </tr>
                 </c:forEach>
-            </table>
-            <a href="index.jsp"><button type="button">Voltar</button></a>
-            <a href="ManterFerramentaController?acao=prepararOperacao&operacao=Incluir">
-                <button type="button">Incluir</button>
-            </a>
-        </div>
 
+                <td><a class="btn btn-danger" href="index.jsp">Voltar</a></td>
+                <td><a class="btn btn-primary" href="ManterFerramentaController?acao=prepararOperacao&operacao=Incluir">Incluir</a></td>
+            </table>
+
+
+
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     </body>
 
 </html>

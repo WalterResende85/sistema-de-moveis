@@ -1,53 +1,99 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Sistema Interno</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="styletelas.css" />
-        <script src="main.js"></script>
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <title>Sistema Interno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+    
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <style>
+        a {
+            float: right;
+        }
+    </style>
+</head>
 
-    <body>
-        <div>
-            <form action="">
-                <table class="tableform">
-                    <tr>
-                        <th>Menu</th>
-                    </tr>
-                    <tr>
-                        <td><a href="PesquisaMovelController"><input type="button" value="Moveis" style="background: green"></a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="PesquisaFerramentaController"><input type="button" value="Ferramentas" style="background: green"></a><br></td>
-                    </tr>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Sistema Interno</a>
+    </nav>
+    <br>
 
-                    <tr>
-                        <td><a href="PesquisaFuncionarioController"><input type="button" value="Funcionario" style="background: green"></a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="PesquisaFornecedorController"><input type="button" value="Fornecedor" style="background: yellowgreen"></a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="PesquisaClienteController"><input type="button" value="Cliente" style="background: green"></a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="PesquisaPedidoController"><input type="button" value="Pedido" style="background: yellowgreen"></a><br></td>
-                    </tr>
-                    <tr>
-                        <td><a href="PesquisaMaterialController"><input type="button" value="Material" style="background: green"></a><br></td>
-                    </tr>
+    <div class="container">
 
-                </table>
-            </form>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Móveis</h4>
+                        <a href="PesquisaMovelController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Ferramentas</h4>
+                        <a href="PesquisaFerramentaController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Funcionario</h4>
+                        <a href="PesquisaFuncionarioController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Fornecedor</h4>
+                        <a href="PesquisaFornecedorController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Cliente</h4>
+                        <a href="PesquisaClienteController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Pedido</h4>
+                        <a href="PesquisaPedidoController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h4 class="card-title">Material</h4>
+                        <a href="PesquisaMaterialController" class="btn btn-primary">Manter</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <table>
-            <tr><td style="background: green" class="orientacao">______</td><td>Pronto</td></tr>
-            <tr><td style="background: yellowgreen" class="orientacao">______</td><td>Faltando inclusao de algum campo</td></tr>
-            <tr><td style="background: orangered" class="orientacao">______</td><td>Muito zuado, olhar toda a sequencia de classes</td></tr>
-            <tr><td style="background: red" class="orientacao">______</td><td>Faltando alguma parte para testar</td></tr>
-        </table>
-        
-    </body>
+    </div>
+ <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+
 </html>

@@ -26,7 +26,7 @@
                         <label for="idFerramenta">ID Ferramenta</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" name="idFerramenta" id="idFerramenta" placeholder="ID Ferramenta" value="${ferramenta.idFerramenta}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input class="form-control" type="number" required min="1" name="idFerramenta" id="idFerramenta" placeholder="ID Ferramenta" value="${ferramenta.idFerramenta}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 
@@ -35,7 +35,7 @@
                         <label for="nome">Nome</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" name="nome" id="nome" placeholder="nome" value="${ferramenta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required min="2" name="nome" id="nome" placeholder="nome" value="${ferramenta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>

@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <th>Cod</th>
-                    <th>nome</th>
+                    <th>Valor Total</th>
                     <th colspan="2">Ações</th>
                 </tr>
                 <c:forEach items="${pedidos}" var="pedido">

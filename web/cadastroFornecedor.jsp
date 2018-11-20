@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         <meta charset="UTF-8">
@@ -100,7 +100,7 @@
                             <td colspan="3"><input class="form-control" type="text" name="complemento" id="complemento" placeholder="complemento" value="${fornecedor.complemento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>
                      
-                    <tr><td>Produtos fornecido</td><td></td></tr>
+                   
                     <tr><td><a href="PesquisaFornecedorController"><input class="btn btn-danger" type="button" value="voltar"></a></td><td colspan="3" class="tdsalvar" ><input class="btn btn-success" type="submit" name="confirmar" value="Confirmar"></td></tr>
                 </table>
 

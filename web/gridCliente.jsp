@@ -1,4 +1,4 @@
-<%@page contentType = "text/html" pageEncoding="utf-8"%>
+
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
                 <tr>
                     <th>Cod</th>
                     <th>nome</th>
-                    <th colspan="2">AÃ§Ãµes</th>
+                    <th colspan="2">Ações</th>
                 </tr>
                 <c:forEach items="${clientes}" var="cliente">
                     <tr>

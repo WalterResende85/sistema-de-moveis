@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="utf-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Grid MÃ³veis</title>
+        <title>Grid Móveis</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
@@ -24,7 +24,7 @@
                 <tr>
                     <th>Cod</th>
                     <th>nome</th>
-                    <th colspan="2">AÃ§Ãµes</th>
+                    <th colspan="2">Ações</th>
                 </tr>
                 <c:forEach items="${moveis}" var="movel">
                     <tr>

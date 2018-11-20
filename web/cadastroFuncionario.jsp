@@ -20,7 +20,7 @@
                     <tr><td class="form-control" colspan="4" style="text-align: center">${operacao} Funcionario</td></tr>
                     <tr>
                         <td><label for="idFuncionario">idFuncionario</label></td>
-                        <td colspan="3"><input class="form-control" type="text" name="idFuncionario" id="idFuncionario" placeholder="idFuncionario" value="${funcionario.idFuncionario}"  <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        <td colspan="3"><input class="form-control" type="number" required min="1" name="idFuncionario" id="idFuncionario" placeholder="idFuncionario" value="${funcionario.idFuncionario}"  <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
                         <tr>
 
@@ -31,7 +31,7 @@
                                 <label for="nome">Nome</label>
                             </td>
                             <td colspan="3">
-                                <input class="form-control" type="text" name="nome" id="nome" placeholder="nome" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <input class="form-control" type="text" required maxlength="45" minlength="3" name="nome" id="nome" placeholder="nome" value="${funcionario.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                             </td>
                         </tr>
                         <tr>

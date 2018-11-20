@@ -35,7 +35,7 @@
                         <label for="nome">Nome</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" required min="2" name="nome" id="nome" placeholder="nome" value="${ferramenta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required maxlength="45" minlength="3" name="nome" id="nome" placeholder="nome" value="${ferramenta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                         <label for="tipo">Tipo</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" name="tipo" id="tipo" placeholder="tipo" value="${ferramenta.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required maxlength="45" minlength="1" name="tipo" id="tipo" placeholder="tipo" value="${ferramenta.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
                         <label for="qtdEstoque">Quantidade</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" name="qtdEstoque" id="qtdEstoque" placeholder="quantidade" value="${ferramenta.qtdEstoque}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="numer" required min="0" name="qtdEstoque" id="qtdEstoque" placeholder="quantidade" value="${ferramenta.qtdEstoque}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +59,7 @@
                         <label for="valorUnitario">Valor Unitario</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" name="valorUnitario" id="valorUnitario" placeholder="valor Unitario" value="${ferramenta.valorUnitario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="number"  required maxlength="45" minlength="1" min="0" name="valorUnitario" id="valorUnitario" placeholder="valor Unitario" value="${ferramenta.valorUnitario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                         <label for="unidade">Unidade</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" name="unidade" id="unidade" placeholder="unidade" value="${ferramenta.unidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required maxlength="45" minlength="1" name="unidade" id="unidade" placeholder="unidade" value="${ferramenta.unidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -86,6 +86,7 @@
 
     </div>
                      <!-- Optional JavaScript -->
+                    
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

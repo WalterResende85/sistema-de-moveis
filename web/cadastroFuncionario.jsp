@@ -14,7 +14,7 @@
 
     <body>
 
-        <div class="cadastroCentralizado">
+        <div class="container">
             <form action="ManterFuncionarioController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table class="tableform">
                     <tr><td class="form-control" colspan="4" style="text-align: center">${operacao} Funcionario</td></tr>

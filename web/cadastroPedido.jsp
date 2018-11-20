@@ -16,7 +16,7 @@
 
     <body>
 
-        <div>
+        <div class="container">
             <form action="ManterPedidoController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table>
                     <tr><td colspan="4" style="text-align: center">${operacao} Pedido</td></tr>

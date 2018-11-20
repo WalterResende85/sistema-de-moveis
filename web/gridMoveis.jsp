@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <div>
+        <div class="container">
 
             <table class="table table-striped table-bordered table-condensed table-hover">
                 <tr>

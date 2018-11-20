@@ -14,7 +14,7 @@
 
     <body>
 
-        <div class="cadastroFuncionario">
+        <div class="container">
             <form action="ManterFornecedorController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table class="tableform">
                     <tr><td colspan="4" style="text-align: center">${operacao} Fornecedor</td></tr>

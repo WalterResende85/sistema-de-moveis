@@ -16,7 +16,7 @@
 
 <body>
 
-    <div class="cadastroCentralizado">
+    <div class="container">
         <form action="ManterMaterialController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
             <table class="tableform">
                  <tr><td colspan="4" style="text-align: center">${operacao} Material</td></tr>

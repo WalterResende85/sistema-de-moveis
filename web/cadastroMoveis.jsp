@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
         <title>Cadastro de móveis</title>
     </head>
 
@@ -21,18 +21,34 @@
                     <tr><td colspan="4" style="text-align: center">${operacao} Movel</td></tr>
                     <tr>
                         <td><label for="idMovel">idMovel</label></td>
-                        <td colspan="3"><input class="form-control" type="text" name="idMovel" id="idMovel" value="${movel.idMovel}"
-                                               <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
-                    </tr>
-                        <tr><td><label for="nome">Nome</label></td><td colspan="3"><input class="form-control" type="text" name="nome" id="nome" placeholder="nome" value="${movel.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="preco">Preco</label></td><td colspan="3"><input class="form-control" type="text" name="preco" id="preco" placeholder="preco" value="${movel.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="tipo">tipo</label></td><td colspan="3"><input class="form-control" type="text" name="tipo" id="tipo" placeholder="tipo" value="${movel.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="material">material</label></td><td colspan="3"><input class="form-control" type="text" name="material" id="material" placeholder="material" value="${movel.material}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="altura">altura</label></td><td colspan="3"><input class="form-control" type="text" name="altura" id="altura" placeholder="altura" value="${movel.altura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="largura">largura</label></td><td colspan="3"><input class="form-control" type="text" name="largura" id="largura" placeholder="largura" value="${movel.largura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="comprimento">comprimento</label></td><td colspan="3"><input class="form-control" type="text" name="comprimento" id="comprimento" placeholder="comprimento" value="${movel.comprimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="acabamento">acabamento</label></td><td colspan="3"><input class="form-control" type="text" name="acabamento" id="acabamento" placeholder="acabamento" value="${movel.acabamento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>           
-                    <tr><td><label for="peso">peso</label></td><td colspan="3"><input class="form-control" type="text" name="peso" id="peso" placeholder="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                        <td colspan="3"><input class="form-control" type="number" required min="1" name="idMovel" id="idMovel" value="${movel.idMovel}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr><td><label for="nome">Nome</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="3" name="nome" id="nome" placeholder="nome" value="${movel.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="preco">Preco</label></td><td colspan="3"><input class="form-control" type="number" required min="0" name="preco" id="preco" placeholder="preco" value="${movel.preco}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="tipo">tipo</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="2" name="tipo" id="tipo" placeholder="tipo" value="${movel.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="material">material</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="2" name="material" id="material" placeholder="material" value="${movel.material}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="altura">altura</label></td><td colspan="3"><input class="form-control" type="number" min="0.0001" name="altura" id="altura" placeholder="altura" value="${movel.altura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="largura">largura</label></td><td colspan="3"><input class="form-control" type="number" min="0.0001" name="largura" id="largura" placeholder="largura" value="${movel.largura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="comprimento">comprimento</label></td><td colspan="3"><input class="form-control" type="number" min="0.0001" name="comprimento" id="comprimento" placeholder="comprimento" value="${movel.comprimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
+                        <tr>
+                            <td><label for="acabamento">acabamento</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="2" name="acabamento" id="acabamento" placeholder="acabamento" value="${movel.acabamento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>           
+                        <tr>
+                            <td><label for="peso">peso</label></td><td colspan="3"><input class="form-control" type="number" min="0.001" name="peso" id="peso" placeholder="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                        </tr>
 
 
                         <tr>
@@ -58,10 +74,10 @@
                 </table>
             </form>
         </div>
-                                 <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     </body>
 </html>

@@ -22,21 +22,21 @@
                     <tr><td colspan="4" style="text-align: center">${operacao} Pedido</td></tr>
                     <tr>
                         <td><label for="idPedido">idPedido</label></td>
-                        <td colspan="3"><input class="form-control" type="text" name="idPedido" id="idPedido" placeholder="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        <td colspan="3"><input class="form-control" type="number" required min="1" name="idPedido" id="idPedido" placeholder="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
                         <tr>
                             <td><label for="valorTotal">Valor Total</label></td>
-                            <td colspan="3"><input class="form-control" type="text" name="valorTotal" id="valorTotal" placeholder="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            <td colspan="3"><input class="form-control" type="number" required min="0" name="valorTotal" id="valorTotal" placeholder="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
 
                         <tr>
 
                             <td><label for="idCliente">Cliente</label></td>
                             <td> 
-                                <select class="form-control" name="idCliente" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option value="0" <c:if test="${pedido.cliente.idCliente == null}"> selected</c:if>> </option>  
+                                <select class="form-control" required name="idCliente" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <option required value="0" <c:if test="${pedido.cliente.idCliente == null}"> selected</c:if>> </option>  
                                 <c:forEach items="${clientes}" var="cliente">
-                                    <option value="${cliente.idCliente}" <c:if test="${pedido.cliente.idCliente == cliente.idCliente}"> selected</c:if>>${cliente.idCliente}</option>  
+                                    <option required value="${cliente.idCliente}" <c:if test="${pedido.cliente.idCliente == cliente.idCliente}"> selected</c:if>>${cliente.idCliente}</option>  
                                 </c:forEach>
                             </select>
 

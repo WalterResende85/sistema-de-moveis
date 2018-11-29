@@ -11,15 +11,19 @@ import java.util.logging.Logger;
 
 public class Pedido {
     private Long idPedido;
-    private Long idCliente;
     private Double valorTotal;
     private Cliente cliente;
+    private Long idCliente;
+    private Movel movel;
+    private Long idMovel;
 
-    public Pedido(Long idPedido, Double valorTotal, Cliente cliente) {
+    public Pedido(Long idPedido, Double valorTotal, Movel movel, Cliente cliente) {
         this.idPedido = idPedido;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
         this.idCliente = 0l;
+        this.movel = movel;
+        this.idMovel = 0l;
     }
     
  
@@ -88,4 +92,21 @@ public class Pedido {
     public void setIdCliente(Long id) {
         this.idCliente = id;
     }
+
+    public Movel getMovel() {
+        return movel;
+    }
+
+    public void setMovel(Movel movel) {
+        this.movel = movel;
+    }
+
+    public Long getIdMovel() {
+        return idMovel;
+    }
+
+    public void setIdMovel(Long idMovel) {
+        this.idMovel = idMovel;
+    }
+    
 }

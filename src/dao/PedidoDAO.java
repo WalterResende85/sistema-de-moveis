@@ -19,11 +19,12 @@ public class PedidoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into pedido(idPedido,valorTotal, idCliente)" +
-                    "VALUES (?,?,?)";
+            String sql = "insert into pedido(idPedido,valorTotal, idMovel, idCliente)" +
+                    "VALUES (?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setLong(1, pedido.getIdPedido());
             comando.setDouble(2, pedido.getValorTotal());
+            comando.setLong(3, pedido.getMovel().getIdMovel());
             if ( pedido.getCliente() == null){
                 comando.setNull(3, Types.NULL);
             }else{
@@ -43,16 +44,17 @@ public class PedidoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = ("UPDATE pedido SET  valorTotal=?, idCliente=? WHERE idPedido = ?");
+            String sql = ("UPDATE pedido SET  valorTotal=?, idMovel=?, idCliente=? WHERE idPedido = ?");
             comando = conexao.prepareStatement(sql);
 
             comando.setDouble(1, pedido.getValorTotal());
+            comando.setDouble(2, pedido.getMovel().getIdMovel());
             if ( pedido.getCliente() == null){
-                comando.setNull(2, Types.NULL);
+                comando.setNull(3, Types.NULL);
             }else{
-                comando.setLong(2, pedido.getCliente().getIdCliente());
+                comando.setLong(3, pedido.getCliente().getIdCliente());
             }
-            comando.setLong(3,pedido.getIdPedido());
+            comando.setLong(4,pedido.getIdPedido());
             comando.execute();
         } catch (SQLException e) {
             throw e;
@@ -88,10 +90,14 @@ public class PedidoDAO {
             comando.setLong(1,Math.toIntExact(idPedido));
             ResultSet rs = comando.executeQuery();
             rs.first();
-            pedido = new Pedido(rs.getLong("idPedido"),
+            pedido = new Pedido(
+                    rs.getLong("idPedido"),
                     rs.getDouble("valorTotal"),
+                    null,
                     null);
+            pedido.setIdMovel(rs.getLong("idMovel"));
             pedido.setIdCliente(rs.getLong("idCliente"));
+            
         }catch(SQLException e){
             e.printStackTrace();
         } finally {
@@ -114,7 +120,9 @@ public class PedidoDAO {
                 Pedido pedido = new Pedido(
                         rs.getLong("idPedido"),
                         rs.getDouble("valorTotal"),
+                        null,
                         null);
+                pedido.setIdMovel(rs.getLong("idMovel"));
                 pedido.setIdCliente(rs.getLong("idCliente"));
                 pedidos.add(pedido);
             }

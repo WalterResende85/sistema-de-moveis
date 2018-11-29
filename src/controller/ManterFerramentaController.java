@@ -73,7 +73,7 @@ public class ManterFerramentaController extends HttpServlet {
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
-            throw new ServletException(e);
+            throw new ServletException("Ja existe Ferramenta com este ID cadastrado no Banco de dados");
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
         } catch (ServletException e) {

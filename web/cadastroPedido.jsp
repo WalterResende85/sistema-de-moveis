@@ -21,12 +21,12 @@
                 <table>
                     <tr><td colspan="4" style="text-align: center">${operacao} Pedido</td></tr>
                     <tr>
-                        <td><label for="idPedido">idPedido</label></td>
-                        <td colspan="3"><input class="form-control" type="number" required min="1" name="idPedido" id="idPedido" placeholder="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
+                        <td><label for="idPedido">Código do Pedido</label></td>
+                        <td colspan="3"><input class="form-control" type="number" required min="1" name="idPedido" id="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
                         <tr>
                             <td><label for="valorTotal">Valor Total</label></td>
-                            <td colspan="3"><input class="form-control" type="number" required min="0" name="valorTotal" id="valorTotal" placeholder="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            <td colspan="3"><input class="form-control" type="number" required min="0" name="valorTotal" id="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
 
                         <tr>

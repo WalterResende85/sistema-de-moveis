@@ -79,7 +79,7 @@ public class ManterFuncionarioController extends HttpServlet {
         }catch(IOException e){
             throw new ServletException(e);
         }catch(SQLException e){
-            throw new ServletException(e);
+            throw new ServletException("Ja existe Funcionario com este ID cadastrado no Banco de dados");
         }catch(ClassNotFoundException e){
             throw new ServletException(e);
         }catch(ServletException e){

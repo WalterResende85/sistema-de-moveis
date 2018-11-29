@@ -63,7 +63,7 @@ public class ManterPedidoController extends HttpServlet {
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
-            throw new ServletException(e);
+            throw new ServletException("Favor informar o Cliente do pedido");
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
         } catch (ServletException e) {

@@ -23,10 +23,10 @@
                 <tr><td colspan="4" style="text-align: center">${operacao} Ferramenta</td></tr>
                  <tr>
                     <td>
-                        <label for="idFerramenta">ID Ferramenta</label>
+                        <label for="idFerramenta">Código da Ferramenta</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="number" required min="1" name="idFerramenta" id="idFerramenta" placeholder="ID Ferramenta" value="${ferramenta.idFerramenta}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                        <input class="form-control" type="number" required min="1" name="idFerramenta" id="idFerramenta" value="${ferramenta.idFerramenta}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 
@@ -35,7 +35,7 @@
                         <label for="nome">Nome</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" required maxlength="45" minlength="3" name="nome" id="nome" placeholder="nome" value="${ferramenta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required maxlength="45" minlength="3" name="nome" id="nome" value="${ferramenta.nome}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                         <label for="tipo">Tipo</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" required maxlength="45" minlength="1" name="tipo" id="tipo" placeholder="tipo" value="${ferramenta.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required maxlength="45" minlength="1" name="tipo" id="tipo" value="${ferramenta.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -51,15 +51,15 @@
                         <label for="qtdEstoque">Quantidade</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="numer" required min="0" name="qtdEstoque" id="qtdEstoque" placeholder="quantidade" value="${ferramenta.qtdEstoque}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="numer" required min="0" name="qtdEstoque" id="qtdEstoque" value="${ferramenta.qtdEstoque}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="valorUnitario">Valor Unitario</label>
+                        <label for="valorUnitario">Valor Unitário</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="number"  required maxlength="45" minlength="1" min="0" name="valorUnitario" id="valorUnitario" placeholder="valor Unitario" value="${ferramenta.valorUnitario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="number"  required maxlength="45" minlength="1" min="0" name="valorUnitario" id="valorUnitario" value="${ferramenta.valorUnitario}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                         <label for="unidade">Unidade</label>
                     </td>
                     <td colspan="3">
-                        <input class="form-control" type="text" required maxlength="45" minlength="1" name="unidade" id="unidade" placeholder="unidade" value="${ferramenta.unidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                        <input class="form-control" type="text" required maxlength="45" minlength="1" name="unidade" id="unidade" value="${ferramenta.unidade}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                     </td>
                 </tr>
                 <tr>

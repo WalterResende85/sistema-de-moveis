@@ -13,28 +13,28 @@ public class Movel {
     private String nome;
     private Double preco;
     private String tipo;
-    private String material;
     private Double altura;
     private Double largura;
     private Double comprimento;
     private String acabamento;
     private Double peso;
-    private Pedido pedido;
-    private Long idPedido;
+    private Material material;
+    private Long idMaterial;
+   
 
-    public Movel(Long idMovel, String nome, double preco, String tipo, String material, double altura, double largura, double comprimento, String acabamento, double peso,Pedido pedido) {
+    public Movel(Long idMovel, String nome, double preco, String tipo, double altura, double largura, double comprimento, String acabamento, double peso, Material material) {
         this.idMovel = idMovel;
         this.nome = nome;
         this.preco = preco;
         this.tipo = tipo;
-        this.material = material;
         this.altura = altura;
         this.largura = largura;
         this.comprimento = comprimento;
         this.acabamento = acabamento;
         this.peso = peso;
-        this.pedido = pedido;
-        this.idPedido = 0l;
+        this.material = material;
+        this.idMaterial = 0l;
+        
         
     }
 
@@ -43,12 +43,7 @@ public class Movel {
         this.nome = nome;
     }
 
-    public Movel(Long idMovel, String nome, Long idPedido) {
-        this.idMovel = idMovel;
-        this.nome = nome;
-        this.idPedido = pedido.getIdPedido();
-    }
-
+   
     public void gravar() throws SQLException, ClassNotFoundException {
         MovelDAO.gravar(this);
     }
@@ -67,10 +62,6 @@ public class Movel {
 
     public static List< Movel> obterTodosMovel() throws ClassNotFoundException, SQLException {
         return MovelDAO.obterTodosMoveis();
-    }
-
-    public Long getIdPedido() {
-        return this.idPedido;
     }
 
     public Long getIdMovel() {
@@ -103,14 +94,6 @@ public class Movel {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
     }
 
     public double getAltura() {
@@ -153,30 +136,24 @@ public class Movel {
         this.peso = peso;
     }
 
-    public Pedido getPedido() {
-        if (idPedido != 0 && pedido == null) {
-            try {
-                pedido = Pedido.obterPedido(idPedido);
-            } catch (SQLException ex) {
-                Logger.getLogger(Movel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Movel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           
-    }
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
-
-    public void setIdPedido(Long id) {
-        this.idPedido = id;
-    }
-
     public void setIdMovel(Long id) {       //COLOCAR EM TODOS QUE TEM CHAVE ESTRANGEIRA
         this.idMovel = id;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
+    }
+
+    public Long getIdMaterial() {
+        return idMaterial;
+    }
+
+    public void setIdMaterial(Long idMaterial) {
+        this.idMaterial = idMaterial;
     }
 
 }

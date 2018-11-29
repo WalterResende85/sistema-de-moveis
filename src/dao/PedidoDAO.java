@@ -19,16 +19,27 @@ public class PedidoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into pedido(idPedido,valorTotal, idMovel, idCliente)" +
-                    "VALUES (?,?,?,?)";
+            String sql = "insert into pedido(idPedido,valorTotal, idMovel, idFuncionario, idCliente)" +
+                    "VALUES (?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setLong(1, pedido.getIdPedido());
             comando.setDouble(2, pedido.getValorTotal());
-            comando.setLong(3, pedido.getMovel().getIdMovel());
-            if ( pedido.getCliente() == null){
+           
+            if(pedido.getMovel() == null){
                 comando.setNull(3, Types.NULL);
             }else{
-                comando.setLong(3, pedido.getCliente().getIdCliente());
+                comando.setLong(3, pedido.getMovel().getIdMovel());
+            }
+             if(pedido.getFuncionario() == null){
+                comando.setNull(4, Types.NULL);
+            }else{
+                comando.setLong(4, pedido.getFuncionario().getIdFuncionario());
+            }
+            
+            if ( pedido.getCliente() == null){
+                comando.setNull(5, Types.NULL);
+            }else{
+                comando.setLong(5, pedido.getCliente().getIdCliente());
             }
             comando.execute();
             BD.fecharConexao(conexao, comando);
@@ -44,17 +55,26 @@ public class PedidoDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = ("UPDATE pedido SET  valorTotal=?, idMovel=?, idCliente=? WHERE idPedido = ?");
+            String sql = ("UPDATE pedido SET  valorTotal=?, idMovel=?, idFuncionario=?, idCliente=? WHERE idPedido = ?");
             comando = conexao.prepareStatement(sql);
 
             comando.setDouble(1, pedido.getValorTotal());
-            comando.setDouble(2, pedido.getMovel().getIdMovel());
-            if ( pedido.getCliente() == null){
+             if(pedido.getMovel() == null){
+                comando.setNull(2, Types.NULL);
+            }else{
+                comando.setLong(2, pedido.getMovel().getIdMovel());
+            }
+            if(pedido.getFuncionario() == null){
                 comando.setNull(3, Types.NULL);
             }else{
-                comando.setLong(3, pedido.getCliente().getIdCliente());
+                comando.setLong(3, pedido.getFuncionario().getIdFuncionario());
             }
-            comando.setLong(4,pedido.getIdPedido());
+            if ( pedido.getCliente() == null){
+                comando.setNull(4, Types.NULL);
+            }else{
+                comando.setLong(4, pedido.getCliente().getIdCliente());
+            }
+            comando.setLong(5,pedido.getIdPedido());
             comando.execute();
         } catch (SQLException e) {
             throw e;
@@ -94,6 +114,7 @@ public class PedidoDAO {
                     rs.getLong("idPedido"),
                     rs.getDouble("valorTotal"),
                     null,
+                    null,
                     null);
             pedido.setIdMovel(rs.getLong("idMovel"));
             pedido.setIdCliente(rs.getLong("idCliente"));
@@ -120,6 +141,7 @@ public class PedidoDAO {
                 Pedido pedido = new Pedido(
                         rs.getLong("idPedido"),
                         rs.getDouble("valorTotal"),
+                        null,
                         null,
                         null);
                 pedido.setIdMovel(rs.getLong("idMovel"));

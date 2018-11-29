@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
+import model.Funcionario;
 import model.Movel;
 import model.Pedido;
 import utils.Strings;
@@ -31,6 +32,8 @@ public class ManterPedidoController extends HttpServlet {
         String operacao = Strings.getOperacao(request);
         request.setAttribute("operacao", operacao);
         request.setAttribute("clientes", Cliente.obterTodosClientes());
+        request.setAttribute("moveis", Movel.obterTodosMovel());
+        request.setAttribute("funcionarios", Funcionario.obterTodosFuncionarios());
         if (!operacao.equals("Incluir")) {
             Pedido pedido = Pedido.obterPedido(Long.parseLong(request.getParameter("idPedido")));
             request.setAttribute("pedido", pedido);
@@ -43,19 +46,24 @@ public class ManterPedidoController extends HttpServlet {
         Long idPedido = Long.parseLong(request.getParameter("idPedido"));
         Double valorTotal = Double.parseDouble(request.getParameter("valorTotal"));
         Long idMovel = Long.parseLong(request.getParameter("idMovel"));
+        Long idFuncionario = Long.parseLong(request.getParameter("idFuncionario"));
         Long idCliente = Long.parseLong(request.getParameter("idCliente"));
 
         try {
             Cliente cliente = null;
             Movel movel = null;
+            Funcionario funcionario = null;
             if(idMovel != 0){
                 movel = Movel.obterMovel(idMovel);
+            }
+            if(idFuncionario != 0){
+                funcionario = Funcionario.obterFuncionario(idFuncionario);
             }
             if (idCliente != 0) {
                 cliente = Cliente.obterCliente(idCliente);
             }
 
-            Pedido pedido = new Pedido(idPedido,valorTotal, movel, cliente);
+            Pedido pedido = new Pedido(idPedido,valorTotal, movel, funcionario,cliente);
             if (operacao.equals("Incluir")) {
                 pedido.gravar();
             } else if (operacao.equals("Editar")) {
@@ -69,7 +77,7 @@ public class ManterPedidoController extends HttpServlet {
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
-            throw new ServletException("Favor informar o Cliente do pedido");
+            throw new ServletException(e);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
         } catch (ServletException e) {

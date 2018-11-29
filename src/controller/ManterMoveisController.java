@@ -11,6 +11,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Funcionario;
+import model.Material;
 import model.Movel;
 import model.Pedido;
 
@@ -33,6 +35,7 @@ public class ManterMoveisController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
         request.setAttribute("pedidos", Pedido.obterTodosPedidos());
+        request.setAttribute("materiais", Material.obterTodosMateriais());
         if (!operacao.equals("Incluir")) {
             Movel movel = Movel.obterMovel(Long.parseLong(request.getParameter("idMovel")));
             request.setAttribute("movel", movel);
@@ -48,22 +51,21 @@ public class ManterMoveisController extends HttpServlet {
         String nome = request.getParameter("nome");
         double preco = Double.parseDouble(request.getParameter("preco"));
         String tipo = request.getParameter("tipo");
-        String material = request.getParameter("material");
         double altura = Double.parseDouble(request.getParameter("altura"));
         double largura = Double.parseDouble(request.getParameter("largura"));
         double comprimento = Double.parseDouble(request.getParameter("comprimento"));
         String acabamento = request.getParameter("acabamento");
         double peso = Double.parseDouble(request.getParameter("peso"));
+        Long idMaterial = Long.parseLong(request.getParameter("idMaterial"));
 
-        Long idPedido = Long.parseLong(request.getParameter("idPedido"));
+        
 
         try {
-            Pedido pedido = null;
-            if (idPedido != 0) {
-                pedido = Pedido.obterPedido(idPedido);
+            Material material = null;
+            if(idMaterial != 0){
+                material = Material.obterMaterial(idMaterial);
             }
-
-            Movel movel = new Movel(idMovel, nome, preco, tipo, material, altura, largura, comprimento, acabamento, peso, pedido);
+            Movel movel = new Movel(idMovel, nome, preco, tipo, altura, largura, comprimento, acabamento, peso, material);
             if (operacao.equals("Incluir")) {
                 movel.gravar();
             } else if (operacao.equals("Editar")) {
@@ -77,7 +79,7 @@ public class ManterMoveisController extends HttpServlet {
         } catch (IOException e) {
             throw new ServletException(e);
         } catch (SQLException e) {
-            throw new ServletException("Ja existe Móvel com este ID cadastrado no Banco de dados");
+            throw new ServletException(e);
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
         } catch (ServletException e) {

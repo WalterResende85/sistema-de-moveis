@@ -16,14 +16,18 @@ public class Pedido {
     private Long idCliente;
     private Movel movel;
     private Long idMovel;
+    private Funcionario funcionario;
+    private Long idFuncionario;
 
-    public Pedido(Long idPedido, Double valorTotal, Movel movel, Cliente cliente) {
+    public Pedido(Long idPedido, Double valorTotal, Movel movel, Funcionario funcionario, Cliente cliente) {
         this.idPedido = idPedido;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
         this.idCliente = 0l;
         this.movel = movel;
         this.idMovel = 0l;
+        this.funcionario = funcionario;
+        this.idFuncionario = 0l;
     }
     
  
@@ -94,7 +98,7 @@ public class Pedido {
     }
 
     public Movel getMovel() {
-        if(idMovel !=0 && movel == null){
+        if(idMovel != 0 && movel == null){
             try {
                 movel = Movel.obterMovel(idMovel);
             } catch (SQLException ex) {
@@ -117,6 +121,31 @@ public class Pedido {
 
     public void setIdMovel(Long idMovel) {
         this.idMovel = idMovel;
+    }
+
+    public Funcionario getFuncionario() {
+        if(idFuncionario != 0 && funcionario == null){
+            try {
+                funcionario = Funcionario.obterFuncionario(idFuncionario);
+            } catch (SQLException ex) {
+                Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Long getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdfuncionario(Long idfuncionaio) {
+        this.idFuncionario = idfuncionaio;
     }
     
 }

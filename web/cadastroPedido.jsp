@@ -20,23 +20,40 @@
             <form action="ManterPedidoController?acao=confirmarOperacao&operacao=${operacao}" method="POST">
                 <table>
                     <tr><td colspan="4" style="text-align: center">${operacao} Pedido</td></tr>
+                        
+                    <tr>
+
+                            <td><label for="idFuncionario">Funcionario</label></td>
+                            <td> 
+                                <select class="form-control" required name="idFuncionario" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
+                                <option required value="0" <c:if test="${pedido.funcionario.idFuncionario == null}"> selected</c:if>> </option>  
+                                <c:forEach items="${funcionarios}" var="funcionario">
+                                    <option required value="${funcionario.idFuncionario}" <c:if test="${pedido.funcionario.idFuncionario == funcionario.idFuncionario}"> selected</c:if>>${funcionario.idFuncionario} - ${funcionario.nome}</option>  
+                                </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                    
                     <tr>
                         <td><label for="idPedido">Código do Pedido</label></td>
                         <td colspan="3"><input class="form-control" type="number" required min="1" name="idPedido" id="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
-                        <td> 
-                                <select class="form-control" required name="idMovel" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option required value="0" <c:if test="${pedido.Movel.idMovel == null}"> selected</c:if>> </option>  
-                                <c:forEach items="${moveis}" var="cliente">
-                                    <option required value="${movel.idMovel}" <c:if test="${pedido.movel.idMovel == movel.idmovel}"> selected</c:if>>${cliente.idCliente}</option>  
-                                </c:forEach>
-                            </select>
-                        
-                        
-                        
                         <tr>
-                            <td><label for="valorTotal">Valor Total</label></td>
-                            <td colspan="3"><input class="form-control" type="number" required min="0" name="valorTotal" id="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+
+                            <td><label for="idMovel">Movel</label></td>
+                            <td> 
+                                <select class="form-control" required name="idMovel" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <option required value="0" <c:if test="${pedido.movel.idMovel == null}"> selected</c:if>> </option>  
+                                <c:forEach items="${moveis}" var="movel">
+                                    <option required value="${movel.idMovel}" <c:if test="${pedido.movel.idMovel == movel.idMovel}"> selected</c:if>>${movel.idMovel} - ${movel.nome}</option>  
+                                </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+
+                    <tr>
+                        <td><label for="valorTotal">Valor Total</label></td>
+                        <td colspan="3"><input class="form-control" type="number" required min="0" name="valorTotal" id="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
 
                         <tr>
@@ -46,7 +63,7 @@
                                 <select class="form-control" required name="idCliente" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
                                 <option required value="0" <c:if test="${pedido.cliente.idCliente == null}"> selected</c:if>> </option>  
                                 <c:forEach items="${clientes}" var="cliente">
-                                    <option required value="${cliente.idCliente}" <c:if test="${pedido.cliente.idCliente == cliente.idCliente}"> selected</c:if>>${cliente.idCliente}</option>  
+                                    <option required value="${cliente.idCliente}" <c:if test="${pedido.cliente.idCliente == cliente.idCliente}"> selected</c:if>>${cliente.idCliente} - ${cliente.nome}</option>  
                                 </c:forEach>
                             </select>
 

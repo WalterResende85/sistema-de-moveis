@@ -32,7 +32,15 @@
                             <td><label for="tipo">Tipo</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="2" name="tipo" id="tipo" value="${movel.tipo}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
                         <tr>
-                            <td><label for="material">Material</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="2" name="material" id="material" value="${movel.material}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
+                            <td><label for="idMaterial">Material</label></td>
+                            <td colspan="3">
+                               <select class="form-control" required name="idMaterial" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <option required value="0" <c:if test="${movel.material.idMaterial == null}"> selected</c:if>> </option>  
+                                <c:forEach items="${materiais}" var="material">
+                                    <option required value="${material.idMaterial}" <c:if test="${movel.material.idMaterial == material.idMaterial}"> selected</c:if>>${material.idMaterial} - ${material.nome}</option>  
+                                </c:forEach>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td><label for="altura">Altura</label></td><td colspan="3"><input class="form-control" type="number" min="1" name="altura" id="altura" value="${movel.altura}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
@@ -48,23 +56,7 @@
                         </tr>           
                         <tr>
                             <td><label for="peso">Peso</label></td><td colspan="3"><input class="form-control" type="number" min="1" name="peso" id="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                        </tr>
-
-
-                        <tr>
-
-                            <td><label for="idPedido">Pedido</label></td>
-                            <td> 
-                                <select class="form-control" name="idPedido" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option value="0" <c:if test="${movel.pedido.idPedido == null}"> selected</c:if>> </option>  
-                                <c:forEach items="${pedidos}" var="pedido">
-                                    <option value="${pedido.idPedido}" <c:if test="${movel.pedido.idPedido == pedido.idPedido}"> selected</c:if>>${pedido.idPedido}</option>  
-                                </c:forEach>
-                            </select>
-
-                        </td>
-
-                    </tr>            
+                    </tr>
 
 
                     <tr>

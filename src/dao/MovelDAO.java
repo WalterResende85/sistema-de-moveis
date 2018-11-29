@@ -13,24 +13,24 @@ public class MovelDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into movel (idMovel,nome,preco,tipo,material, altura, largura, comprimento,acabamento,peso,idPedido)"
-                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into movel (idMovel,nome,preco,tipo, idMaterial, altura, largura, comprimento,acabamento,peso)"
+                    + "values (?,?,?,?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setLong(1, movel.getIdMovel());
             comando.setString(2, movel.getNome());
             comando.setDouble(3, movel.getPreco());
             comando.setString(4, movel.getTipo());
-            comando.setString(5, movel.getMaterial());
+            if(movel.getMaterial() == null){
+                comando.setNull(5, Types.NULL);
+            }else{
+                comando.setLong(5, movel.getMaterial().getIdMaterial());
+            }
             comando.setDouble(6, movel.getAltura());
             comando.setDouble(7, movel.getLargura());
             comando.setDouble(8, movel.getComprimento());
             comando.setString(9, movel.getAcabamento());
             comando.setDouble(10, movel.getPeso());
-            if(movel.getPedido()== null){
-                comando.setNull(11, Types.NULL);
-            }else{
-                comando.setLong(11, movel.getPedido().getIdPedido());
-            }
+          
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e) {
@@ -46,24 +46,23 @@ public class MovelDAO {
         try {
             conexao = BD.getConexao();
             String sql = ("UPDATE Movel SET nome=?, preco=?, tipo=?,"
-                    + " material=?, altura=?, largura=?, comprimento=?, acabamento=?, peso=?,idPedido=? WHERE idMovel = ?");
+                    + " idMaterial=?, altura=?, largura=?, comprimento=?, acabamento=?, peso=? WHERE idMovel = ?");
             comando = conexao.prepareStatement(sql);
             comando.setString(1, movel.getNome());
             comando.setDouble(2, movel.getPreco());
             comando.setString(3, movel.getTipo());
-            comando.setString(4, movel.getMaterial());
+           if(movel.getMaterial() == null){
+                comando.setNull(4, Types.NULL);
+            }else{
+                comando.setLong(4, movel.getMaterial().getIdMaterial());
+            }
             comando.setDouble(5, movel.getAltura());
             comando.setDouble(6, movel.getLargura());
             comando.setDouble(7, movel.getComprimento());
             comando.setString(8, movel.getAcabamento());
             comando.setDouble(9, movel.getPeso());
-            if(movel.getPedido()== null){
-                comando.setNull(10, Types.NULL);
-            }else{
-                comando.setLong(10, movel.getPedido().getIdPedido());
-            }
-            
-            comando.setLong(11, movel.getIdMovel());
+                        
+            comando.setLong(10, movel.getIdMovel());
             comando.execute();
         } catch (SQLException e) {
             throw e;
@@ -101,19 +100,17 @@ public class MovelDAO {
             comando.setLong(1, idMovel);
             ResultSet rs = comando.executeQuery();
             rs.first();
-            movel = new Movel(rs.getLong("idMovel"),
+            movel = new Movel(
+                    rs.getLong("idMovel"),
                     rs.getString("nome"),
                     rs.getDouble("preco"),
                     rs.getString("tipo"),
-                    rs.getString("material"),
                     rs.getDouble("altura"),
                     rs.getDouble("largura"),
                     rs.getDouble("comprimento"),
                     rs.getString("acabamento"),
                     rs.getDouble("peso"),
-                    null
-            );
-            movel.setIdPedido(rs.getLong("idPedido"));
+                    null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -135,14 +132,12 @@ public class MovelDAO {
                         rs.getString("nome"),
                         rs.getDouble("preco"),
                         rs.getString("tipo"),
-                        rs.getString("material"),
                         rs.getDouble("altura"),
                         rs.getDouble("largura"),
                         rs.getDouble("comprimento"),
                         rs.getString("acabamento"),
                         rs.getDouble("peso"),
                         null);
-                movel.setIdPedido(rs.getLong("idPedido"));
                 moveis.add(movel);
             }
         } catch (SQLException e) {

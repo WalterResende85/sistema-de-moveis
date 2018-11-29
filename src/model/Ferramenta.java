@@ -19,8 +19,8 @@ public class Ferramenta extends MaterialFerramenta {
     }
 
     public Ferramenta(Long idFerramenta, String nome, String tipo, double valorUnitario,
-                      double qtdEstoque, String unidade) {
-        super(nome, tipo, valorUnitario, qtdEstoque, unidade);
+                      double qtdEstoque, String unidade, Fornecedor fornecedor) {
+        super(nome, tipo, valorUnitario, qtdEstoque, unidade, fornecedor);
        this.idFerramenta = idFerramenta;
 
     }

@@ -13,8 +13,8 @@ public class FerramentaDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into Ferramenta (idFerramenta,nome,tipo,valorUnitario,qtdEstoque,unidade)"
-                    + "values (?,?,?,?,?,?)";
+            String sql = "insert into Ferramenta (idFerramenta,nome,tipo,valorUnitario,qtdEstoque,unidade, idFornecedor)"
+                    + "values (?,?,?,?,?,?,?)";
 
             comando = conexao.prepareStatement(sql);
             comando.setLong(1, ferramenta.getIdFerramenta());
@@ -23,6 +23,11 @@ public class FerramentaDAO {
             comando.setDouble(4, ferramenta.getValorUnitario());
             comando.setDouble(5, ferramenta.getQtdEstoque());
             comando.setString(6, ferramenta.getUnidade());
+             if(ferramenta.getFornecedor() == null){
+                comando.setNull(7, Types.NULL);
+            }else{
+                comando.setLong(7, ferramenta.getFornecedor().getIdFornecedor());
+            }
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e) {
@@ -39,7 +44,7 @@ public class FerramentaDAO {
 
         try {
             conexao = BD.getConexao();
-            String sql = ("UPDATE Ferramenta SET nome = ?, tipo = ?, valorUnitario = ?, qtdEstoque = ?, unidade = ?"
+            String sql = ("UPDATE Ferramenta SET nome = ?, tipo = ?, valorUnitario = ?, qtdEstoque = ?, unidade = ?, idFornecedor=?"
                     + "WHERE idFerramenta = ?");
             comando = conexao.prepareStatement(sql);
             comando.setString(1, ferramenta.getNome());
@@ -47,7 +52,13 @@ public class FerramentaDAO {
             comando.setDouble(3, ferramenta.getValorUnitario());
             comando.setDouble(4, ferramenta.getQtdEstoque());
             comando.setString(5, ferramenta.getUnidade());
-            comando.setLong(6, ferramenta.getIdFerramenta());
+             if(ferramenta.getFornecedor() == null){
+                comando.setNull(6, Types.NULL);
+            }else{
+                comando.setLong(6, ferramenta.getFornecedor().getIdFornecedor());
+            }
+            comando.setLong(7, ferramenta.getIdFerramenta());
+            
             comando.execute();
         } catch (SQLException e) {
             throw e;
@@ -89,7 +100,8 @@ public class FerramentaDAO {
                     rs.getString("tipo"),
                     rs.getDouble("valorUnitario"),
                     rs.getDouble("qtdEstoque"),
-                    rs.getString("unidade"));
+                    rs.getString("unidade"),
+                    null);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -115,7 +127,8 @@ public class FerramentaDAO {
                         rs.getString("tipo"),
                         rs.getDouble("valorUnitario"),
                         rs.getDouble("qtdEstoque"),
-                        rs.getString("unidade"));
+                        rs.getString("unidade"),
+                        null);
 
                 ferramentas.add(ferramenta);
             }

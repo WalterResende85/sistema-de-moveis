@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Ferramenta;
+import model.Fornecedor;
 
 /**
  *
@@ -40,6 +41,7 @@ public class ManterFerramentaController extends HttpServlet {
     public void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
+        request.setAttribute("fornecedores", Fornecedor.obterTodosFornecedor());
         if (!operacao.equals("Incluir")) {
             Ferramenta ferramenta = Ferramenta.obterFerramenta(Long.parseLong(request.getParameter("idFerramenta")));
             request.setAttribute("ferramenta", ferramenta);
@@ -57,9 +59,13 @@ public class ManterFerramentaController extends HttpServlet {
         Double valorUnitario = Double.parseDouble(request.getParameter("valorUnitario"));
         Double qtdEstoque = Double.parseDouble(request.getParameter("qtdEstoque"));
         String unidade = request.getParameter("unidade");
-
+        Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
         try {
-            Ferramenta ferramenta = new Ferramenta(idFerramenta, nome, tipo, valorUnitario, qtdEstoque, unidade);
+            Fornecedor fornecedor = null;
+            if(idFornecedor != 0){
+                fornecedor = Fornecedor.obterFornecedor(idFornecedor);
+            }
+            Ferramenta ferramenta = new Ferramenta(idFerramenta, nome, tipo, valorUnitario, qtdEstoque, unidade, fornecedor);
             if (operacao.equals("Incluir")) {
                 ferramenta.gravar();
             } else if (operacao.equals("Editar")) {

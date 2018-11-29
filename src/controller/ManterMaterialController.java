@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Fornecedor;
 import model.Material;
 
 /**
@@ -40,6 +41,7 @@ public class ManterMaterialController extends HttpServlet {
     protected void prepararOperacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, ClassNotFoundException {
         String operacao = request.getParameter("operacao");
         request.setAttribute("operacao", operacao);
+        request.setAttribute("fornecedores", Fornecedor.obterTodosFornecedor());
         if (!operacao.equals("Incluir")) {
             Material material = Material.obterMaterial(Long.parseLong(request.getParameter("idMaterial")));
             request.setAttribute("material", material);
@@ -56,9 +58,14 @@ public class ManterMaterialController extends HttpServlet {
          Double valorUnitario = Double.parseDouble(request.getParameter("valorUnitario"));
          Double qtdEstoque = Double.parseDouble(request.getParameter("qtdEstoque"));
          String unidade = request.getParameter("unidade");
+         Long idFornecedor = Long.parseLong(request.getParameter("idFornecedor"));
        
         try{
-            Material material = new Material(idMaterial, nome,tipo, valorUnitario, qtdEstoque, unidade);
+            Fornecedor fornecedor = null;
+            if(idFornecedor != 0){
+                fornecedor = Fornecedor.obterFornecedor(idFornecedor);
+            }
+            Material material = new Material(idMaterial, nome,tipo, valorUnitario, qtdEstoque, unidade, fornecedor);
             if(operacao.equals("Incluir")){
                 material.gravar();
             }else if(operacao.equals("Editar")){
@@ -70,7 +77,7 @@ public class ManterMaterialController extends HttpServlet {
         }catch(IOException e){
             throw new ServletException(e);
         }catch(SQLException e){
-            throw new ServletException("Ja existe Material com este ID cadastrado no Banco de dados");
+            throw new ServletException(e);
         }catch(ClassNotFoundException e){
             throw new ServletException(e);
         }catch(ServletException e){

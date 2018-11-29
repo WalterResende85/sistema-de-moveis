@@ -13,8 +13,8 @@ public class MaterialDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into Material (idMaterial, nome, tipo, valorUnitario, qtdEstoque, unidade)"
-                    + "values (?,?,?,?,?,?)";
+            String sql = "insert into Material (idMaterial, nome, tipo, valorUnitario, qtdEstoque, unidade, idFornecedor)"
+                    + "values (?,?,?,?,?,?,?)";
             comando = conexao.prepareStatement(sql);
             comando.setLong(1, material.getIdMaterial());
             comando.setString(2, material.getNome());
@@ -22,6 +22,12 @@ public class MaterialDAO {
             comando.setDouble(4, material.getValorUnitario());
             comando.setDouble(5, material.getQtdEstoque());
             comando.setString(6, material.getUnidade());
+            if(material.getFornecedor() == null){
+                comando.setNull(7, Types.NULL);
+            }else{
+                comando.setLong(7, material.getFornecedor().getIdFornecedor());
+            }
+            
             comando.execute();
             BD.fecharConexao(conexao, comando);
         } catch (SQLException e) {
@@ -36,7 +42,7 @@ public class MaterialDAO {
         try {
             conexao = BD.getConexao();
             String sql = "UPDATE material SET nome = ?,tipo = ?, valorUnitario = ?,"
-                    + " qtdEstoque = ?, unidade = ? WHERE idMaterial = ?";
+                    + " qtdEstoque = ?, unidade = ?, idFornecedor=? WHERE idMaterial = ?";
             comando = conexao.prepareStatement(sql);
             
             comando.setString(1, material.getNome());
@@ -44,7 +50,14 @@ public class MaterialDAO {
             comando.setDouble(3, material.getValorUnitario());
             comando.setDouble(4, material.getQtdEstoque());
             comando.setString(5, material.getUnidade());
-            comando.setLong(6, material.getIdMaterial());
+            if(material.getFornecedor() == null){
+                comando.setNull(6, Types.NULL);
+            }else{
+                comando.setLong(6, material.getFornecedor().getIdFornecedor());
+            }
+            
+            comando.setLong(7, material.getIdMaterial());
+            
             comando.execute();
         } catch (SQLException e) {
             throw e;
@@ -87,7 +100,8 @@ public class MaterialDAO {
                     rs.getString("tipo"),
                     rs.getDouble("valorUnitario"),
                     rs.getDouble("qtdEstoque"),
-                    rs.getString("unidade"));
+                    rs.getString("unidade"),
+                    null);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,7 +127,8 @@ public class MaterialDAO {
                         rs.getString("tipo"),
                         rs.getDouble("valorUnitario"),
                         rs.getDouble("qtdEstoque"),
-                        rs.getString("unidade"));
+                        rs.getString("unidade"),
+                        null);
                 materiais.add(material);
             }
         } catch (SQLException e) {

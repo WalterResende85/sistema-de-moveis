@@ -24,6 +24,16 @@
                         <td><label for="idPedido">Código do Pedido</label></td>
                         <td colspan="3"><input class="form-control" type="number" required min="1" name="idPedido" id="idPedido" value="${pedido.idPedido}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>></td>
                         </tr>
+                        <td> 
+                                <select class="form-control" required name="idMovel" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <option required value="0" <c:if test="${pedido.Movel.idMovel == null}"> selected</c:if>> </option>  
+                                <c:forEach items="${moveis}" var="cliente">
+                                    <option required value="${movel.idMovel}" <c:if test="${pedido.movel.idMovel == movel.idmovel}"> selected</c:if>>${cliente.idCliente}</option>  
+                                </c:forEach>
+                            </select>
+                        
+                        
+                        
                         <tr>
                             <td><label for="valorTotal">Valor Total</label></td>
                             <td colspan="3"><input class="form-control" type="number" required min="0" name="valorTotal" id="valorTotal" value="${pedido.valorTotal}"<c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>

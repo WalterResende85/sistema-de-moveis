@@ -94,6 +94,16 @@ public class Pedido {
     }
 
     public Movel getMovel() {
+        if(idMovel !=0 && movel == null){
+            try {
+                movel = Movel.obterMovel(idMovel);
+            } catch (SQLException ex) {
+                Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
         return movel;
     }
 

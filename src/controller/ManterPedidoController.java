@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Cliente;
+import model.Movel;
 import model.Pedido;
 import utils.Strings;
 @WebServlet(name = "ManterPedidoController", urlPatterns = "/ManterPedidoController")
@@ -41,15 +42,20 @@ public class ManterPedidoController extends HttpServlet {
         String operacao = request.getParameter("operacao");
         Long idPedido = Long.parseLong(request.getParameter("idPedido"));
         Double valorTotal = Double.parseDouble(request.getParameter("valorTotal"));
+        Long idMovel = Long.parseLong(request.getParameter("idMovel"));
         Long idCliente = Long.parseLong(request.getParameter("idCliente"));
 
         try {
             Cliente cliente = null;
+            Movel movel = null;
+            if(idMovel != 0){
+                movel = Movel.obterMovel(idMovel);
+            }
             if (idCliente != 0) {
                 cliente = Cliente.obterCliente(idCliente);
             }
 
-            Pedido pedido = new Pedido(idPedido,valorTotal, cliente);
+            Pedido pedido = new Pedido(idPedido,valorTotal, movel, cliente);
             if (operacao.equals("Incluir")) {
                 pedido.gravar();
             } else if (operacao.equals("Editar")) {

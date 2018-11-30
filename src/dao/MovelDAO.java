@@ -111,8 +111,11 @@ public class MovelDAO {
                     rs.getString("acabamento"),
                     rs.getDouble("peso"),
                     null);
+            movel.setIdMaterial(rs.getLong("idMaterial"));
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            BD.fecharConexao(conexao, comando);
         }
         return movel;
     }
@@ -138,6 +141,7 @@ public class MovelDAO {
                         rs.getString("acabamento"),
                         rs.getDouble("peso"),
                         null);
+                movel.setIdMaterial(rs.getLong("idMaterial"));
                 moveis.add(movel);
             }
         } catch (SQLException e) {

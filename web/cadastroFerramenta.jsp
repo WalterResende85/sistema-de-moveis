@@ -71,6 +71,18 @@
                             </td>
                         </tr>
                         <tr>
+
+                            <td><label for="idFornecedor">Fornecedor</label></td>
+                            <td> 
+                                <select class="form-control" required name="idFornecedor" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                <option required value="0" <c:if test="${ferramenta.fornecedor.idFornecedor == null}"> selected</c:if>> </option>  
+                                <c:forEach items="${fornecedores}" var="fornecedor">
+                                    <option required value="${fornecedor.idFornecedor}" <c:if test="${ferramenta.fornecedor.idFornecedor == fornecedor.idFornecedor}"> selected</c:if>>${fornecedor.idFornecedor} - ${fornecedor.nome}</option>  
+                                </c:forEach>
+                            </select>
+                        </td>
+                    </tr>
+                        <tr>
                             <td>
                                 <a href="PesquisaFerramentaController">
                                     <input class="btn btn-danger" type="button" value="voltar">
@@ -80,18 +92,7 @@
                                 <input class="btn btn-success" type="submit" name="salvar" value="confirmar">
                             </td>
                         </tr>
-                        <tr>
-
-                            <td><label for="idFornecedor">Fornecedor</label></td>
-                            <td> 
-                                <select class="form-control" required name="idFornecedor" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option required value="0" <c:if test="${material.fornecedor.idFornecedor == null}"> selected</c:if>> </option>  
-                                <c:forEach items="${fornecedores}" var="fornecedor">
-                                    <option required value="${fornecedor.idFornecedor}" <c:if test="${material.fornecedor.idFornecedor == fornecedor.idFornecedor}"> selected</c:if>>${fornecedor.idFornecedor} - ${fornecedor.nome}</option>  
-                                </c:forEach>
-                            </select>
-                        </td>
-                    </tr>
+                        
                 </table>
 
             </form>

@@ -116,6 +116,7 @@ public class PedidoDAO {
                     null,
                     null,
                     null);
+            pedido.setIdfuncionario(rs.getLong("idFuncionario"));
             pedido.setIdMovel(rs.getLong("idMovel"));
             pedido.setIdCliente(rs.getLong("idCliente"));
             
@@ -144,6 +145,7 @@ public class PedidoDAO {
                         null,
                         null,
                         null);
+                pedido.setIdfuncionario(rs.getLong("idFuncionario"));
                 pedido.setIdMovel(rs.getLong("idMovel"));
                 pedido.setIdCliente(rs.getLong("idCliente"));
                 pedidos.add(pedido);

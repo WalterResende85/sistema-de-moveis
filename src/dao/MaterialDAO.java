@@ -42,7 +42,7 @@ public class MaterialDAO {
         try {
             conexao = BD.getConexao();
             String sql = "UPDATE material SET nome = ?,tipo = ?, valorUnitario = ?,"
-                    + " qtdEstoque = ?, unidade = ?, idFornecedor=? WHERE idMaterial = ?";
+                    + " qtdEstoque = ?, unidade = ?, idFornecedor= ? WHERE idMaterial = ?";
             comando = conexao.prepareStatement(sql);
             
             comando.setString(1, material.getNome());
@@ -102,6 +102,7 @@ public class MaterialDAO {
                     rs.getDouble("qtdEstoque"),
                     rs.getString("unidade"),
                     null);
+            material.setIdFornecedor(rs.getLong("idFornecedor"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -129,6 +130,7 @@ public class MaterialDAO {
                         rs.getDouble("qtdEstoque"),
                         rs.getString("unidade"),
                         null);
+                material.setIdFornecedor(rs.getLong("idFornecedor"));
                 materiais.add(material);
             }
         } catch (SQLException e) {

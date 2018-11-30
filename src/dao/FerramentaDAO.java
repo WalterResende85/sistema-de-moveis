@@ -13,7 +13,7 @@ public class FerramentaDAO {
         PreparedStatement comando = null;
         try {
             conexao = BD.getConexao();
-            String sql = "insert into Ferramenta (idFerramenta,nome,tipo,valorUnitario,qtdEstoque,unidade, idFornecedor)"
+            String sql = "insert into Ferramenta (idFerramenta, nome, tipo, valorUnitario, qtdEstoque, unidade, idFornecedor)"
                     + "values (?,?,?,?,?,?,?)";
 
             comando = conexao.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class FerramentaDAO {
 
         try {
             conexao = BD.getConexao();
-            String sql = ("UPDATE Ferramenta SET nome = ?, tipo = ?, valorUnitario = ?, qtdEstoque = ?, unidade = ?, idFornecedor=?"
+            String sql = ("UPDATE ferramenta SET nome = ?, tipo = ?, valorUnitario = ?, qtdEstoque = ?, unidade = ?, idFornecedor = ?"
                     + "WHERE idFerramenta = ?");
             comando = conexao.prepareStatement(sql);
             comando.setString(1, ferramenta.getNome());

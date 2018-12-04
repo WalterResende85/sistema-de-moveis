@@ -44,7 +44,7 @@ public class FerramentaDAO {
 
         try {
             conexao = BD.getConexao();
-            String sql = ("UPDATE ferramenta SET nome = ?, tipo = ?, valorUnitario = ?, qtdEstoque = ?, unidade = ?, idFornecedor = ?"
+            String sql = ("UPDATE ferramenta SET nome = ?, tipo = ?, valorUnitario = ?, qtdEstoque = ?, unidade = ?, idFornecedor = ? "
                     + "WHERE idFerramenta = ?");
             comando = conexao.prepareStatement(sql);
             comando.setString(1, ferramenta.getNome());

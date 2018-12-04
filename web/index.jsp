@@ -39,14 +39,6 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">
-                        <h4 class="card-title">Ferramentas</h4>
-                        <a href="PesquisaFerramentaController" class="btn btn-primary">Manter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <div class="card-body">
                         <h4 class="card-title">Funcionário</h4>
                         <a href="PesquisaFuncionarioController" class="btn btn-primary">Manter</a>
                     </div>

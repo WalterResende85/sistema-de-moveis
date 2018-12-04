@@ -35,9 +35,9 @@
                             <td><label for="idMaterial">Material</label></td>
                             <td colspan="3">
                                <select class="form-control" required name="idMaterial" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option required value="0" <c:if test="${movel.material.idMaterial == null}"> selected</c:if>> </option>  
+                                <option required value="0" <c:if test="${movel.idMaterial == null}"> selected</c:if>> </option>  
                                 <c:forEach items="${materiais}" var="material">
-                                    <option required value="${material.idMaterial}" <c:if test="${movel.material.idMaterial == material.idMaterial}"> selected</c:if>>${material.idMaterial} - ${material.nome}</option>  
+                                    <option required value="${material.idMaterial}" <c:if test="${movel.idMaterial == material.idMaterial}"> selected</c:if>>${material.idMaterial} - ${material.nome}</option>  
                                 </c:forEach>
                                 </select>
                             </td>
@@ -51,9 +51,7 @@
                         <tr>
                             <td><label for="comprimento">Comprimento</label></td><td colspan="3"><input class="form-control" type="number" min="1" name="comprimento" id="comprimento" value="${movel.comprimento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                         </tr>
-                        <tr>
-                            <td><label for="acabamento">Acabamento</label></td><td colspan="3"><input class="form-control" type="text" required maxlength="45" minlength="2" name="acabamento" id="acabamento" value="${movel.acabamento}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
-                        </tr>           
+                                  
                         <tr>
                             <td><label for="peso">Peso</label></td><td colspan="3"><input class="form-control" type="number" min="1" name="peso" id="peso" value="${movel.peso}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td>
                     </tr>

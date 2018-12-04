@@ -75,9 +75,9 @@
                             <td><label for="idFornecedor">Fornecedor</label></td>
                             <td> 
                                 <select class="form-control" required name="idFornecedor" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option required value="0" <c:if test="${ferramenta.fornecedor.idFornecedor == null}"> selected</c:if>> </option>  
+                                <option required value="0" <c:if test="${ferramenta.idFornecedor == null}"> selected</c:if>> </option>  
                                 <c:forEach items="${fornecedores}" var="fornecedor">
-                                    <option required value="${fornecedor.idFornecedor}" <c:if test="${ferramenta.fornecedor.idFornecedor == fornecedor.idFornecedor}"> selected</c:if>>${fornecedor.idFornecedor} - ${fornecedor.nome}</option>  
+                                    <option required value="${fornecedor.idFornecedor}" <c:if test="${ferramenta.idFornecedor == fornecedor.idFornecedor}"> selected</c:if>>${fornecedor.idFornecedor} - ${fornecedor.nome}</option>  
                                 </c:forEach>
                             </select>
                         </td>

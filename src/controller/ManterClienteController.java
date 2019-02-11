@@ -75,7 +75,7 @@ public class ManterClienteController extends HttpServlet {
         }catch(IOException e){
             throw new ServletException(e);
         }catch(SQLException e){
-            throw new ServletException("Ja existe Cliente com este ID cadastrado no Banco de dados");
+            throw new ServletException(e);
         }catch(ClassNotFoundException e){
             throw new ServletException(e);
         }catch(ServletException e){

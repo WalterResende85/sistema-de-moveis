@@ -34,7 +34,7 @@
                         <a href="PesquisaMovelController" class="btn btn-primary">Manter</a>
                     </div>
                      <div>
-                        <a href="RelatorioControllerMoveis" class="btn btn-danger">Emitir relatorio</a>
+                        <a href="RelatorioControllerMoveis" class="btn btn-success">Emitir relatorio</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         <a href="PesquisaFuncionarioController" class="btn btn-primary">Manter</a>
                     </div>
                      <div>
-                        <a href="RelatorioControllerFuncionario" class="btn btn-danger">Emitir relatorio</a>
+                        <a href="RelatorioControllerFuncionario" class="btn btn-success">Emitir relatorio</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <a href="PesquisaFornecedorController" class="btn btn-primary">Manter</a>
                     </div>
                      <div>
-                        <a href="RelatorioControllerFornecedor" class="btn btn-danger">Emitir relatorio</a>
+                        <a href="RelatorioControllerFornecedor" class="btn btn-success">Emitir relatorio</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                         <a href="PesquisaPedidoController" class="btn btn-primary">Manter</a>
                     </div>
                      <div>
-                        <a href="RelatorioControllerPedido" class="btn btn-danger">Emitir relatorio</a>
+                        <a href="RelatorioControllerPedido" class="btn btn-success">Emitir relatorio</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                         <a href="PesquisaMaterialController" class="btn btn-primary">Manter</a>
                     </div>
                      <div>
-                        <a href="RelatorioControllerMaterial" class="btn btn-danger">Emitir relatorio</a>
+                        <a href="RelatorioControllerMaterial" class="btn btn-success">Emitir relatorio</a>
                     </div>
                 </div>
             </div>

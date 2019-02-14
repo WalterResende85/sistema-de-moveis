@@ -33,6 +33,9 @@
                         <h4 class="card-title">Móveis</h4>
                         <a href="PesquisaMovelController" class="btn btn-primary">Manter</a>
                     </div>
+                     <div>
+                        <a href="RelatorioControllerMoveis" class="btn btn-danger">Emitir relatorio</a>
+                    </div>
                 </div>
             </div>
 
@@ -42,6 +45,9 @@
                         <h4 class="card-title">Funcionário</h4>
                         <a href="PesquisaFuncionarioController" class="btn btn-primary">Manter</a>
                     </div>
+                     <div>
+                        <a href="RelatorioControllerFuncionario" class="btn btn-danger">Emitir relatorio</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -49,6 +55,9 @@
                     <div class="card-body">
                         <h4 class="card-title">Fornecedor</h4>
                         <a href="PesquisaFornecedorController" class="btn btn-primary">Manter</a>
+                    </div>
+                     <div>
+                        <a href="RelatorioControllerFornecedor" class="btn btn-danger">Emitir relatorio</a>
                     </div>
                 </div>
             </div>
@@ -59,6 +68,9 @@
                         <h4 class="card-title">Cliente</h4>
                         <a href="PesquisaClienteController" class="btn btn-primary">Manter</a>
                     </div>
+                    <div>
+                        <a href="RelatorioControllerCliente" class="btn btn-success">Emitir relatorio</a>
+                    </div>
                 </div>
             </div>
 
@@ -67,6 +79,9 @@
                     <div class="card-body">
                         <h4 class="card-title">Pedido</h4>
                         <a href="PesquisaPedidoController" class="btn btn-primary">Manter</a>
+                    </div>
+                     <div>
+                        <a href="RelatorioControllerPedido" class="btn btn-danger">Emitir relatorio</a>
                     </div>
                 </div>
             </div>
@@ -77,10 +92,16 @@
                         <h4 class="card-title">Material</h4>
                         <a href="PesquisaMaterialController" class="btn btn-primary">Manter</a>
                     </div>
+                     <div>
+                        <a href="RelatorioControllerMaterial" class="btn btn-danger">Emitir relatorio</a>
+                    </div>
                 </div>
             </div>
+            
         </div>
     </div>
+    
+    
  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

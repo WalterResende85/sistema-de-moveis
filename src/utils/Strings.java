@@ -21,4 +21,5 @@ public abstract class Strings {
     public static String get(HttpServletRequest request, String name) {
         return request.getParameter(name);
     }
+    
 }

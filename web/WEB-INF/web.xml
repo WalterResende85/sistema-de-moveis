@@ -64,6 +64,14 @@
         <servlet-name>ManterMaterialController</servlet-name>
         <url-pattern>/ManterMaterialController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>RelatorioController</servlet-name>
+        <servlet-class>relatorio.RelatorioControllerCliente</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RelatorioController</servlet-name>
+        <url-pattern>/RelatorioController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

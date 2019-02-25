@@ -19,11 +19,16 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 @WebServlet(name = "RelatorioControllerFornecedor", urlPatterns = "/RelatorioControllerFornecedor")
 public class RelatorioControllerFornecedor extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
  Connection conexao = null;
+ DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy-HH:mm");
+        Date date = new Date();
+        String data = dateFormat.format(date);
         try {
             conexao = BD.getConexao();
             HashMap parametros = new HashMap();
@@ -31,7 +36,7 @@ public class RelatorioControllerFornecedor extends HttpServlet {
             String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/fornecedores.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
-            response.setHeader("Content-Disposition", "attachment;filename=relatorioFornecedores.pdf");
+            response.setHeader("Content-Disposition", "attachment;filename=relatorioFornecedores" + data + ".pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
         } catch (SQLException ex) {

@@ -68,13 +68,16 @@
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h4 class="card-title">Cliente</h4>
+                            
+                        </div>
+                        <div>
                             <a href="PesquisaClienteController" class="btn btn-primary">Manter</a>
                         </div>
                         <div>
                             <a href="RelatorioControllerCliente" class="btn btn-success">Emitir relatorio</a>
                         </div>
                         <div>
-                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalCliente">relatorio C/ Parametro</a>
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalCliente">relatorio C/ Parametro</a>
                         </div>
                     </div>
                 </div>

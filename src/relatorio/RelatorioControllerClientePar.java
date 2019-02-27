@@ -23,8 +23,8 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-@WebServlet(name = "RelatorioControllerCliente", urlPatterns = "/RelatorioControllerCliente")
-public class RelatorioControllerCliente extends HttpServlet {
+@WebServlet(name = "RelatorioControllerClientePar", urlPatterns = "/RelatorioControllerClientePar")
+public class RelatorioControllerClientePar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         Connection conexao = null;
@@ -34,8 +34,8 @@ public class RelatorioControllerCliente extends HttpServlet {
         try {
             conexao = BD.getConexao();
             HashMap parametros = new HashMap();
-            //parametros.put("Par_cidade", request.getParameter("paramCliente"));
-            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/clientes.jasper";
+            parametros.put("Par_cidade", request.getParameter("paramCliente"));
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/clienteAtualizado.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
             response.setHeader("Content-Disposition", "attachment;filename=relatorioClientes-" + data + ".pdf");

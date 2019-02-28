@@ -46,6 +46,48 @@
             </table>
 
         </div>
+        <div class="container">
+
+
+            <div>
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalCliente">relatorios</a>
+            </div>
+            <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>
+                               Relatorio completo
+                            </h5>
+                            <div>
+                                <a href="RelatorioControllerCliente" class="btn btn-success">Emitir relatorio</a>
+                            </div> 
+                        </div>
+                        <div class="modal-body">
+                            <h5>
+                                Entre com a cidade do cliente
+                            </h5>
+                            <form action="RelatorioControllerClientePar" method="POST" autofocus>
+                                <select class="form-control" required name="paramCliente" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                    <option required value="0" <c:if test="${cliente.cidade == null}"> selected</c:if>> </option>  
+                                    <c:forEach items="${clientes}" var="cliente">
+                                        <option required value="${cliente.cidade}" <c:if test="${cliente.cidade == cliente.cidade}"> selected</c:if>>${cliente.cidade}</option>  
+                                    </c:forEach>
+                                </select>
+                                <input type="submit"/>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

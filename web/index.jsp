@@ -68,17 +68,13 @@
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
                             <h4 class="card-title">Cliente</h4>
-                            
+
                         </div>
                         <div>
                             <a href="PesquisaClienteController" class="btn btn-primary">Manter</a>
                         </div>
-                        <div>
-                            <a href="RelatorioControllerCliente" class="btn btn-success">Emitir relatorio</a>
-                        </div>
-                        <div>
-                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalCliente">relatorio C/ Parametro</a>
-                        </div>
+                        
+                        
                     </div>
                 </div>
 
@@ -110,38 +106,7 @@
 
             </div>
         </div>
-        <!-- Modais -->
-        <div class="modal fade" id="modalCliente" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5>
-                            Entre com a cidade do cliente
-                        </h5>
-                    </div>
-                    <div class="modal-body">
-                        <form action="RelatorioControllerClientePar" method="post">
-
-                            <input type="text" name="paramCliente"/><br/>
-                            <input type="submit"/>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <form action="ManterClienteController?acao=confirmarOperacao&operacao=${operacao}" method="POST" autofocus>
-                        <select class="form-control" required name="idCliente" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                <option required value="0" <c:if test="${pedido.cliente.idCliente == null}"> selected</c:if>> </option>  
-                                <c:forEach items="${clientes}" var="cliente">
-                                    <option required value="${cliente.idCliente}" <c:if test="${pedido.cliente.idCliente == cliente.idCliente}"> selected</c:if>>${cliente.idCliente} - ${cliente.nome}</option>  
-                                </c:forEach>
-                            </select>
-                        </form>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!-- Fim Modais -->
+       
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

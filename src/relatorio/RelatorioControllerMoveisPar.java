@@ -23,8 +23,8 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-@WebServlet(name = "RelatorioControllerClientePar", urlPatterns = "/RelatorioControllerClientePar")
-public class RelatorioControllerClientePar extends HttpServlet {
+@WebServlet(name = "RelatorioControllerMoveisPar", urlPatterns = "/RelatorioControllerMoveisPar")
+public class RelatorioControllerMoveisPar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         Connection conexao = null;
@@ -34,11 +34,11 @@ public class RelatorioControllerClientePar extends HttpServlet {
         try {
             conexao = BD.getConexao();
             HashMap parametros = new HashMap();
-            parametros.put("Par_cidade", request.getParameter("paramCliente"));
-            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/clienteAtualizado.jasper";
+            parametros.put("Par_nome", Integer.parseInt(request.getParameter("moveisParam")));
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/MovelParam.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
-            response.setHeader("Content-Disposition", "attachment;filename=relatorioClientesParam-" + data + ".pdf");
+            response.setHeader("Content-Disposition", "attachment;filename=relatorioMovelParam" + data + ".pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
         } catch (SQLException ex) {

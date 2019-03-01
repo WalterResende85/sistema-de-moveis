@@ -22,23 +22,21 @@ import net.sf.jasperreports.engine.JasperPrint;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
-@WebServlet(name = "RelatorioControllerClientePar", urlPatterns = "/RelatorioControllerClientePar")
-public class RelatorioControllerClientePar extends HttpServlet {
-
+@WebServlet(name = "RelatorioControllerFornecedorPar", urlPatterns = "/RelatorioControllerFornecedorPar")
+public class RelatorioControllerFornecedorPar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        Connection conexao = null;
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy-HH:mm");
+ Connection conexao = null;
+ DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy-HH:mm");
         Date date = new Date();
         String data = dateFormat.format(date);
         try {
             conexao = BD.getConexao();
             HashMap parametros = new HashMap();
-            parametros.put("Par_cidade", request.getParameter("paramCliente"));
-            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/clienteAtualizado.jasper";
+            parametros.put("Par_cidade",request.getParameter("paramFornecedor"));
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio")+"/FornecedorParam.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
-            response.setHeader("Content-Disposition", "attachment;filename=relatorioClientesParam-" + data + ".pdf");
+            response.setHeader("Content-Disposition", "attachment;filename=relatorioFornecedoresParam" + data + ".pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
         } catch (SQLException ex) {
@@ -60,9 +58,8 @@ public class RelatorioControllerClientePar extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -74,9 +71,8 @@ public class RelatorioControllerClientePar extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -88,9 +84,8 @@ public class RelatorioControllerClientePar extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override

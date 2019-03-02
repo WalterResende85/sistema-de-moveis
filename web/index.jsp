@@ -47,9 +47,7 @@
                             <h4 class="card-title">Funcionário</h4>
                             <a href="PesquisaFuncionarioController" class="btn btn-primary">Manter</a>
                         </div>
-                        <div>
-                            <a href="RelatorioControllerFuncionario" class="btn btn-success">Emitir relatorio</a>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -58,9 +56,7 @@
                             <h4 class="card-title">Fornecedor</h4>
                             <a href="PesquisaFornecedorController" class="btn btn-primary">Manter</a>
                         </div>
-                        <div>
-                            <a href="RelatorioControllerFornecedor" class="btn btn-success">Emitir relatorio</a>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -73,8 +69,8 @@
                         <div>
                             <a href="PesquisaClienteController" class="btn btn-primary">Manter</a>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
 
@@ -98,15 +94,13 @@
                             <h4 class="card-title">Material</h4>
                             <a href="PesquisaMaterialController" class="btn btn-primary">Manter</a>
                         </div>
-                        <div>
-                            <a href="RelatorioControllerMaterial" class="btn btn-success">Emitir relatorio</a>
-                        </div>
+                       
                     </div>
                 </div>
 
             </div>
         </div>
-       
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

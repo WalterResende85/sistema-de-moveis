@@ -57,7 +57,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5>
-                               Relatorio completo
+                                Relatorio completo
                             </h5>
                             <div>
                                 <a href="RelatorioControllerCliente" class="btn btn-success">Emitir relatorio</a>
@@ -75,7 +75,7 @@
                                     </c:forEach>
                                 </select>
                                 <input type="submit"/>
-                                </select>
+
                             </form>
                         </div>
                         <div class="modal-footer">

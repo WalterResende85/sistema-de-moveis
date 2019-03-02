@@ -47,6 +47,48 @@
             </table>
 
         </div>
+        <div class="container">
+
+
+            <div>
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalMaterial">relatorios</a>
+            </div>
+            <div class="modal fade" id="modalMaterial" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5>
+                                Relatorio completo
+                            </h5>
+                            <div>
+                                <a href="RelatorioControllerMaterial" class="btn btn-success">Emitir relatorio</a>
+                            </div> 
+                        </div>
+                        <div class="modal-body">
+                            <h5>
+                                Entre com o nome do material
+                            </h5>
+                            <form action="RelatorioControllerMaterialPar" method="POST" autofocus>
+                                <select class="form-control" required name="paramMaterial" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                    <option required value="0" <c:if test="${material.nome == null}"> selected</c:if>> </option>  
+                                    <c:forEach items="${materiais}" var="material">
+                                        <option required value="${material.nome}" <c:if test="${material.nome == material.nome}"> selected</c:if>>${material.nome}</option>  
+                                    </c:forEach>
+                                </select>
+                                <input type="submit"/>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

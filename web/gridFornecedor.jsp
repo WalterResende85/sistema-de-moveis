@@ -66,7 +66,7 @@
                         </div>
                         <div class="modal-body">
                             <h5>
-                                Entre com a cidade do cliente
+                                Entre com a cidade do Fornecedor
                             </h5>
                             <form action="RelatorioControllerFornecedorPar" method="POST" autofocus>
                                 <select class="form-control" required name="paramFornecedor" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
@@ -76,7 +76,7 @@
                                     </c:forEach>
                                 </select>
                                 <input type="submit"/>
-                                </select>
+
                             </form>
                         </div>
                         <div class="modal-footer">

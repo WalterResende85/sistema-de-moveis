@@ -43,6 +43,48 @@
             </table>
 
         </div>
+         <div class="container">
+
+
+                <div>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalMovel">relatorios</a>
+                </div>
+                <div class="modal fade" id="modalMovel" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>
+                                    Relatorio completo
+                                </h5>
+                                <div>
+                                    <a href="RelatorioControllerMoveis" class="btn btn-success">Emitir relatorio</a>
+                                </div> 
+                            </div>
+                            <div class="modal-body">
+                                <h5>
+                                    Entre com o nome do móvel
+                                </h5>
+                                <form action="RelatorioControllerMoveisPar" method="POST" autofocus>
+                                    <select class="form-control" required name="paramMovel" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                    <option required value="0" <c:if test="${movel.nome == null}"> selected</c:if>> </option>  
+                                    <c:forEach items="${moveis}" var="movel">
+                                        <option required value="${movel.nome}" <c:if test="${movel.nome == movel.nome}"> selected</c:if>>${movel.nome}</option>  
+                                    </c:forEach>
+                                </select>
+                                <input type="submit"/>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>

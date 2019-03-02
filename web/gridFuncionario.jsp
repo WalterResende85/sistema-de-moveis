@@ -48,6 +48,48 @@
             </table>
 
         </div>
+         <div class="container">
+
+
+                <div>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalFuncionario">relatorios</a>
+                </div>
+                <div class="modal fade" id="modalFuncionario" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5>
+                                    Relatorio completo
+                                </h5>
+                                <div>
+                                    <a href="RelatorioControllerFuncionario" class="btn btn-success">Emitir relatorio</a>
+                                </div> 
+                            </div>
+                            <div class="modal-body">
+                                <h5>
+                                    Entre com o cargo do funcionario
+                                </h5>
+                                <form action="RelatorioControllerFuncionarioPar" method="POST" autofocus>
+                                    <select class="form-control" required name="paramFuncionario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
+                                    <option required value="0" <c:if test="${funcionario.cargo == null}"> selected</c:if>> </option>  
+                                    <c:forEach items="${funcionarios}" var="funcionario">
+                                        <option required value="${funcionario.cargo}" <c:if test="${funcionario.cargo == funcionario.cargo}"> selected</c:if>>${funcionario.cargo}</option>  
+                                    </c:forEach>
+                                </select>
+                                <input type="submit"/>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

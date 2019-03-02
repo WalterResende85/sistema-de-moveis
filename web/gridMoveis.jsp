@@ -71,7 +71,7 @@
                                         <option required value="${movel.nome}" <c:if test="${movel.nome == movel.nome}"> selected</c:if>>${movel.nome}</option>  
                                     </c:forEach>
                                 </select>
-                                <input type="submit"/>
+                                <input class="btn btn-success" type="submit"/>
 
                             </form>
                         </div>

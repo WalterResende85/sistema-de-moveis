@@ -35,9 +35,7 @@
                             <h4 class="card-title">Móveis</h4>
                             <a href="PesquisaMovelController" class="btn btn-primary">Manter</a>
                         </div>
-                        <div>
-                            <a href="RelatorioControllerMoveis" class="btn btn-success">Emitir relatorio</a>
-                        </div>
+                        
                     </div>
                 </div>
 

@@ -34,11 +34,11 @@ public class RelatorioControllerPedidoPar extends HttpServlet {
         try {
             conexao = BD.getConexao();
             HashMap parametros = new HashMap();
-            //parametros.put("PAR_codCurso", Integer.parseInt(request.getParameter("txtCodCurso")));
-            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/pedido.jasper";
+            parametros.put("Par_Pedido", Integer.parseInt(request.getParameter("paramPedido")));
+            String relatorio = getServletContext().getRealPath("/WEB-INF/classes/relatorio") + "/PedidoParam.jasper";
             JasperPrint jp = JasperFillManager.fillReport(relatorio, parametros, conexao);
             byte[] relat = JasperExportManager.exportReportToPdf(jp);
-            response.setHeader("Content-Disposition", "attachment;filename=relatorioPedido" + data + ".pdf");
+            response.setHeader("Content-Disposition", "attachment;filename=relatorioPedidoParam" + data + ".pdf");
             response.setContentType("application/pdf");
             response.getOutputStream().write(relat);
         } catch (SQLException ex) {

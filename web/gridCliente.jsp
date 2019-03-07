@@ -68,10 +68,10 @@
                                 Entre com a cidade do cliente
                             </h5>
                             <form action="RelatorioControllerClientePar" method="POST" autofocus>
-                                <select class="form-control" required name="paramCliente" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                    <option required value="0" <c:if test="${cliente.cidade == null}"> selected</c:if>> </option>  
+                                <select class="form-control" name="paramCliente">
+                                     
                                     <c:forEach items="${clientes}" var="cliente">
-                                        <option required value="${cliente.cidade}" <c:if test="${cliente.cidade == cliente.cidade}"> selected</c:if>>${cliente.cidade}</option>  
+                                        <option value="${cliente.cidade}" >${cliente.cidade}</option>  
                                     </c:forEach>
                                 </select>
                                 <input type="submit"/>

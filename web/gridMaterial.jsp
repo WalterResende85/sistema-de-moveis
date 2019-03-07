@@ -69,10 +69,10 @@
                                 Entre com o nome do material
                             </h5>
                             <form action="RelatorioControllerMaterialPar" method="POST" autofocus>
-                                <select class="form-control" required name="paramMaterial" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                    <option required value="0" <c:if test="${material.nome == null}"> selected</c:if>> </option>  
+                                <select class="form-control" name="paramMaterial">
+                                    
                                     <c:forEach items="${materiais}" var="material">
-                                        <option required value="${material.nome}" <c:if test="${material.nome == material.nome}"> selected</c:if>>${material.nome}</option>  
+                                        <option value="${material.nome}">${material.nome}</option>  
                                     </c:forEach>
                                 </select>
                                 <input type="submit"/>

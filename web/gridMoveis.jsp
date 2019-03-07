@@ -65,10 +65,10 @@
                                 Entre com o nome do móvel
                             </h5>
                             <form action="RelatorioControllerMoveisPar" method="POST" autofocus>
-                                <select class="form-control" required name="paramMovel" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                    <option required value="0" <c:if test="${movel.nome == null}"> selected</c:if>> </option>  
+                                <select class="form-control" name="paramMovel">
+                                      
                                     <c:forEach items="${moveis}" var="movel">
-                                        <option required value="${movel.nome}" <c:if test="${movel.nome == movel.nome}"> selected</c:if>>${movel.nome}</option>  
+                                        <option value="${movel.nome}">${movel.nome}</option>  
                                     </c:forEach>
                                 </select>
                                 <input class="btn btn-success" type="submit"/>

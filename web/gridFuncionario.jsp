@@ -70,10 +70,10 @@
                                     Entre com o cargo do funcionario
                                 </h5>
                                 <form action="RelatorioControllerFuncionarioPar" method="POST" autofocus>
-                                    <select class="form-control" required name="paramFuncionario" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                    <option required value="0" <c:if test="${funcionario.cargo == null}"> selected</c:if>> </option>  
+                                    <select class="form-control" name="paramFuncionario">
+                                     
                                     <c:forEach items="${funcionarios}" var="funcionario">
-                                        <option required value="${funcionario.cargo}" <c:if test="${funcionario.cargo == funcionario.cargo}"> selected</c:if>>${funcionario.cargo}</option>  
+                                        <option value="${funcionario.cargo}">${funcionario.cargo}</option>  
                                     </c:forEach>
                                 </select>
                                 <input type="submit"/>

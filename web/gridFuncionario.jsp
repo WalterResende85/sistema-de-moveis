@@ -67,7 +67,7 @@
                             </div>
                             <div class="modal-body">
                                 <h5>
-                                    Entre com o cargo do funcionario
+                                    Escolha o cargo
                                 </h5>
                                 <form action="RelatorioControllerFuncionarioPar" method="POST" autofocus>
                                     <select class="form-control" name="paramFuncionario">

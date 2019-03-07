@@ -66,7 +66,7 @@
                         </div>
                         <div class="modal-body">
                             <h5>
-                                Entre com a cidade do Fornecedor
+                               Escolha a cidade
                             </h5>
                             <form action="RelatorioControllerFornecedorPar" method="POST" autofocus>
                                 <select class="form-control" name="paramFornecedor">

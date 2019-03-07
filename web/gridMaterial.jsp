@@ -66,7 +66,7 @@
                         </div>
                         <div class="modal-body">
                             <h5>
-                                Entre com o nome do material
+                                Escolha o material
                             </h5>
                             <form action="RelatorioControllerMaterialPar" method="POST" autofocus>
                                 <select class="form-control" name="paramMaterial">

@@ -62,7 +62,7 @@
                         </div>
                         <div class="modal-body">
                             <h5>
-                                Entre com o nome do móvel
+                                Escolha o móvel
                             </h5>
                             <form action="RelatorioControllerMoveisPar" method="POST" autofocus>
                                 <select class="form-control" name="paramMovel">

@@ -38,6 +38,7 @@
                         <td>
                             <c:out value="${pedido.valorTotal}" />
                         </td>
+                       
                         <td><a class="btn btn-primary" href="ManterPedidoController?acao=prepararOperacao&Operacao=Editar&idPedido=<c:out value="${pedido.idPedido}" />">Editar</a></td>
                         <td><a class="btn btn-primary" href="ManterPedidoController?acao=prepararOperacao&Operacao=Excluir&idPedido=<c:out value="${pedido.idPedido}" />">Excluir</a></td>
                     </tr>
@@ -67,13 +68,13 @@
                         </div>
                         <div class="modal-body">
                             <h5>
-                                Entre com o nome do cliente
+                               Selecione o cliente
                             </h5>
                             <form action="RelatorioControllerPedidoPar" method="POST" autofocus>
-                                <select class="form-control" required name="paramPedido" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>>
-                                    <option required value="0" <c:if test="${pedido.idCliente == null}"> selected</c:if>> </option>  
+                                <select class="form-control"  name="paramPedido">
+
                                     <c:forEach items="${pedidos}" var="pedido">
-                                        <option required value="${pedido.idCliente}" <c:if test="${pedido.idCliente == pedido.idCliente}"> selected</c:if>>${pedido.idCliente}</option>  
+                                        <option value="${pedido.idCliente}">${pedido.idCliente} - ${pedido.cliente.nome}</option>  
                                     </c:forEach>
                                 </select>
                                 <input type="submit"/>

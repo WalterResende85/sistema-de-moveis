@@ -50,4 +50,5 @@ public class Cliente extends Pessoa {
     public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
+    
 }

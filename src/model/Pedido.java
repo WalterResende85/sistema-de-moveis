@@ -54,7 +54,7 @@ public class Pedido {
     }
 
     public Long getIdCliente() {
-        return this.cliente.getIdCliente();
+        return this.idCliente;
     }
 
     public Long getIdPedido() {

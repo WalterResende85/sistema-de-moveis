@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-
+<>
 
 <html lang="pt-br">
 
@@ -28,7 +28,7 @@
                 <tr>
                     <th>Cod</th>
                     <th>Valor Total</th>
-                    <th colspan="2">Ações</th>
+                    <th colspan="2">AÃ§Ãµes</th>
                 </tr>
                 <c:forEach items="${pedidos}" var="pedido">
                     <tr>

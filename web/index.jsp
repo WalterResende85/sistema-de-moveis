@@ -25,14 +25,14 @@
             <a class="navbar-brand" href="#">Sistema Interno</a>
         </nav>
         <br>
-
+TESTE REDMINE
         <div class="container">
 
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h4 class="card-title">MÛveis</h4>
+                            <h4 class="card-title">M√≥veis</h4>
                             <a href="PesquisaMovelController" class="btn btn-primary">Manter</a>
                         </div>
 
@@ -42,7 +42,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                            <h4 class="card-title">Funcion·rio</h4>
+                            <h4 class="card-title">Funcion√°rio</h4>
                             <a href="PesquisaFuncionarioController" class="btn btn-primary">Manter</a>
                         </div>
 

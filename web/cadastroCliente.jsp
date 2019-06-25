@@ -17,13 +17,13 @@
     </head>
 
     <body>
-
+aaaa
         <div class="container">
             <form action="ManterClienteController?acao=confirmarOperacao&operacao=${operacao}" method="POST" autofocus>
                 <table>
                     <tr><td colspan="4" style="text-align: center">${operacao} Cliente</td></tr>
 
-                    <tr><td><label for="idCliente">Código do Cliente</label></td>
+                    <tr><td><label for="idCliente">CÃ³digo do Cliente</label></td>
                         <td colspan="3">
                             <input type="number" min="1" class="form-control" name="idCliente" required id="idCliente" value="${cliente.idCliente}" <c:if test="${operacao != 'Incluir'}"> readonly</c:if>>
                             </td>
@@ -37,7 +37,7 @@
                     <tr><td><label for="e-mail">e-mail</label></td><td colspan="3"><input class="form-control" type="email" name="email" required id="email" value="${cliente.email}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="cep">CEP</label></td><td colspan="1"><input class="form-control" type="text" name="cep" id="cep" maxlenght="8" minlength="8"  required value="${cliente.cep}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                     <tr><td><label for="logradouro">Logradouro</label></td><td colspan="3"><input class="form-control" type="text" required name="logradouro" maxlenght="45" minlength="3" id="logradouro" value="${cliente.logradouro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
-                    <tr><td><label for="numero">Número</label></td><td><input class="form-control" type="number" maxlenght="6" minlength="1" name="numero" required id="numero" value="${cliente.numero}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td><td><label for="bairro">Bairro</label></td><td><input class="form-control" type="text" name="bairro" id="bairro" value="${cliente.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
+                    <tr><td><label for="numero">NÃºmero</label></td><td><input class="form-control" type="number" maxlenght="6" minlength="1" name="numero" required id="numero" value="${cliente.numero}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td><td><label for="bairro">Bairro</label></td><td><input class="form-control" type="text" name="bairro" id="bairro" value="${cliente.bairro}" <c:if test="${operacao == 'Excluir'}"> readonly</c:if>></td></tr>
                         <tr>
                             <td><label for="uf" required>UF</label></td>
                             <td>
